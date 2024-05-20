@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TaxonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -40,6 +42,17 @@ class Taxon
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $relativeAgeTop = null;
+
+    /**
+     * @var Collection<int, Photo>
+     */
+    #[ORM\OneToMany(targetEntity: Photo::class, mappedBy: 'taxon')]
+    private Collection $photo;
+
+    public function __construct()
+    {
+        $this->photo = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -150,6 +163,36 @@ class Taxon
     public function setRelativeAgeTop(?string $relativeAgeTop): static
     {
         $this->relativeAgeTop = $relativeAgeTop;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Photo>
+     */
+    public function getPhoto(): Collection
+    {
+        return $this->photo;
+    }
+
+    public function addPhoto(Photo $photo): static
+    {
+        if (!$this->photo->contains($photo)) {
+            $this->photo->add($photo);
+            $photo->setTaxon($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhoto(Photo $photo): static
+    {
+        if ($this->photo->removeElement($photo)) {
+            // set the owning side to null (unless already changed)
+            if ($photo->getTaxon() === $this) {
+                $photo->setTaxon(null);
+            }
+        }
 
         return $this;
     }
