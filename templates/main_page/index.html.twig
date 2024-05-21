@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="px-2.5 max-w-fit m-auto">
-    Welcome to the Fossil Diatom Website, created and maintained by Jakub Witkowski. Here, you can find information on my work, and access
-    the Fossil Diatom Atlas, designed as a quick identification reference for fossil diatoms.
+<div class="px-2.5 max-w-fit m-auto columns-2">
+    <div>
+        Welcome to the Fossil Diatom Website, created and maintained by Jakub Witkowski. Here, you can find information on my work, and access
+        the Fossil Diatom Atlas, designed as a quick identification reference for fossil diatoms.
+    </div>
+
+    <div>
+        <img src={{ asset( imagePath ) }} alt="Image of a diatom" />
+    </div>
 </div>
 {% endblock %}

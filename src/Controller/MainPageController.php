@@ -12,10 +12,14 @@ class MainPageController extends AbstractController
     public function index(): Response
     {
         $year = date('Y');
+        $phrase = '/images/main-page-feature-00';
+        $randomPicNumber = random_int(1, 8);
+        $mainPageFeatureFilename = $phrase . $randomPicNumber . '.jpg';
 
         return $this->render('main_page/index.html.twig', [
             'controller_name' => 'MainPageController',
-            'year' => $year
+            'year' => $year,
+            'imagePath' => $mainPageFeatureFilename
         ]);
     }
 }
