@@ -11,9 +11,13 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body class="w-2/3 my-0 mx-2.5">
-        <header>
-            <h1 class="text-4xl font-extrabold">fossil-diatoms.com</h1>
+    <body class="w-2/3 my-0 mx-auto">
+        <header class="relative border-b border-black pb-0">
+            <h1 class="text-4xl font-bold">fossil-diatoms.com</h1>
+            <div class="social-media">
+                <a href="https://www.instagram.com/fossil.diatoms/" target="_blank"><img class="w-8" src= {{ asset('images/ig_icon.png') }} alt="Instagram icon"></a>
+                <a href="https://www.facebook.com/fossil.diatoms" target="_blank"><img class="w-8" src= {{ asset('images/fb_icon.png') }} alt="Facebook icon"></a>
+            </div>
         </header>
 
         <main class="mx-2.5 mt-2.5">
