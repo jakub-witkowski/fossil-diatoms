@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Fossil Diatoms Website{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         {% endblock %}
@@ -11,45 +11,40 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body class="w-2/3 my-0 mx-auto">
-        <header class="relative border-b border-black pb-0">
-            <h1 class="text-4xl font-bold">fossil-diatoms.com</h1>
+    <body class="w-4/5 my-0 mx-auto">
+        <header class="relative border-b border-black py-7">
+            <div>
+                <h1 class="text-4xl font-bold">fossil-diatoms.com</h1>
+            </div>
+        </header>
+            <nav class="text-center border-b border-black">
             
-            <div class="absolute top-10 right-0">
+            <div class="absolute top-0 right-8">
                 <a href="https://www.instagram.com/fossil.diatoms/" target="_blank"><img class="w-8" src= {{ asset('images/ig_icon.png') }} alt="Instagram icon"></a>
+            </div>
+            <div class="absolute top-0 right-0">
                 <a href="https://www.facebook.com/fossil.diatoms" target="_blank"><img class="w-8" src= {{ asset('images/fb_icon.png') }} alt="Facebook icon"></a>
             </div>
 
-            <nav class="text-center border-t border-black">
                 <div class="dropdown">
-                    <button class="dropbtn"><a href="?page=home.php">Strona główna</a></button>
+                    <button class="dropbtn"><a href= {{url('app_main_page')}} >Home</a></button>
                 </div>
     
                 <div class="dropdown">
-                    <button class="dropbtn"><a href="atlas/index.php">Fossil Diatom Atlas</a></button>
+                    <button class="dropbtn"><a href="">Fossil Diatom Atlas</a></button>
                 </div>
         
                 <div class="dropdown">
-                    <button class="dropbtn">Materiały dla studentów</button>
-            
+                    <button class="dropbtn">About</button>
+
                     <div class="dropdown-content">
-                        <a href="?page=zasoby-hz">Historia Ziemi (wykład ogólnouczelniany)</a>
-                        <a href="?page=zasoby-grp">Geologia regionalna Polski (II rok, geologia 1°)</a>
-                        <a href="?page=zasoby-gh">Geologia historyczna (II rok, geologia 1°)</a>
+                        <a href="">My background</a>
+                        <a href="">My publications</a>
                     </div>
                 </div>
 
                 <div class="dropdown">
-                    <button class="dropbtn">O mnie</button>
-
-                    <div class="dropdown-content">
-                        <a href="?page=o-mnie">Autor</a>
-                        <a href="?page=publications">Publikacje</a>
-                    </div>
-                </div>
-
-                <div class="dropdown">
-                    <button class="dropbtn"><a href="?page=kontakt">Kontakt</a></button>
+                    <button class="dropbtn"><a href="">Contact</a></button>
                 </div>
             </nav>
         </header>
