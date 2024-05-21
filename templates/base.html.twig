@@ -14,10 +14,44 @@
     <body class="w-2/3 my-0 mx-auto">
         <header class="relative border-b border-black pb-0">
             <h1 class="text-4xl font-bold">fossil-diatoms.com</h1>
-            <div class="social-media">
+            
+            <div class="absolute top-10 right-0">
                 <a href="https://www.instagram.com/fossil.diatoms/" target="_blank"><img class="w-8" src= {{ asset('images/ig_icon.png') }} alt="Instagram icon"></a>
                 <a href="https://www.facebook.com/fossil.diatoms" target="_blank"><img class="w-8" src= {{ asset('images/fb_icon.png') }} alt="Facebook icon"></a>
             </div>
+
+            <nav class="text-center border-t border-black">
+                <div class="dropdown">
+                    <button class="dropbtn"><a href="?page=home.php">Strona główna</a></button>
+                </div>
+    
+                <div class="dropdown">
+                    <button class="dropbtn"><a href="atlas/index.php">Fossil Diatom Atlas</a></button>
+                </div>
+        
+                <div class="dropdown">
+                    <button class="dropbtn">Materiały dla studentów</button>
+            
+                    <div class="dropdown-content">
+                        <a href="?page=zasoby-hz">Historia Ziemi (wykład ogólnouczelniany)</a>
+                        <a href="?page=zasoby-grp">Geologia regionalna Polski (II rok, geologia 1°)</a>
+                        <a href="?page=zasoby-gh">Geologia historyczna (II rok, geologia 1°)</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">O mnie</button>
+
+                    <div class="dropdown-content">
+                        <a href="?page=o-mnie">Autor</a>
+                        <a href="?page=publications">Publikacje</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn"><a href="?page=kontakt">Kontakt</a></button>
+                </div>
+            </nav>
         </header>
 
         <main class="mx-2.5 mt-2.5">
