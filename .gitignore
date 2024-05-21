@@ -16,4 +16,6 @@
 
 ###> image files ###
 /assets/images/*.png
+/assets/images/*.jpg
+/assets/images/*.jpeg
 ###< image files ###
