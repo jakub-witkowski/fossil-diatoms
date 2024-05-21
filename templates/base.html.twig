@@ -11,8 +11,19 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
-        <h1 class="text-4xl font-extrabold">Fossil-diatoms.com</h1>
-        {% block body %}{% endblock %}
+    <body class="w-2/3 my-0 mx-2.5">
+        <header>
+            <h1 class="text-4xl font-extrabold">fossil-diatoms.com</h1>
+        </header>
+
+        <main class="mx-2.5 mt-2.5">
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="mt-2.5 border-t border-black">
+            <div class="mx-2.5 my-2.5 text-right text-base">
+                &copy; Jakub Witkowski, {{ year }}</p>
+            </div>
+        </footer>
     </body>
 </html>

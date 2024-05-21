@@ -11,8 +11,11 @@ class MainPageController extends AbstractController
     #[Route('/', name: 'app_main_page', methods: 'GET')]
     public function index(): Response
     {
+        $year = date('Y');
+
         return $this->render('main_page/index.html.twig', [
             'controller_name' => 'MainPageController',
+            'year' => $year
         ]);
     }
 }
