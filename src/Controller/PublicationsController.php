@@ -18,7 +18,7 @@ class PublicationsController extends AbstractController
     }
         
     #[Route('/publications', name: 'app_publications', methods: 'GET')]
-    public function index(EntityManagerInterface $em): Response
+    public function index(): Response
     {
         $repository = $this->em->getRepository(Publication::class);
         $publications = $repository->findBy([], [

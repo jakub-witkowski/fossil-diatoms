@@ -19,7 +19,7 @@ class ByGenusController extends AbstractController
         
 
     #[Route('/by-genus', name: 'app_by_genus', methods: 'GET')]
-    public function index(EntityManagerInterface $em): Response
+    public function index(): Response
     {
         $repository = $this->em->getRepository(Photo::class);
         $photos = $repository->findBy([], [
