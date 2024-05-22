@@ -18,4 +18,5 @@
 /assets/images/*.png
 /assets/images/*.jpg
 /assets/images/*.jpeg
+/assets/images/atlas/*.*
 ###< image files ###
