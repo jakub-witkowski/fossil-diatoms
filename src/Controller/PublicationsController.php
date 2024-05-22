@@ -25,8 +25,11 @@ class PublicationsController extends AbstractController
             'id' => 'DESC'
         ]);
 
+        $year = date('Y');
+
         return $this->render('publications/index.html.twig', [
             'controller_name' => 'PublicationsController',
+            'year' => $year,
             'publications' => $publications
         ]);
     }

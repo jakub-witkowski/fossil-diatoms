@@ -2,4 +2,23 @@
 
 {% block body %}
 
+<div class="flex flex-col space-y-4">
+    {% for publication in publications %}
+
+    <p>
+        {{ publication.getAuthors }} ({{ publication.getYear }}). {{ publication.getTitle|raw }}. {{ publication.getJournal }} {{ publication.getVolume }},
+        {{ publication.getPages }}.
+
+        {% if publication.getWww != 'NULL' %}
+            <strong>WWW</strong> (publisher website)    
+        {% endif %}
+
+        {% if publication.isOpenAccess == 1 %}
+            <img src= {{ asset('images/open-access-logo.png') }} alt="Open Access logo">    
+        {% endif %}
+    </p>
+
+    {% endfor %}
+</div>
+
 {% endblock %}
