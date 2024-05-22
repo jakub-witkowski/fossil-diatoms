@@ -10,11 +10,11 @@
         {{ publication.getPages }}.
 
         {% if publication.getWww != 'NULL' %}
-            <strong>WWW</strong> (publisher website)    
+            <a href="{{ publication.getWww }}" target="_blank"><strong>WWW (publisher website)</strong></a>    
         {% endif %}
 
         {% if publication.isOpenAccess == 1 %}
-            <img src= {{ asset('images/open-access-logo.png') }} alt="Open Access logo">    
+            <img src= {{ asset('images/open-access-logo.png') }} class="inline" alt="Open Access logo">    
         {% endif %}
     </p>
 
