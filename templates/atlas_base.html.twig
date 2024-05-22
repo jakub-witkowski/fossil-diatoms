@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Fossil Diatoms Website{% endblock %}</title>
+        <title>{% block title %}Fossil Diatom Atlas{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         {% endblock %}
@@ -14,9 +14,9 @@
     <body class="w-4/5 my-0 mx-auto">
         <header class="relative border-b border-black py-7">
             <div>
-                <h1 class="text-4xl font-bold">fossil-diatoms.com</h1>
+                <h1 class="text-4xl font-bold">Fossil Diatom Atlas</h1>
             </div>
-        
+
             <div class="absolute top-8 right-8">
                 <a href="https://www.instagram.com/fossil.diatoms/" target="_blank"><img class="w-8" src= {{ asset('images/ig_icon.png') }} alt="Instagram icon"></a>
             </div>
@@ -25,29 +25,36 @@
                 <a href="https://www.facebook.com/fossil.diatoms" target="_blank"><img class="w-8" src= {{ asset('images/fb_icon.png') }} alt="Facebook icon"></a>
             </div>
         </header>
-            
             <nav class="text-center border-b border-black">
             
                 <div class="dropdown">
-                    <button class="dropbtn"><a href= {{url('app_main_page')}} >Home</a></button>
-                </div>
-    
-                <div class="dropdown">
-                    <button class="dropbtn"><a href= {{ url('app_atlas_homepage') }}>Fossil Diatom Atlas</a></button>
+                    <button class="dropbtn"><a href= {{ url('app_atlas_homepage') }}>Atlas Home</a></button>
                 </div>
         
                 <div class="dropdown">
-                    <button class="dropbtn">About</button>
+                    <button class="dropbtn">Index</button>
 
                     <div class="dropdown-content">
-                        <a href= {{ url('app_background') }}>My background</a>
-                        <a href= {{ url('app_publications') }}>My publications</a>
+                        <a href= {{ url('app_background') }}>List of taxa</a>
+                        <a href= {{ url('app_publications') }}>List of sites</a>
                     </div>
                 </div>
 
                 <div class="dropdown">
-                    <button class="dropbtn"><a href= {{ url('app_contact') }}>Contact</a></button>
+                    <button class="dropbtn">Browse Atlas</button>
+
+                    <div class="dropdown-content">
+                        <a href= {{ url('app_background') }}>By genus</a>
+                        <a href= {{ url('app_publications') }}>By date</a>
+                        <a href= {{ url('app_publications') }}>By popularity</a>
+                        <a href= {{ url('app_publications') }}>By geological age</a>
+                    </div>
                 </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn"><a href= {{url('app_main_page')}} >Back to fossil-diatoms.com</a></button>
+                </div>
+
             </nav>
         </header>
 
