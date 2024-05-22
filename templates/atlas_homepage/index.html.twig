@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fossil Diatom Atlas{% endblock %}
+
+{% block body %}
+<div class="grid grid-cols-5 gap-2 mx-2.5">
+    <div class="col-span-2 p-4 flex flex-col space-y-4">
+        <p>Hi, and welcome to the online Fossil Diatom Atlas!</p>
+        <p>At present, the database includes <strong> {{ photos }} photos</strong> of 
+        <strong> {{ species }} species</strong> comprised in <strong> {{ genera }}
+        genera</strong> of fossil diatoms, ranging in age from the Early Cretaceous to the Neogene.</p>
+        <p>Recent updates:</p>        
+
+        {% for update in updates %}
+        <p> {{ update.getDatePublished|date("m/d/Y") }} </p>
+        <p> {{ update.getContent|raw }} </p>
+        {% endfor %}
+
+    </div>
+    <div class="col-span-3 p-4">
+        <img src= {{ asset('images/atlas-logo.jpg') }} alt="Stylized logo of the Fossil Diatom Atlas">
+    </div>    
+</div>
+{% endblock %}
