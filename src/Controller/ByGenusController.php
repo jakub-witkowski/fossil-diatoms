@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Publication;
+use App\Entity\Photo;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class PublicationsController extends AbstractController
+class ByGenusController extends AbstractController
 {
     private $em;
 
@@ -17,20 +17,21 @@ class PublicationsController extends AbstractController
         $this->em = $em;
     }
         
-    #[Route('/publications', name: 'app_publications', methods: 'GET')]
+
+    #[Route('/by-genus', name: 'app_by_genus', methods: 'GET')]
     public function index(EntityManagerInterface $em): Response
     {
-        $repository = $this->em->getRepository(Publication::class);
-        $publications = $repository->findBy([], [
+        $repository = $this->em->getRepository(Photo::class);
+        $photos = $repository->findBy([], [
             'id' => 'DESC'
         ]);
 
         $year = date('Y');
 
-        return $this->render('publications/index.html.twig', [
-            'controller_name' => 'PublicationsController',
-            'year' => $year,
-            'publications' => $publications
+        return $this->render('by_genus/index.html.twig', [
+            'controller_name' => 'ByGenusController',
+            'photos' => $photos,
+            'year' => $year
         ]);
     }
 }
