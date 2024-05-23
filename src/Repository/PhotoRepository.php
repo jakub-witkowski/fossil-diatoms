@@ -19,17 +19,44 @@ class PhotoRepository extends ServiceEntityRepository
 //    /**
 //     * @return Photo[] Returns an array of Photo objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   public function sortPhotosByGenusAndSpecies(): array
+   {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT 
+            photo.id,
+            photo.is_published,
+            photo.filename,
+            photo.description,
+            photo.microscope_id,
+            photo.sample_id,
+            photo.taxon_id,
+            photo.technique_id,
+            genus.name,
+            species.name,
+            species.authority,
+            species.date_proposed
+            FROM photo
+            JOIN taxon ON photo.taxon_id = taxon.id
+            JOIN genus ON taxon.genus_id = genus.id
+            JOIN species ON taxon.species_id = species.id
+            ORDER BY genus.name, species.name ASC' 
+        );
+
+        return $query->getResult();
+
+
+
+    //    return $this->createQueryBuilder('p')
+    //        ->andWhere('p.exampleField = :val')
+    //        ->setParameter('val', $value)
+    //        ->orderBy('p.id', 'ASC')
+    //        ->setMaxResults(10)
+    //        ->getQuery()
+    //        ->getResult()
+       ;
+   }
 
 //    public function findOneBySomeField($value): ?Photo
 //    {

@@ -3,13 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Photo;
-use App\Repository\PhotoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class ByGenusController extends AbstractController
+class ByDateController extends AbstractController
 {
     private $em;
 
@@ -18,17 +17,19 @@ class ByGenusController extends AbstractController
         $this->em = $em;
     }
         
-    #[Route('/by-genus', name: 'app_by_genus', methods: 'GET')]
+
+    #[Route('/by-date', name: 'app_by_date', methods: 'GET')]
     public function index(): Response
     {
-        // $repository = $this->em->getRepository(Photo::class);
-        // $photos = $photoRepository->sortPhotosByGenusAndSpecies();
-        $photos = $this->em->getRepository(Photo::class)->sortPhotosByGenusAndSpecies();
+        $repository = $this->em->getRepository(Photo::class);
+        $photos = $repository->findBy([], [
+            'id' => 'DESC'
+        ]);
 
         $year = date('Y');
 
-        return $this->render('by_genus/index.html.twig', [
-            'controller_name' => 'ByGenusController',
+        return $this->render('by_date/index.html.twig', [
+            'controller_name' => 'ByDateController',
             'photos' => $photos,
             'year' => $year
         ]);
