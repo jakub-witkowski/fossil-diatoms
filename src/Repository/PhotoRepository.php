@@ -24,25 +24,7 @@ class PhotoRepository extends ServiceEntityRepository
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
-            'SELECT 
-            photo.id,
-            photo.is_published,
-            photo.filename,
-            photo.description,
-            photo.microscope_id,
-            photo.sample_id,
-            photo.taxon_id,
-            photo.technique_id,
-            genus.name,
-            species.name,
-            species.authority,
-            species.date_proposed
-            FROM photo
-            JOIN taxon ON photo.taxon_id = taxon.id
-            JOIN genus ON taxon.genus_id = genus.id
-            JOIN species ON taxon.species_id = species.id
-            ORDER BY genus.name, species.name ASC' 
-        );
+            'SELECT p FROM App\Entity\Photo p');
 
         return $query->getResult();
 
