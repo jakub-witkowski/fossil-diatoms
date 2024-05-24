@@ -16,37 +16,20 @@ class PhotoRepository extends ServiceEntityRepository
         parent::__construct($registry, Photo::class);
     }
 
-//    /**
-//     * @return Photo[] Returns an array of Photo objects
-//     */
+   /**
+    * @return Photo[] Returns an array of Photo objects
+    */
    public function sortPhotosByGenusAndSpecies(): array
    {
-        $entityManager = $this->getEntityManager();
+        $qb = $this->createQueryBuilder('photo')
+                ->join('photo.taxon', 'taxon')
+                ->join('taxon.genus', 'genus')
+                ->join('taxon.species', 'species')
+                ->addOrderBy('genus.name')
+                ->addOrderBy('species.name');
 
-        $query = $entityManager->createQuery(
-            'SELECT p FROM App\Entity\Photo p');
+        $query = $qb->getQuery();
 
         return $query->getResult();
-
-
-
-    //    return $this->createQueryBuilder('p')
-    //        ->andWhere('p.exampleField = :val')
-    //        ->setParameter('val', $value)
-    //        ->orderBy('p.id', 'ASC')
-    //        ->setMaxResults(10)
-    //        ->getQuery()
-    //        ->getResult()
-       ;
    }
-
-//    public function findOneBySomeField($value): ?Photo
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }
