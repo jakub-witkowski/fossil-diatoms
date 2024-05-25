@@ -32,4 +32,17 @@ class PhotoRepository extends ServiceEntityRepository
 
         return $query->getResult();
    }
+
+   /**
+    * @return Photo 
+    */
+    public function findPhotoById(int $id): Photo
+    {
+        foreach ($this->findAll() as $photo) {
+            if ($photo->getId() === $id) {
+                return $photo;
+            }
+        }
+        return null;
+    }
 }

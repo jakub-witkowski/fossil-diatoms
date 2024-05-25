@@ -1,0 +1,11 @@
+{% extends 'atlas_base.html.twig' %}
+
+{% block body %}
+
+<div>
+    <p class="font-bold"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }}) </p>
+    <p><strong>Comment:</strong> {{ photo.getDescription|raw }}.</p>
+    <p><strong>Locality:</strong> {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}. </p>
+</div>
+
+{% endblock %}
