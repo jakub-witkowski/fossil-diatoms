@@ -18,7 +18,7 @@ class ByDateController extends AbstractController
     }
         
 
-    #[Route('/by-date', name: 'app_by_date', methods: 'GET')]
+    #[Route('/atlas/by-date', name: 'app_by_date', methods: 'GET')]
     public function index(): Response
     {
         $repository = $this->em->getRepository(Photo::class);
