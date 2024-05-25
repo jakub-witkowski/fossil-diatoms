@@ -36,7 +36,7 @@ class PhotoRepository extends ServiceEntityRepository
    /**
     * @return Photo 
     */
-    public function findPhotoById(int $id): Photo
+    public function findPhotoById(int $id): ?Photo
     {
         foreach ($this->findAll() as $photo) {
             if ($photo->getId() === $id) {

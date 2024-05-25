@@ -14,6 +14,10 @@ class EntryController extends AbstractController
     {
         $photo = $repository->findPhotoById($id);
 
+        if (!$photo) {
+            throw $this->createNotFoundException('Photo not found');
+        }
+
         $year = date('Y'); 
 
         return $this->render('entry/index.html.twig', [
