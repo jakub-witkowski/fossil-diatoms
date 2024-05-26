@@ -9,7 +9,15 @@
     <div class="col-span-2 p-4 space-y-4">
         <p class="font-bold"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }}) </p>
         <p><strong>Comment:</strong> {{ photo.getDescription|raw }}.</p>
-        <p><strong>Locality:</strong> {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}. </p>
+        <p><strong>Locality:</strong> 
+        
+        {% if photo.getSample.getSite.getSiteType == 'onshore' %}
+            {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}
+        {% elseif photo.getSample.getSite.getSiteType == 'dredging' or photo.getSample.getSite.getSiteType == 'deep-sea' %}
+            {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}
+        {% endif %}
+        
+        . </p>
         <p><strong>Photographed using:</strong> {{ photo.getMicroscope.getProducer.getName }} {{ photo.getMicroscope.getModel.getName }}, {{ photo.getMicroscope.getObjective.getName }} + {{ photo.getMicroscope.getCamera.getName }}.</p>
         <p><strong>Direct link to this page:</strong> {{ url }} </p>
         <p><strong><a href="{{photo.getTaxon.getDiatombase}}" target="_blank">DiatomBase link (opens in new tab)</strong></a></p>
