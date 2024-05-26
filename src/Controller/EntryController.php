@@ -18,12 +18,14 @@ class EntryController extends AbstractController
             throw $this->createNotFoundException('Photo not found');
         }
 
-        $year = date('Y'); 
+        $year = date('Y');
+        $url = 'https://fossil-diatoms.com/atlas/entry/' . $id;
 
         return $this->render('entry/index.html.twig', [
             'controller_name' => 'EntryController',
             'year' => $year,
-            'photo' => $photo
+            'photo' => $photo,
+            'url' => $url
         ]);
     }
 }
