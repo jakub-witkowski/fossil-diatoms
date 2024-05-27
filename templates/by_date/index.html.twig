@@ -10,8 +10,8 @@
 
 {% for photo in photos %}
     <div class="size-4/5 text-center">
-        <img src={{ asset('images/atlas/'~photo.getFilename~'') }} />
-        {{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }} {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})
+        <a href= {{ url('app_entry/') }}><img src={{ asset('images/atlas/'~photo.getFilename~'') }} />
+        {{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }} {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }}) </a>
     </div>
 {% endfor %}
 
