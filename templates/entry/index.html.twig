@@ -11,6 +11,10 @@
         <p><strong>Comment:</strong> {{ photo.getDescription|raw }}.</p>
         <p><strong>Locality:</strong> 
         
+        {% if photo.getSample.getSite.getSiteType.getName == 'unknown' %}
+            {{ photo.getSample.getSite.getNameOrNumberPrimary}}.            
+        {% endif %}
+
         {% if photo.getSample.getSite.getSiteType.getName == 'onshore' %}
             {{ photo.getSample.getSite.getNameOrNumberPrimary}}, {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}, sample {{ photo.getSample.getLabel }}.
         {% endif %}
@@ -19,7 +23,9 @@
             {{ photo.getSample.getSite.getCampaign.getFullName }} Hole {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), sample {{ photo.getSample.getLabel }}.
         {% endif %}
 
-
+        {% if photo.getSample.getSite.getSiteType.getName == 'deep-sea' and photo.getSample.getSite.getCampaign.getAbbreviation == 'ODP' %}
+            {{ photo.getSample.getSite.getCampaign.getFullName }} Hole {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), sample {{ photo.getSample.getLabel }}.
+        {% endif %}
         </p>
 
         <p><strong>Photographed using:</strong> {{ photo.getMicroscope.getProducer.getName }} {{ photo.getMicroscope.getModel.getName }}, {{ photo.getMicroscope.getObjective.getName }} + {{ photo.getMicroscope.getCamera.getName }}.</p>
