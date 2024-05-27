@@ -11,8 +11,17 @@
         <p><strong>Comment:</strong> {{ photo.getDescription|raw }}.</p>
         <p><strong>Locality:</strong> 
         
-            {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}. </p>
-            
+        {% if photo.getSample.getSite.getSiteType.getName == 'onshore' %}
+            {{ photo.getSample.getSite.getNameOrNumberPrimary}}, {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}, sample {{ photo.getSample.getLabel }}.
+        {% endif %}
+
+        {% if photo.getSample.getSite.getSiteType.getName == 'deep-sea' and photo.getSample.getSite.getCampaign.getAbbreviation == 'DSDP' %}
+            {{ photo.getSample.getSite.getCampaign.getFullName }} Hole {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), sample {{ photo.getSample.getLabel }}.
+        {% endif %}
+
+
+        </p>
+
         <p><strong>Photographed using:</strong> {{ photo.getMicroscope.getProducer.getName }} {{ photo.getMicroscope.getModel.getName }}, {{ photo.getMicroscope.getObjective.getName }} + {{ photo.getMicroscope.getCamera.getName }}.</p>
         <p><strong>Direct link to this page:</strong> {{ url }} </p>
         <p><strong><a href="{{photo.getTaxon.getDiatombase}}" target="_blank">DiatomBase link (opens in new tab)</strong></a></p>
