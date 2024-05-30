@@ -21,7 +21,7 @@ class ByPopularityController extends AbstractController
     public function index(): Response
     {
         $repository = $this->em->getRepository(Photo::class);
-        $photos = $repository->findBy([], [
+        $photos = $repository->findBy(['isPublished' => 'true'], [
             'timesViewed' => 'DESC'
         ]);
 

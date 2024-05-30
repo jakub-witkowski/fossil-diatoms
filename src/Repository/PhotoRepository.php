@@ -22,6 +22,7 @@ class PhotoRepository extends ServiceEntityRepository
    public function sortPhotosByGenusAndSpecies(): array
    {
         $qb = $this->createQueryBuilder('photo')
+                ->andWhere('photo.isPublished = 1')
                 ->join('photo.taxon', 'taxon')
                 ->join('taxon.genus', 'genus')
                 ->join('taxon.species', 'species')
