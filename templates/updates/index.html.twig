@@ -1,0 +1,12 @@
+{% extends 'atlas_base.html.twig' %}
+
+{% block body %}
+
+<div class="space-y-4">
+    {% for update in updates %}
+        <p> {{ update.getDatePublished|date("m/d/Y") }} </p>
+        <p> {{ update.getContent|raw }} </p>
+    {% endfor %}
+</div>
+
+{% endblock %}
