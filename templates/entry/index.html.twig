@@ -12,7 +12,7 @@
         <p><strong>Locality:</strong> 
         
         {% if photo.getSample.getSite.getSiteType.getName == 'unknown' %}
-            {{ photo.getSample.getSite.getNameOrNumberPrimary}}.            
+            {{ photo.getSample.getSite.getNameOrNumberPrimary}}. The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getSpecimenRelativeAge }}).           
         {% endif %}
 
         {% if photo.getSample.getSite.getSiteType.getName == 'onshore-NHM' %}
