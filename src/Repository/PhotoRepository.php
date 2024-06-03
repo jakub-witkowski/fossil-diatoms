@@ -17,23 +17,28 @@ class PhotoRepository extends ServiceEntityRepository
         parent::__construct($registry, Photo::class);
     }
 
-//    /**
-//     * @return Photo[] Returns an array of Photo objects
-//     */
-   public function sortPhotosByGenusAndSpecies(): QueryBuilder
-   {
+    public function sortPublishedPhotosByDate() : QueryBuilder
+    {
         $qb = $this->createQueryBuilder('photo')
-                ->andWhere('photo.isPublished = 1')
-                ->join('photo.taxon', 'taxon')
-                ->join('taxon.genus', 'genus')
-                ->join('taxon.species', 'species')
-                ->addOrderBy('genus.name')
-                ->addOrderBy('species.name');
-
-        // $query = $qb->getQuery();
+            ->andWhere('photo.isPublished = 1')
+            ->addOrderBy('photo.id', 'DESC');
 
         return $qb;
-   }
+        
+    }
+
+    public function sortPhotosByGenusAndSpecies(): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('photo')
+                    ->andWhere('photo.isPublished = 1')
+                    ->join('photo.taxon', 'taxon')
+                    ->join('taxon.genus', 'genus')
+                    ->join('taxon.species', 'species')
+                    ->addOrderBy('genus.name')
+                    ->addOrderBy('species.name');
+
+        return $qb;
+    }
 
    /**
     * @return Photo 
