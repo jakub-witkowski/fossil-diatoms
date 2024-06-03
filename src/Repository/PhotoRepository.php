@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Photo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,10 +17,10 @@ class PhotoRepository extends ServiceEntityRepository
         parent::__construct($registry, Photo::class);
     }
 
-   /**
-    * @return Photo[] Returns an array of Photo objects
-    */
-   public function sortPhotosByGenusAndSpecies(): array
+//    /**
+//     * @return Photo[] Returns an array of Photo objects
+//     */
+   public function sortPhotosByGenusAndSpecies(): QueryBuilder
    {
         $qb = $this->createQueryBuilder('photo')
                 ->andWhere('photo.isPublished = 1')
@@ -29,9 +30,9 @@ class PhotoRepository extends ServiceEntityRepository
                 ->addOrderBy('genus.name')
                 ->addOrderBy('species.name');
 
-        $query = $qb->getQuery();
+        // $query = $qb->getQuery();
 
-        return $query->getResult();
+        return $qb;
    }
 
    /**
