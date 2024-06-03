@@ -24,7 +24,15 @@ class PhotoRepository extends ServiceEntityRepository
             ->addOrderBy('photo.id', 'DESC');
 
         return $qb;
-        
+    }
+
+    public function sortPublishedPhotosByPopularity(): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('photo')
+            ->andWhere('photo.isPublished = 1')
+            ->addOrderBy('photo.timesViewed', 'DESC');
+            
+        return $qb;
     }
 
     public function sortPhotosByGenusAndSpecies(): QueryBuilder
