@@ -1,0 +1,17 @@
+{% extends 'atlas_base.html.twig' %}
+
+{% block body %}
+
+<div class="py-4 space-y-4">
+    <div>
+        <p>Found {{ numberOfGenera }} genera in the database:</p>
+    </div>
+
+    <div>
+        {% for genus in listOfGenera %}
+            <p><i> {{ genus.getName }} </i></p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
