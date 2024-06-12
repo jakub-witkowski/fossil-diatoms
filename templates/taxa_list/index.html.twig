@@ -2,15 +2,25 @@
 
 {% block body %}
 
-<div class="py-4 space-y-4">
-    <div>
-        <p>Found {{ numberOfGenera }} genera in the database:</p>
+<div id="indexPageWrapper" class="grid grid-cols-5 gap-2 mx-2.5">
+    <div id="rightColumn" class="col-span-1">
+        <div class="py-4 space-y-4">
+            <div>
+                <p>Found {{ numberOfGenera }} genera in the database:</p>
+            </div>
+
+            <div>
+                <ul>
+                {% for genus in listOfGenera %}
+                    <li><i> {{ genus.getName }} </i></li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div>
-        {% for genus in listOfGenera %}
-            <p><i> {{ genus.getName }} </i></p>
-        {% endfor %}
+    <div id="leftColumn" class="col-span-4 py-4 space-y-4 text-center">
+        <p>Select genus from the list on the right</p>
     </div>
 </div>
 
