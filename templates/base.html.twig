@@ -29,24 +29,24 @@
             <nav class="text-center border-b border-black">
             
                 <div class="dropdown">
-                    <button class="dropbtn"><a href= {{url('app_main_page')}} >Home</a></button>
+                    <button class="dropbtn"><a href= {{ path('app_main_page') }} >Home</a></button>
                 </div>
     
                 <div class="dropdown">
-                    <button class="dropbtn"><a href= {{ url('app_atlas_homepage') }}>Fossil Diatom Atlas</a></button>
+                    <button class="dropbtn"><a href= {{ path('app_atlas_homepage') }}>Fossil Diatom Atlas</a></button>
                 </div>
         
                 <div class="dropdown">
                     <button class="dropbtn">About</button>
 
                     <div class="dropdown-content">
-                        <a href= {{ url('app_background') }}>My background</a>
-                        <a href= {{ url('app_publications') }}>My publications</a>
+                        <a href= {{ path('app_background') }}>My background</a>
+                        <a href= {{ path('app_publications') }}>My publications</a>
                     </div>
                 </div>
 
                 <div class="dropdown">
-                    <button class="dropbtn"><a href= {{ url('app_contact') }}>Contact</a></button>
+                    <button class="dropbtn"><a href= {{ path('app_contact') }}>Contact</a></button>
                 </div>
             </nav>
         </header>

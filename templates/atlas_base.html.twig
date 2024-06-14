@@ -28,14 +28,14 @@
             <nav class="text-center border-b border-black">
             
                 <div class="dropdown">
-                    <button class="dropbtn"><a href= {{ url('app_atlas_homepage') }}>Atlas Home</a></button>
+                    <button class="dropbtn"><a href= {{ path('app_atlas_homepage') }}>Atlas Home</a></button>
                 </div>
         
                 <div class="dropdown">
                     <button class="dropbtn">Index</button>
 
                     <div class="dropdown-content">
-                        <a href= {{ url('app_taxa_list') }}>List of taxa</a>
+                        <a href= {{ path('app_taxa_list') }}>List of taxa</a>
                         <a href="">List of sites</a>
                     </div>
                 </div>
@@ -44,18 +44,18 @@
                     <button class="dropbtn">Browse Atlas</button>
 
                     <div class="dropdown-content">
-                        <a href= {{ url('app_by_genus') }}>By genus</a>
-                        <a href= {{ url('app_by_date') }}>By date</a>
-                        <a href= {{ url('app_by_popularity') }}>By popularity</a>
+                        <a href= {{ path('app_by_genus') }}>By genus</a>
+                        <a href= {{ path('app_by_date') }}>By date</a>
+                        <a href= {{ path('app_by_popularity') }}>By popularity</a>
                     </div>
                 </div>
 
                 <div class="dropdown">
-                    <button class="dropbtn"><a href="">Search Atlas</a></button>
+                    <button class="dropbtn"><a href="#">Search Atlas</a></button>
                 </div>
 
                 <div class="dropdown">
-                    <button class="dropbtn"><a href= {{url('app_main_page')}} >Back to fossil-diatoms.com</a></button>
+                    <button class="dropbtn"><a href= {{path('app_main_page')}} >Back to fossil-diatoms.com</a></button>
                 </div>
 
             </nav>
