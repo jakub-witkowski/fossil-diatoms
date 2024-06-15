@@ -48,6 +48,22 @@ class PhotoRepository extends ServiceEntityRepository
         return $qb;
     }
 
+    public function findPhotosByGenus($genus)
+    {
+        return $this->createQueryBuilder('photo')
+                ->andWhere('photo.isPublished = 1')
+                ->join('photo.taxon', 'taxon')
+                ->join('taxon.genus', 'genus')
+                ->join('taxon.species', 'species')
+                ->andWhere('genus.name LIKE :searchTerm')
+                ->setParameter('searchTerm', $genus)
+                ->addOrderBy('species.name', 'ASC')
+                ->getQuery()
+                ->getResult();
+                
+        // return $qb;
+    }
+
    /**
     * @return Photo 
     */
