@@ -1,11 +1,11 @@
 <div class="flex items-center justify-center">
-    <div class="grid grid-cols-2 gap-2 mx-2.5">
-        <div class="col-span-1">
+    <div class="grid grid-cols-4 gap-2 mx-2.5">
+        <div class="col-span-2">
         {% for photo in photos %}
-            <div>
+            {# <div > #}
                 <a href= {{ path('app_entry', {'id': photo.id}) }}><img src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
                 <p class="py-4 space-y-4"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</p>
-            </div>
+            {# </div> #}
         {% endfor %}
         </div>
     </div>

@@ -23,8 +23,6 @@ export default class extends Controller {
                     }  
                 })
 
-                // console.log($selectedGenus);
-
                 return false;
             })
 
