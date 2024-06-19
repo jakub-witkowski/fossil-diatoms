@@ -2,26 +2,20 @@
 
 {% block body %}
 
-<div id="indexPageWrapper" class="grid grid-cols-5 gap-2 mx-2.5">
-    <div id="leftColumn" class="col-span-1">
-        <div class="py-4 space-y-4">
-            <div>
-                <p>Found {{ numberOfGenera }} genera:</p>
-            </div>
-
-            <div data-controller="genus-list">
-                <ul>
-                    {% for genus in listOfGenera %}
-                        <li><a class="js-genus-list" href="#"><i> {{ genus.getName }} </i></a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+<div id="upper-panel">
+    <p class="text-center">Select a genus from the list to view the species:</p>
+    <div class="py-4 space-y-4"> 
+        <div data-controller="genus-list" class="mx-2.5 grid grid-cols-6 gap-0.5 p-5">
+            
+                {% for genus in listOfGenera %}
+                    <div><a class="js-genus-list" href="#"><i> {{ genus.getName }} </i></a></div>
+                {% endfor %}
+            
         </div>
     </div>
+</div>
 
-    <div id="rightColumn" class="col-span-4 py-4 space-y-4 text-center">
-        <p>Select genus from the list on the left</p>
-    </div>
+<div id="rightColumn" class="mx-2.5 grid grid-cols-3 gap-0.5 p-5">
 </div>
 
 {% endblock %}
