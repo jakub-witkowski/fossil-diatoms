@@ -55,13 +55,16 @@ class PhotoRepository extends ServiceEntityRepository
                 ->join('photo.taxon', 'taxon')
                 ->join('taxon.genus', 'genus')
                 ->join('taxon.species', 'species')
-                ->andWhere('genus.name LIKE :searchTerm')
+                // ->addSelect('genus.name')
+                // ->addSelect('species.name')
+                // ->addSelect('species.authority')
+                // ->addSelect('species.dateProposed')
+                ->andWhere('genus.name = :searchTerm')
                 ->setParameter('searchTerm', $genus)
                 ->addOrderBy('species.name', 'ASC')
                 ->getQuery()
+                // ->getArrayResult();
                 ->getResult();
-                
-        // return $qb;
     }
 
    /**
