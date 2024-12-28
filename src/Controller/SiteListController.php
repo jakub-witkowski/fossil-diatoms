@@ -20,6 +20,7 @@ class SiteListController extends AbstractController
             'name' => 'ASC'
         ]);
         $listOfSites = $siteRepository->findBy([], [
+            'siteType' => 'ASC',
             'nameOrNumberPrimary' => 'ASC'
         ]);
 
