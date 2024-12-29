@@ -11,13 +11,13 @@
         
         {% for site in listOfSites %}
             {% if site.getSiteType.getName == 'deep-sea' %}
-                <div><a class="js-site-list" href="#"> {{ site.getCampaign.getAbbreviation }} Hole {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }} </a></div>
+                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getCampaign.getAbbreviation }} Hole {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }} </a></div>
             {% elseif site.getSiteType.getName == 'onshore' %}
-                <div><a class="js-site-list" href="#"> {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeaturePrimary }}, {{ site.getGeography.getFeatureSecondary }} </a></div>
+                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeaturePrimary }}, {{ site.getGeography.getFeatureSecondary }} </a></div>
             {% elseif site.getSiteType.getName == 'unknown' %}
-                <div><a class="js-site-list" href="#"> Unknown locality </a></div>
+                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> Unknown locality </a></div>
             {% elseif site.getSiteType.getName == 'dredge' %}
-                <div><a class="js-site-list" href="#"> {{ site.getCampaign.getAbbreviation }} dredging {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }} </a></div>
+                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getCampaign.getAbbreviation }} dredging {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }} </a></div>
             {% endif %}
         {% endfor %}
     

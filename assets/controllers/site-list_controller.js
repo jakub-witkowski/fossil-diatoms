@@ -6,8 +6,8 @@ export default class extends Controller {
         $(document).ready(function() {   
 
             $('a.js-site-list').on('click', function(e) {
-                var $selectedSite = $(this).text();
-                var $url = '/atlas/site/' + $selectedSite.trim();
+                var $selectedSite = $(this).attr('id');
+                var $url = '/atlas/site/' + $selectedSite.substring(4);
 
                 $.ajax({
                     url:    $url,
