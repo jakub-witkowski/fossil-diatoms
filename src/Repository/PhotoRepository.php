@@ -73,6 +73,7 @@ class PhotoRepository extends ServiceEntityRepository
                 ->join('photo.sample', 'sample')
                 ->andWhere('sample.site = :searchTerm')
                 ->setParameter('searchTerm', $siteId)
+                ->addOrderBy('genus.name')
                 ->addOrderBy('species.name', 'ASC')
                 ->getQuery()
                 ->getResult();
