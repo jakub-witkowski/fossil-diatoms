@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Photo;
+use App\Entity\Site;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -55,15 +56,25 @@ class PhotoRepository extends ServiceEntityRepository
                 ->join('photo.taxon', 'taxon')
                 ->join('taxon.genus', 'genus')
                 ->join('taxon.species', 'species')
-                // ->addSelect('genus.name')
-                // ->addSelect('species.name')
-                // ->addSelect('species.authority')
-                // ->addSelect('species.dateProposed')
                 ->andWhere('genus.name = :searchTerm')
                 ->setParameter('searchTerm', $genus)
                 ->addOrderBy('species.name', 'ASC')
                 ->getQuery()
-                // ->getArrayResult();
+                ->getResult();
+    }
+
+    public function findPhotosBySite($siteId)
+    {
+        return $this->createQueryBuilder('photo')
+                ->andWhere('photo.isPublished = 1')
+                ->join('photo.taxon', 'taxon')
+                ->join('taxon.genus', 'genus')
+                ->join('taxon.species', 'species')
+                ->join('photo.sample', 'sample')
+                ->andWhere('sample.site = :searchTerm')
+                ->setParameter('searchTerm', $siteId)
+                ->addOrderBy('species.name', 'ASC')
+                ->getQuery()
                 ->getResult();
     }
 
