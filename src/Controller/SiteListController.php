@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-// use App\Repository\PhotoRepository;
-
 use App\Repository\GenusRepository;
 use App\Repository\SiteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

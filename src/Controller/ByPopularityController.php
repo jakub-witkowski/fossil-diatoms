@@ -13,14 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class ByPopularityController extends AbstractController
-{
-    // private $em;
-
-    // public function __construct(EntityManagerInterface $em)
-    // {
-    //     $this->em = $em;
-    // }
-        
+{        
     #[Route('/atlas/by-popularity', name: 'app_by_popularity', methods: 'GET')]
     public function index(PhotoRepository $photoRepository, Request $request): Response
     {
@@ -32,11 +25,6 @@ class ByPopularityController extends AbstractController
             9
         );
         
-        // $repository = $this->em->getRepository(Photo::class);
-        // $photos = $repository->findBy(['isPublished' => 'true'], [
-        //     'timesViewed' => 'DESC'
-        // ]);
-
         $year = date('Y');
 
         return $this->render('by_popularity/index.html.twig', [

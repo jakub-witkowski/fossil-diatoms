@@ -14,22 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ByDateController extends AbstractController
 {
-    // private $em;
-
-    // public function __construct(EntityManagerInterface $em)
-    // {
-    //     $this->em = $em;
-    // }
-        
-
     #[Route('/atlas/by-date', name: 'app_by_date', methods: 'GET')]
     public function index(PhotoRepository $photoRepository, Request $request): Response
     {
-        // $repository = $this->em->getRepository(Photo::class);
-        // $photos = $repository->findBy(['isPublished' => 'true'], [
-        //     'id' => 'DESC'
-        // ]);
-
         $queryBuilder = $photoRepository->sortPublishedPhotosByDate();
         $adapter = new QueryAdapter($queryBuilder);
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
