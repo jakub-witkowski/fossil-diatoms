@@ -1,13 +1,17 @@
 /** @type {import('tailwindcss').Config} */
+
+const { join } = require('path');
+
 module.exports = {
-  content: [
-    "./assets/**/*.js",
-    "./templates/**/*.html.twig",
-  ],
+  content: [join(__dirname, './assets/**/*.js'), 
+           join(__dirname, './templates/**/*.html.twig')],
+//    "./assets/**/*.js",
+//    "./templates/**/*.html.twig",
+//  ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwindcss")],
 
   safelist: [
     'flex', 'items-center', 'justify-between', 'flex-1', 'z-0', 'inline-flex', 'shadow-sm',
