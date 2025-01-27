@@ -12,10 +12,10 @@
         {% for site in listOfSites %}
             {% if site.getSiteType.getName == 'deep-sea' %}
                 <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getCampaign.getAbbreviation }} Hole {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }} </a></div>
-            {% elseif site.getSiteType.getName == 'onshore' %}
+            {% elseif site.getSiteType.getName == 'onshore' or site.getSiteType.getName == 'onshore-NHM' %}
                 <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeatureSecondary }} </a></div>
-            {% elseif site.getSiteType.getName == 'onshore-NHM' %}
-                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeatureSecondary }} </a></div>
+            {# {% elseif site.getSiteType.getName == 'onshore-NHM' %} #}
+                {# <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeatureSecondary }} </a></div> #}
             {% elseif site.getSiteType.getName == 'unknown' %}
                 <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> Unknown locality </a></div>
             {% elseif site.getSiteType.getName == 'dredge' %}
