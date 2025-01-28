@@ -44,8 +44,8 @@ class Photo
     #[ORM\Column(nullable: true)]
     private ?int $specimenNumericalAge = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $specimenRelativeAge = null;
+    #[ORM\ManyToOne]
+    private ?RelativeAge $relativeAge = null;
 
     public function getId(): ?int
     {
@@ -172,14 +172,14 @@ class Photo
         return $this;
     }
 
-    public function getSpecimenRelativeAge(): ?string
+    public function getRelativeAge(): ?RelativeAge
     {
-        return $this->specimenRelativeAge;
+        return $this->relativeAge;
     }
 
-    public function setSpecimenRelativeAge(?string $specimenRelativeAge): static
+    public function setRelativeAge(?RelativeAge $relativeAge): static
     {
-        $this->specimenRelativeAge = $specimenRelativeAge;
+        $this->relativeAge = $relativeAge;
 
         return $this;
     }

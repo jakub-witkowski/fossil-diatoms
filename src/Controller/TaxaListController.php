@@ -12,16 +12,18 @@ class TaxaListController extends AbstractController
     #[Route('/atlas/taxa-list', name: 'app_taxa_list', methods: 'GET')]
     public function index(GenusRepository $genusRepository): Response
     {
-        $numberOfGenera = $genusRepository->count();
+        // $numberOfGenera = $genusRepository->count();
         $listOfGenera = $genusRepository->findBy([],[
             'name' => 'ASC'
         ]);
+
+        // dd($listOfGenera);
 
         $year = date('Y');
 
         return $this->render('taxa_list/index.html.twig', [
             'controller_name' => 'TaxaListController',
-            'numberOfGenera' => $numberOfGenera,
+            // 'numberOfGenera' => $numberOfGenera,
             'listOfGenera' => $listOfGenera,
             'year' => $year,
         ]);

@@ -79,6 +79,23 @@ class PhotoRepository extends ServiceEntityRepository
                 ->getResult();
     }
 
+    public function findPhotosByRelativeAge($relativeAgeId)
+    {
+        return $this->createQueryBuilder('photo')
+                ->andWhere('photo.isPublished = 1')
+                ->join('photo.taxon', 'taxon')
+                ->join('taxon.genus', 'genus')
+                ->join('taxon.species', 'species')
+                ->join('photo.relativeAge', 'relativeAge')
+                ->andWhere('relativeAge.id = :searchTerm')
+                ->setParameter('searchTerm', $relativeAgeId)
+                ->addOrderBy('genus.name')
+                ->addOrderBy('species.name', 'ASC')
+                ->getQuery()
+                ->getResult();
+    }
+
+
    /**
     * @return Photo 
     */
