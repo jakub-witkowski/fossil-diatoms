@@ -18,7 +18,7 @@ class SiteController extends AbstractController
             throw $this->createNotFoundException('Site not found');
         }
 
-        return $this->render('taxon/index.html.twig', [
+        return $this->render('site/index.html.twig', [
             'controller_name' => 'SiteController',
             'photos' => $photos
         ]);

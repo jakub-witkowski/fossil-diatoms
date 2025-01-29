@@ -13,37 +13,37 @@
         
         {# format for displaying unknown sites #}
         {% if photo.getSample.getSite.getSiteType.getName == 'unknown' %}
-            {{ photo.getSample.getSite.getNameOrNumberPrimary}}. The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getSpecimenRelativeAge }}).           
+            {{ photo.getSample.getSite.getNameOrNumberPrimary}}. The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge }}).           
         {% endif %}
 
         {# format for displaying sites from NHM collections with duplicated names #}
         {% if photo.getSample.getSite.getSiteType.getName == 'onshore-NHM' and photo.getSample.getSite.getNameOrNumberPrimary == photo.getSample.getSite.getGeography.getFeaturePrimary %}
-            {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}, The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getSpecimenRelativeAge }}).
+            {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}, The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge.getName }}).
         {% endif %}
 
         {# format for displaying sites from NHM collections without duplicated names #}
         {% if photo.getSample.getSite.getSiteType.getName == 'onshore-NHM' and photo.getSample.getSite.getNameOrNumberPrimary != photo.getSample.getSite.getGeography.getFeaturePrimary %}
-            {{ photo.getSample.getSite.getNameOrNumberPrimary}}, {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}, The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getSpecimenRelativeAge }}).
+            {{ photo.getSample.getSite.getNameOrNumberPrimary}}, {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}, The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge.getName }}).
         {% endif %}
 
         {# format for displaying non-NHM onshore sites #}
         {% if photo.getSample.getSite.getSiteType.getName == 'onshore' %}
-            {{ photo.getSample.getSite.getNameOrNumberPrimary}}, {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}, sample: {{ photo.getSample.getLabel }} ({{ photo.getSpecimenRelativeAge }}).
+            {{ photo.getSample.getSite.getNameOrNumberPrimary}}, {{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}, sample: {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge.getName }}).
         {% endif %}
 
         {# format for displaying DODO dredgings #}
         {% if photo.getSample.getSite.getSiteType.getName == 'dredge' and photo.getSample.getSite.getCampaign.getAbbreviation == 'DODO' %}
-            {{ photo.getSample.getSite.getCampaign.getFullName }} dredging {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getSpecimenRelativeAge }}).
+            {{ photo.getSample.getSite.getCampaign.getFullName }} dredging {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge.getName }}).
         {% endif %}
 
         {# format for displaying DSDP sites #}
         {% if photo.getSample.getSite.getSiteType.getName == 'deep-sea' and photo.getSample.getSite.getCampaign.getAbbreviation == 'DSDP' %}
-            {{ photo.getSample.getSite.getCampaign.getFullName }} Hole {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), sample: {{ photo.getSample.getLabel }} ({{ photo.getSpecimenRelativeAge }}).
+            {{ photo.getSample.getSite.getCampaign.getFullName }} Hole {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), sample: {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge.getName }}).
         {% endif %}
 
         {# format for displaying ODP sites #}
         {% if photo.getSample.getSite.getSiteType.getName == 'deep-sea' and photo.getSample.getSite.getCampaign.getAbbreviation == 'ODP' %}
-            {{ photo.getSample.getSite.getCampaign.getFullName }} Hole {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), sample: {{ photo.getSample.getLabel }} ({{ photo.getSpecimenRelativeAge }}).
+            {{ photo.getSample.getSite.getCampaign.getFullName }} Hole {{ photo.getSample.getSite.getNameOrNumberPrimary }}{{ photo.getSample.getSite.getNameOrNumberSecondary }} ({{ photo.getSample.getSite.getGeography.getFeaturePrimary }}, {{ photo.getSample.getSite.getGeography.getFeatureSecondary }}), sample: {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge.getName }}).
         {% endif %}
         </p>
 

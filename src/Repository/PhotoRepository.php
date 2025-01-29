@@ -79,7 +79,7 @@ class PhotoRepository extends ServiceEntityRepository
                 ->getResult();
     }
 
-    public function findPhotosByRelativeAge($relativeAgeId)
+    public function findPhotosByAge($relativeAgeId)
     {
         return $this->createQueryBuilder('photo')
                 ->andWhere('photo.isPublished = 1')
