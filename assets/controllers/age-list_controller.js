@@ -7,7 +7,7 @@ export default class extends Controller {
 
             $('a.js-age-list').on('click', function(e) {
                 var $selectedAge = $(this).attr('id');
-                var $url = '/atlas/age/' + $selectedAge.substring(3);
+                var $url = '/atlas/relative-age/' + $selectedAge.substring(3);
 
                 $.ajax({
                     url:    $url,
