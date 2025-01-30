@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class SiteController extends AbstractController
 {
-    #[Route('/atlas/site/{siteId}', name: 'app_site')]
+    #[Route('/atlas/site/{siteId}', name: 'app_site', methods: 'GET')]
     public function index(PhotoRepository $photoRepository, $siteId): Response
     {
         $photos = $photoRepository->findPhotosBySite($siteId);

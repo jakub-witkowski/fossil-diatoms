@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class TaxonController extends AbstractController
 {
-    #[Route('/atlas/taxon/{genus}', name: 'app_taxon')]
+    #[Route('/atlas/taxon/{genus}', name: 'app_taxon', methods: 'GET')]
     public function index(PhotoRepository $photoRepository, $genus): Response
     {
         $photos = $photoRepository->findPhotosByGenus($genus);

@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class RelativeAgeController extends AbstractController
 {
-    #[Route('/atlas/relative-age/{relativeAgeId<\d+>}', name: 'app_relative_age')]
+    #[Route('/atlas/relative-age/{relativeAgeId<\d+>}', name: 'app_relative_age', methods: 'GET')]
     public function index(PhotoRepository $photoRepository, $relativeAgeId): Response
     {
         $photos = $photoRepository->findPhotosByAge($relativeAgeId);

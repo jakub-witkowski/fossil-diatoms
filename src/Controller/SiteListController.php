@@ -17,8 +17,6 @@ class SiteListController extends AbstractController
             'nameOrNumberPrimary' => 'ASC'
         ]);
 
-        // dd($listOfSites);
-
         $year = date('Y');
 
         return $this->render('site_list/index.html.twig', [

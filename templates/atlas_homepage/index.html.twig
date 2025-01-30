@@ -6,15 +6,17 @@
         <p>Hi, and welcome to the online Fossil Diatom Atlas!</p>
         <p>At present, the Atlas includes <strong> {{ photos }} photos</strong> of 
         <strong> {{ species }} species</strong> comprised in <strong> {{ genera }}
-        genera</strong> of fossil diatoms, ranging in age from the Early Cretaceous to the Neogene.</p>
+        genera</strong> of fossil diatoms, ranging in age from the Early Cretaceous to the Holocene.</p>
         <p>Recent updates:</p>        
 
         {% for update in updates %}
-        <p> {{ update.getDatePublished|date("m/d/Y") }} </p>
-        <p> {{ update.getContent|raw }} </p>
+            <p> {{ update.getDatePublished|date("m/d/Y") }} </p>
+            <p> {{ update.getContent|raw }} </p>
         {% endfor %}
+        
         <p class="text-right"><a href={{ url('app_updates') }}><i>See all updates</i></a></p>
     </div>
+    
     <div class="col-span-3 p-4">
         <img src= {{ asset('images/atlas-logo.jpg') }} alt="Stylized logo of the Fossil Diatom Atlas">
     </div>    
