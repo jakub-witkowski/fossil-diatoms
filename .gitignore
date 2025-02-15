@@ -32,7 +32,8 @@
 ###< phpunit/phpunit ###
 
 ###> test environment ###
-./tests
+/tests/
+/tests/*.*
 .env.test
 /bin/phpunit
 /phpunit.xml.dist
