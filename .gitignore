@@ -21,3 +21,18 @@
 /assets/images/*.jpeg
 /assets/images/atlas/*.*
 ###< image files ###
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> test environment ###
+./tests
+.env.test
+/bin/phpunit
+/phpunit.xml.dist
