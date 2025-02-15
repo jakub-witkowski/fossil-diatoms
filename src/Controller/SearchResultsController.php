@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+// use App\Entity\Photo;
 use App\Repository\PhotoRepository;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
@@ -10,9 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class ByGenusController extends AbstractController
+class SearchResultsController extends AbstractController
 {
-    #[Route('/atlas/by-genus', name: 'app_by_genus', methods: 'GET')]
+    #[Route('/atlas/search-results', name: 'app_search_results', methods: 'GET')]
     public function index(PhotoRepository $photoRepository, Request $request): Response
     {
         $queryBuilder = $photoRepository->sortPhotosByGenusAndSpecies();
@@ -25,8 +26,8 @@ class ByGenusController extends AbstractController
 
         $year = date('Y');
 
-        return $this->render('by_genus/index.html.twig', [
-            'controller_name' => 'ByGenusController',
+        return $this->render('search_results/index.html.twig', [
+            'controller_name' => 'SearchResultsController',
             'year' => $year,
             'pager' => $pagerfanta,
         ]);

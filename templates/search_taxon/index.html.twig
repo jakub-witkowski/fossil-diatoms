@@ -1,0 +1,10 @@
+{% extends 'atlas_base.html.twig' %}
+
+{% block body %}
+    <h3>Search for taxon</h3>
+
+    {{ form_start(taxonForm) }}
+        {{ form_widget(taxonForm) }}
+        <button type="submit" class="btn btn-primary">Search</button>
+    {{ form_end(taxonForm) }}
+{% endblock %}
