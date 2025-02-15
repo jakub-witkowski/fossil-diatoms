@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Photo;
-use App\Entity\Site;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;

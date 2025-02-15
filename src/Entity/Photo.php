@@ -183,4 +183,12 @@ class Photo
 
         return $this;
     }
+
+    public function incrementTimesViewed(): self
+    {
+        // $this->setTimesViewed($this->getTimesViewed() + 1);
+        $this->timesViewed = $this->timesViewed + 1;
+
+        return $this;
+    }
 }
