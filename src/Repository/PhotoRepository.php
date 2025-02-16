@@ -73,8 +73,6 @@ class PhotoRepository extends ServiceEntityRepository
             ->setParameter('searchTerm1', $genus)
             ->andWhere('species.name = :searchTerm2')
             ->setParameter('searchTerm2', $species);
-            // ->getQuery()
-            // ->getResult();
     }
 
     public function findPhotosBySite($siteId)

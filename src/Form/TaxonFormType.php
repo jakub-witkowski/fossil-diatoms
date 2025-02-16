@@ -11,12 +11,8 @@ class TaxonFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('genus', TextType::class, [
-                'help' => 'Enter genus'
-            ])
-            ->add('species', TextType::class, [
-                'help' => 'Enter species'
-            ]);
+            ->add('genus', TextType::class)
+            ->add('species', TextType::class);
     }
 
 }
