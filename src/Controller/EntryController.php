@@ -11,12 +11,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class EntryController extends AbstractController
 {
-    // private $em;
-
-    // public function __construct(EntityManagerInterface $em)
-    // {
-    //     $this->em = $em;
-    // }
 
     public function updateTimesViewed(Photo $photo, EntityManagerInterface $em)
     {
@@ -36,7 +30,6 @@ class EntryController extends AbstractController
         $year = date('Y');
         $url = 'https://fossil-diatoms.com/atlas/entry/' . $id;
 
-        // $this->updateTimesViewed($photo, $this->em);
         $this->updateTimesViewed($photo, $em);
 
         return $this->render('entry/index.html.twig', [
