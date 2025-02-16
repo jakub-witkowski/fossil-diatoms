@@ -52,16 +52,16 @@
                     </div>
                 </div>
 
-                {# <div class="dropdown">
-                    <button class="dropbtn"><a href="#">Search Atlas</a></button>
-                </div> #}
+                <div class="dropdown">
+                    <button class="dropbtn"><a href={{path('app_search_taxon')}}>Search Atlas</a></button>
+                </div>
 
                 <div class="dropdown">
                     <button class="dropbtn"><a href= {{path('app_main_page')}} >Back to fossil-diatoms.com</a></button>
                 </div>
 
             </nav>
-        </header>
+        {# </header> #}
 
         <main class="mx-2.5 mt-2.5">
             {% block body %}{% endblock %}
@@ -69,7 +69,7 @@
 
         <footer class="mt-2.5 border-t border-black">
             <div class="mx-2.5 my-2.5 text-right text-base">
-                &copy; Jakub Witkowski, {{ year }}</p>
+                &copy; Jakub Witkowski, {{ year }}
             </div>
         </footer>
     </body>

@@ -4,6 +4,7 @@ use App\Form\TaxonFormType;
 use App\Repository\PhotoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\Pagerfanta;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,21 +22,20 @@ class TaxonSearchController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
-            $genus = $data['genus'];
-            $species = $data['species'];
 
-
-            $queryBuilder = $photoRepository->findPhotosByGenusAndSpecies($genus, $species);
+            $queryBuilder = $photoRepository->findPhotosByGenusAndSpecies($data['genus'], $data['species']);
+            $numberOfResults = count($queryBuilder->getQuery()->getResult());
             $adapter = new QueryAdapter($queryBuilder);
             $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
                 $adapter,
                 $request->query->get('page', 1),
                 9
             );
-        
+
             return $this->render('search_results/index.html.twig', [
                 'controller_name' => 'SearchResultController',
                 'year' => $year,
+                'numberOfResults' => $numberOfResults,
                 'pager' => $pagerfanta,
             ]);
         }

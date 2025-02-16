@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-// use App\Entity\Photo;
 use App\Repository\PhotoRepository;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
