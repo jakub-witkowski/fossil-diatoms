@@ -8,6 +8,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TaxonFormType extends AbstractType
 {
+    /**
+    * @return void 
+    */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
