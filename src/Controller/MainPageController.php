@@ -16,7 +16,7 @@ class MainPageController extends AbstractController
         $randomPicNumber = random_int(1, 8);
         $mainPageFeatureFilename = $phrase . $randomPicNumber . '.jpg';
 
-        return $this->render('main_page/index.html.twig', [
+        return $this->redirectToRoute('app_atlas_homepage', [
             'controller_name' => 'MainPageController',
             'year' => $year,
             'imagePath' => $mainPageFeatureFilename
