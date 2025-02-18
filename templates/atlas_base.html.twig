@@ -9,24 +9,30 @@
 
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400..800&display=swap" rel="stylesheet">
             <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
     <body class="w-4/5 my-0 mx-auto">
-        <header class="relative border-b border-black py-7">
+        {# <header class="relative border-b border-black py-7"> #}
+        <header class="relative mt-7">
+        {# <header class="relative"> #}
             <div>
-                <h1 class="text-4xl font-bold">Fossil Diatom Atlas</h1>
+                <h1 class="text-[70px] font-bold">Fossil Diatom Atlas</h1>
             </div>
 
-            <div class="absolute top-8 right-8">
+            <div class="absolute top-1 right-8">
                 <a href="https://www.instagram.com/fossil.diatoms/" target="_blank"><img class="w-8" src= {{ asset('images/ig_icon.png') }} alt="Instagram icon"></a>
             </div>
             
-            <div class="absolute top-8 right-0">
+            <div class="absolute top-1 right-0">
                 <a href="https://www.facebook.com/fossil.diatoms" target="_blank"><img class="w-8" src= {{ asset('images/fb_icon.png') }} alt="Facebook icon"></a>
             </div>
         </header>
-            <nav class="text-center border-b border-black">
+            {# <nav class="text-center border-b border-black"> #}
+            <nav class="text-center">
             
                 <div class="dropdown">
                     <button class="dropbtn"><a href= {{ path('app_atlas_homepage') }}>Atlas Home</a></button>
@@ -67,8 +73,9 @@
             {% block body %}{% endblock %}
         </main>
 
-        <footer class="mt-2.5 border-t border-black">
-            <div class="mx-2.5 my-2.5 text-right text-base">
+        {# <footer class="mt-2.5 border-t border-black"> #}
+        <footer class="mt-2.5">
+            <div class="mx-2.5 my-2.5 text-right text-base text-[#333333]">
                 &copy; Jakub Witkowski, {{ year }}
             </div>
         </footer>

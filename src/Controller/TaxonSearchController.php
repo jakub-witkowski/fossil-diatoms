@@ -21,6 +21,7 @@ class TaxonSearchController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
+            // dd($data);
 
             $queryBuilder = $photoRepository->findPhotosByGenusAndSpecies($data['genus'], $data['species']);
             $numberOfResults = count($queryBuilder->getQuery()->getResult());
