@@ -6,6 +6,7 @@ use App\Repository\GenusRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: GenusRepository::class)]
 class Genus
@@ -16,6 +17,7 @@ class Genus
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank('Genus name is mandatory')]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]

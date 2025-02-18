@@ -5,7 +5,7 @@
 {% block body %}
     <h3>Search for taxon</h3>
 
-    {{ form_start(taxonForm) }}
+    {{ form_start(taxonForm, {'attr': {'novalidate': 'novalidate'}}) }}
         {{ form_widget(taxonForm) }}
         <button type="submit" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50">Search</button>
     {{ form_end(taxonForm) }}
