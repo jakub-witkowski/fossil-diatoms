@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Fossil Diatom Atlas{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
         {% block stylesheets %}
         {% endblock %}
 
@@ -15,10 +15,31 @@
             <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
-    <body class="w-4/5 my-0 mx-auto">
-        {# <header class="relative border-b border-black py-7"> #}
-        <header class="relative mt-7">
-        {# <header class="relative"> #}
+
+    <body> 
+    
+    <div class="overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-700 to-blue-300 h-[80px] w-full flex  items-center justify-around w-full">
+        <div class="flex items-center">
+        
+            <img src= {{ asset('images/pleuro.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma"></img>
+            
+            <div id="logo-link" >
+                <a href="{{ path('app_atlas_homepage') }}" class="text-[36px] font-bold text-white">Fossil Diatom Atlas</a>
+            </div>
+
+        </div>
+
+        <div id="right-side-menu" class="display: block text-[25px] font-bold text-white">
+            <a href="{{ path('app_atlas_homepage') }}">Home</a>
+            <a href="#">Index</a>
+            <a href="#">Browse</a>
+            <a href="#">Search</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div> 
+
+        {# <header class="relative mt-7">
             <div>
                 <h1 class="text-[70px] text-center font-bold">Fossil Diatom Atlas</h1>
             </div>
@@ -30,54 +51,56 @@
             <div class="absolute top-8 right-0">
                 <a href="https://www.facebook.com/fossil.diatoms" target="_blank"><img class="w-8" src= {{ asset('images/fb_icon.png') }} alt="Facebook icon"></a>
             </div>
-        </header>
-            {# <nav class="text-center border-b border-black"> #}
-            <nav class="text-center">
-            
-                <div class="dropdown">
-                    <button class="dropbtn"><a href= {{ path('app_atlas_homepage') }}>Atlas Home</a></button>
-                </div>
+        </header> #}
+
+        {# <nav class="text-center">
         
-                <div class="dropdown">
-                    <button class="dropbtn">Index</button>
+            <div class="dropdown">
+                <button class="dropbtn"><a href= {{ path('app_atlas_homepage') }}>Atlas Home</a></button>
+            </div>
+    
+            <div class="dropdown">
+                <button class="dropbtn">Index</button>
 
-                    <div class="dropdown-content">
-                        <a href= {{ path('app_taxa_list') }}>List of taxa</a>
-                        <a href= {{ path('app_site_list') }}>List of sites</a>
-                        <a href= {{ path('app_relative_age_list') }}>Explore by geological age</a>
-                    </div>
+                <div class="dropdown-content">
+                    <a href= {{ path('app_taxa_list') }}>List of taxa</a>
+                    <a href= {{ path('app_site_list') }}>List of sites</a>
+                    <a href= {{ path('app_relative_age_list') }}>Explore by geological age</a>
                 </div>
+            </div>
 
-                <div class="dropdown">
-                    <button class="dropbtn">Browse Atlas</button>
+            <div class="dropdown">
+                <button class="dropbtn">Browse Atlas</button>
 
-                    <div class="dropdown-content">
-                        <a href= {{ path('app_by_genus') }}>By genus</a>
-                        <a href= {{ path('app_by_date') }}>By date</a>
-                        <a href= {{ path('app_by_popularity') }}>By popularity</a>
-                    </div>
+                <div class="dropdown-content">
+                    <a href= {{ path('app_by_genus') }}>By genus</a>
+                    <a href= {{ path('app_by_date') }}>By date</a>
+                    <a href= {{ path('app_by_popularity') }}>By popularity</a>
                 </div>
+            </div>
 
-                <div class="dropdown">
-                    <button class="dropbtn"><a href={{path('app_search_taxon')}}>Search Atlas</a></button>
-                </div>
+            <div class="dropdown">
+                <button class="dropbtn"><a href={{path('app_search_taxon')}}>Search Atlas</a></button>
+            </div>
 
-                {# <div class="dropdown">
-                    <button class="dropbtn"><a href= {{path('app_main_page')}} >Back to fossil-diatoms.com</a></button>
-                </div> #}
+            <div class="dropdown">
+                <button class="dropbtn"><a href= {{path('app_main_page')}} >Back to fossil-diatoms.com</a></button>
+            </div>
 
-            </nav>
-        {# </header> #}
+        </nav> #}
 
         <main class="mx-2.5 mt-2.5">
             {% block body %}{% endblock %}
         </main>
 
-        {# <footer class="mt-2.5 border-t border-black"> #}
         <footer class="mt-2.5">
+
             <div class="mx-2.5 my-2.5 text-right text-base text-[#333333]">
                 &copy; Jakub Witkowski, {{ year }}
             </div>
+
         </footer>
+
     </body>
+
 </html>
