@@ -18,13 +18,17 @@
 }
 
 #logo-link a:hover {
-  /* background-color: #aaeeff; */
   color: cyan;
 }
 
 #right-side-menu a:hover {
-  /* background-color: #aaeeff; */
   color: cyan;
+}
+
+p {
+  /* text-indent: 1.5em; */
+  font-size: 20px;
+  line-height: 1.8;
 }
 
 /* Style the header with a grey background and some padding 

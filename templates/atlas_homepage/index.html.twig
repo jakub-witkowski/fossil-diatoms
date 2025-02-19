@@ -1,8 +1,8 @@
 {% extends 'atlas_base.html.twig' %}
 
 {% block body %}
-<div class="grid grid-cols-5 gap-2 mx-2.5">
-    <div class="col-span-2 p-4 flex flex-col space-y-4">
+<div class="flex">
+    <div class="w-75">
         <p>Hi, and welcome to the online Fossil Diatom Atlas!</p>
         <p>At present, the Atlas includes <strong> {{ photos }} photos</strong> of 
         <strong> {{ species }} species</strong> comprised in <strong> {{ genera }}
@@ -16,9 +16,5 @@
         
         <p class="text-right"><a href={{ url('app_updates') }}><i>See all updates</i></a></p>
     </div>
-    
-    {# <div class="col-span-3 p-4">
-        <img src= {{ asset('images/atlas-logo.jpg') }} alt="Stylized logo of the Fossil Diatom Atlas">
-    </div>     #}
 </div>
 {% endblock %}

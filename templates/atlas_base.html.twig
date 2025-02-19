@@ -18,10 +18,11 @@
 
     <body> 
     
-    <div class="overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-700 to-blue-300 h-[80px] w-full flex  items-center justify-around w-full">
-        <div class="flex items-center">
-        
-            <img src= {{ asset('images/pleuro.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma"></img>
+    {# flex  items-center justify-around w-full #}
+    <div id="header" class="overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-700 to-blue-300 h-[80px] w-full flex justify-between">
+        <div class="flex items-center order-1 px-[20px]">
+
+            <img src= {{ asset('images/pleuro.png')}} id="header-image" alt="Doodle showing the diatom Pleurosigma"></img>
             
             <div id="logo-link" >
                 <a href="{{ path('app_atlas_homepage') }}" class="text-[36px] font-bold text-white">Fossil Diatom Atlas</a>
@@ -29,7 +30,7 @@
 
         </div>
 
-        <div id="right-side-menu" class="display: block text-[25px] font-bold text-white">
+        <div id="right-side-menu" class="display: block text-[25px] font-bold text-white order-2 flex items-center">
             <a href="{{ path('app_atlas_homepage') }}">Home</a>
             <a href="#">Index</a>
             <a href="#">Browse</a>
