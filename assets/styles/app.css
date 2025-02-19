@@ -19,8 +19,12 @@ p {
   display: inline;
 }
 
+#icons {
+  height: 32px;
+}
+
 #right-side-menu a {
-  padding: 0px 1em;
+  padding: 0px 0.75em;
 }
 
 #logo-link a:hover {
@@ -31,11 +35,11 @@ p {
   color: aquamarine;
 }
 
-#updates p {
-  /* text-indent: 1.5em; */
+/* #update {
+  text-indent: 1.5em;
   font-size: 20px;
   line-height: 1.8;
-}
+} */
 
 /* Style the header with a grey background and some padding 
 .header {
