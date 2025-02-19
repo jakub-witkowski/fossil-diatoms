@@ -16,92 +16,45 @@
         {% endblock %}
     </head>
 
-    <body> 
+    <body class="w-full"> 
     
-    {# flex  items-center justify-around w-full #}
-    <div id="header" class="overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-700 to-blue-300 h-[80px] w-full flex justify-between">
-        <div class="flex items-center order-1 px-[20px]">
+        <div id="header" class="overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-700 to-blue-300 h-[80px] w-full flex justify-between">
+            <div class="flex items-center order-1 px-[20px]">
 
-            <img src= {{ asset('images/pleuro.png')}} id="header-image" alt="Doodle showing the diatom Pleurosigma"></img>
-            
-            <div id="logo-link" >
-                <a href="{{ path('app_atlas_homepage') }}" class="text-[36px] font-bold text-white">Fossil Diatom Atlas</a>
+                <img src= {{ asset('images/pleuro.png')}} id="header-image" alt="Doodle showing the diatom Pleurosigma"></img>
+                
+                <div id="logo-link" >
+                    <a href="{{ path('app_atlas_homepage') }}" class="text-[36px] font-bold text-white">Fossil Diatom Atlas</a>
+                </div>
+
             </div>
 
-        </div>
-
-        <div id="right-side-menu" class="display: block text-[25px] font-bold text-white order-2 flex items-center">
-            <a href="{{ path('app_atlas_homepage') }}">Home</a>
-            <a href="#">Index</a>
-            <a href="#">Browse</a>
-            <a href="#">Search</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </div>
-    </div> 
-
-        {# <header class="relative mt-7">
-            <div>
-                <h1 class="text-[70px] text-center font-bold">Fossil Diatom Atlas</h1>
+            <div id="right-side-menu" class="display: block text-[25px] font-bold text-white order-2 flex items-center">
+                <a href="{{ path('app_atlas_homepage') }}">Home</a>
+                <a href="#">Index</a>
+                <a href="#">Browse</a>
+                <a href="#">Search</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
             </div>
-
-            <div class="absolute top-8 right-8">
-                <a href="https://www.instagram.com/fossil.diatoms/" target="_blank"><img class="w-8" src= {{ asset('images/ig_icon.png') }} alt="Instagram icon"></a>
-            </div>
-            
-            <div class="absolute top-8 right-0">
-                <a href="https://www.facebook.com/fossil.diatoms" target="_blank"><img class="w-8" src= {{ asset('images/fb_icon.png') }} alt="Facebook icon"></a>
-            </div>
-        </header> #}
-
-        {# <nav class="text-center">
+        </div> 
         
-            <div class="dropdown">
-                <button class="dropbtn"><a href= {{ path('app_atlas_homepage') }}>Atlas Home</a></button>
-            </div>
-    
-            <div class="dropdown">
-                <button class="dropbtn">Index</button>
+        <div class="w-4/5 mx-auto py-[1em]">
+            <main>
+            
+                {% block body %}{% endblock %}
+            
+            </main>
 
-                <div class="dropdown-content">
-                    <a href= {{ path('app_taxa_list') }}>List of taxa</a>
-                    <a href= {{ path('app_site_list') }}>List of sites</a>
-                    <a href= {{ path('app_relative_age_list') }}>Explore by geological age</a>
+            <footer class="">
+
+                <div class="text-[18px] text-right">
+                    &copy; <a href="mailto: j.witkowski@poczta.onet.pl"> Jakub Witkowski</a>, {{ year }}
                 </div>
-            </div>
 
-            <div class="dropdown">
-                <button class="dropbtn">Browse Atlas</button>
-
-                <div class="dropdown-content">
-                    <a href= {{ path('app_by_genus') }}>By genus</a>
-                    <a href= {{ path('app_by_date') }}>By date</a>
-                    <a href= {{ path('app_by_popularity') }}>By popularity</a>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn"><a href={{path('app_search_taxon')}}>Search Atlas</a></button>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn"><a href= {{path('app_main_page')}} >Back to fossil-diatoms.com</a></button>
-            </div>
-
-        </nav> #}
-
-        <main class="mx-2.5 mt-2.5">
-            {% block body %}{% endblock %}
-        </main>
-
-        <footer class="mt-2.5">
-
-            <div class="mx-2.5 my-2.5 text-right text-base text-[#333333]">
-                &copy; Jakub Witkowski, {{ year }}
-            </div>
-
-        </footer>
-
+            </footer>
+        </div>
+        
     </body>
 
 </html>

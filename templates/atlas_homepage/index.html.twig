@@ -1,20 +1,26 @@
 {% extends 'atlas_base.html.twig' %}
 
 {% block body %}
-<div class="flex">
-    <div class="w-75">
-        <p>Hi, and welcome to the online Fossil Diatom Atlas!</p>
+    <div>
+        <p>Hi, and welcome to the online Fossil Diatom Atlas, a quick reference for fossil diatom identification!</p>
         <p>At present, the Atlas includes <strong> {{ photos }} photos</strong> of 
         <strong> {{ species }} species</strong> comprised in <strong> {{ genera }}
-        genera</strong> of fossil diatoms, ranging in age from the Early Cretaceous to the Holocene.</p>
-        <p>Recent updates:</p>        
+        genera</strong> of fossil diatoms, ranging in age from the Early Cretaceous to the Holocene.</p>     
+    </div>
+    
+    <div id="updates" class="w-4/5 py-[1em] mx-auto">
+        <p>Recent updates:</p>
 
         {% for update in updates %}
-            <p> {{ update.getDatePublished|date("m/d/Y") }} </p>
-            <p> {{ update.getContent|raw }} </p>
-        {% endfor %}
         
+        <div>    
+            <p> {{ update.getDatePublished|date("d M Y") }}: </p>
+            <p> {{ update.getContent|raw }} </p>
+        </div>
+        
+        {% endfor %}
+
         <p class="text-right"><a href={{ url('app_updates') }}><i>See all updates</i></a></p>
     </div>
-</div>
+
 {% endblock %}

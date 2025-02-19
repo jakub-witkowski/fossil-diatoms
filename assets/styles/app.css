@@ -5,7 +5,13 @@
 * {
   font-family: "Baloo Thambi 2", serif;
   font-optical-sizing: auto;
-  color: rgb(44, 45, 45);
+  color: #334155;
+}
+
+p {
+  /* text-indent: 1.5em; */
+  font-size: 20px;
+  line-height: 1.8;
 }
 
 #header-image {
@@ -18,14 +24,14 @@
 }
 
 #logo-link a:hover {
-  color: cyan;
+  color: aquamarine;
 }
 
 #right-side-menu a:hover {
-  color: cyan;
+  color: aquamarine;
 }
 
-p {
+#updates p {
   /* text-indent: 1.5em; */
   font-size: 20px;
   line-height: 1.8;
