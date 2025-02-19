@@ -1,28 +1,45 @@
 {% extends 'atlas_base.html.twig' %}
 
 {% block body %}
+    
     <div>
         <p>Hi, and welcome to the online Fossil Diatom Atlas, a quick reference for fossil diatom identification!</p>
-        <p>At present, the Atlas includes <strong> {{ photos }} photos</strong> of 
-        <strong> {{ species }} species</strong> comprised in <strong> {{ genera }}
-        genera</strong> of fossil diatoms, ranging in age from the Early Cretaceous to the Holocene, from both deep-sea and onshore sites.
+        <p class="py-4">Quick stats: the Atlas currently includes...</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 w-3/5 mx-auto p-8">    
+        <div class="text-center text-[36px]"><strong> {{ photos }} photos</strong></div>
+        <div class="text-center text-[36px]"><strong> {{ species }} species</strong></div>
+        <div class="text-center text-[36px]"><strong> {{ genera }} genera</strong></div>
+    </div>
+
+    <div class="grid grid-flow-col grid-rows-3 gap-4 rounded-md shadow-lg w-3/5 mx-auto p-8">
+        <div class="row-span-5 row-start-1 rounded-md shadow-md bg-slate-900"></div>
+        
+        <div class="row-span-4 row-start-2 rounded-md shadow-md bg-indigo-700"></div>
+        
+        <div class="row-span-3 row-start-3 rounded-md shadow-md bg-blue-300"></div>
+    </div>
+
+    <div class="py-4">    
+        <p>...of fossil diatoms, ranging in age from the Early Cretaceous to the Holocene, from both deep-sea and onshore sites.
         The Atlas aims to provide high-quality photographs, concise comments, and references to external edited databases. But... it works
         equally well for taking a minute to admire the beauty of diatoms &#10084;</p>     
     </div>
-    
+
     <div class="w-4/5 py-[1em] mx-auto">
         <p>Recent updates:</p>
 
         {% for update in updates %}
         
         <div>    
-            <p> {{ update.getDatePublished|date("d M Y") }}: </p>
+            <p><strong> {{ update.getDatePublished|date("d M Y") }}: </strong></p>
             <p class="ml-[1.5em]"> {{ update.getContent|raw }} </p>
         </div>
         
         {% endfor %}
 
-        <p class="text-right"><a href={{ url('app_updates') }}><i>See all updates</i></a></p>
+        <p class="text-right"><a href={{ url('app_updates') }}><i><strong>See all updates</strong></i></a></p>
     </div>
 
 {% endblock %}
