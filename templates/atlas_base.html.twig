@@ -12,13 +12,14 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400..800&display=swap" rel="stylesheet">
+            {# <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" /> #}
             <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
 
     <body class="w-full"> 
     
-        <div id="header" class="overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-700 to-blue-300 h-[80px] w-full flex justify-between">
+        <nav id="header" class="overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-700 to-blue-300 h-[80px] w-full flex justify-between">
             <div class="flex items-center order-1 px-[20px]">
 
                 <img src= {{ asset('images/plagiogramma.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma"></img>
@@ -28,7 +29,7 @@
                 </div>
 
             </div>
-
+  
             <div id="right-side-menu" class="display: block text-[25px] font-bold text-white order-2 flex items-center">
                 <a href="{{ path('app_atlas_homepage') }}">Home</a>
                 <a href="#">Index</a>
@@ -39,8 +40,8 @@
                 <a href="https://instagram.com/fossil.diatoms" target="_blank"><img id="icons" src="{{ asset('images/ig.png') }}"></a>
                 <a href="https://facebook.com/fossil.diatoms" target="_blank"><img id="icons" src="{{ asset('images/fb.png') }}"></a>
             </div>
-        </div> 
-        
+        </nav> 
+      
         <div class="w-4/5 mx-auto py-[1em]">
             <main>
             
@@ -57,6 +58,7 @@
             </footer>
         </div>
         
+        {# <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script> #}
     </body>
 
 </html>
