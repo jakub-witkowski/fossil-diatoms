@@ -4,42 +4,40 @@
     
     <div>
         <p>Hi, and welcome to the online Fossil Diatom Atlas, a quick reference for fossil diatom identification!</p>
-        {# <p class="py-4">Quick stats: the Atlas currently includes...</p> #}
     </div>
 
-    <div>
-        <p class="text-center">Fossil Diatom Atlas stats:</p>
+    <div class="w-3/5 mx-auto p-8">
+        {# <div>
+            <p class="text-center text-[24px] tracking-wide">Fossil Diatom Atlas stats:</p>
+        </div> #}
+
+        <div class="flex items-center justify-between">
+
+            <div id="info-tile">
+                <strong> {{ photos }} photos</strong>
+                <span> of fossil diatoms </span>
+            </div>
+
+            <div id="info-tile">
+                <span><strong> {{ species }} species</strong>, </span>
+                <span> both extinct and living</span>
+            </div>
+            
+            <div id="info-tile">
+                <strong> {{ genera }} genera</strong>
+                <span>across all major clades</span>
+            </div>
+
+            <div id="info-tile" class="w-3/5">
+                <strong> >100 million years</strong>
+                <span> of diatom evolution </span>
+            </div>
+
+            {# <div id="main-page-doodle">
+                <img src="{{ asset('images/plagiogramma-dark.png') }}" alt="dark-colored doodle of the diatom Plagiogramma"></img>
+            </div> #}
+        </div>
     </div>
-
-    <div class="grid grid-cols-4 gap-4 w-3/5 mx-auto p-8 content-center">    
-        <div class="text-center text-[36px]">
-            <strong> {{ photos }} photos</strong>
-            <span> of fossil diatoms </span>
-        </div>
-
-        <div class="text-center text-[36px]">
-            <span><strong> {{ species }} species</strong>, </span>
-            <span> both extinct and living</span>
-        </div>
-        
-        <div class="text-center text-[36px]">
-            <strong> {{ genera }} genera</strong>
-            <span>across all major clades</span>
-        </div>
-
-        <div class="text-center text-[28px]">
-            <strong> >100 million years</strong>
-            <span> of diatom evolution </span>
-        </div>
-    </div>
-
-    {# <div class="grid grid-flow-col grid-rows-3 gap-4 rounded-md shadow-lg w-3/5 mx-auto p-8">
-        <div class="row-span-5 row-start-1 rounded-md shadow-md bg-slate-900"></div>
-        
-        <div class="row-span-4 row-start-2 rounded-md shadow-md bg-indigo-700"></div>
-        
-        <div class="row-span-3 row-start-3 rounded-md shadow-md bg-blue-300"></div>
-    </div> #}
 
     <div class="py-4">    
         <p>...of fossil diatoms, ranging in age from the Early Cretaceous to the Holocene, from both deep-sea and onshore sites.
