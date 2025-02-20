@@ -2,50 +2,67 @@
 
 {% block body %}
     
-    <div>
-        <p>Hi, and welcome to the online Fossil Diatom Atlas, a quick reference for fossil diatom identification!</p>
-    </div>
+    <div class="w-4/5 mx-auto p-8 grid grid-cols-6 gap-4 rounded-md">
+        <div></div>
 
-    <div class="w-3/5 mx-auto p-8">
-        {# <div>
-            <p class="text-center text-[24px] tracking-wide">Fossil Diatom Atlas stats:</p>
-        </div> #}
+        <div id="info-tile" class="flex justify-center items-center">
+            <span>Welcome to the Fossil Diatom Atlas!</span>
+        </div>
+    
+        <div id="main-page-doodle" class="flex justify-center items-center">
+            <img src="{{ asset('images/pleuro-dark.png') }}" alt="dark-colored doodle of the diatom Plagiogramma"></img>
+        </div>
 
-        <div class="flex items-center justify-between">
+        <div id="info-tile" class="flex justify-center items-center">
+            <span>An online reference for quick diatom identification</span>
+        </div>
 
-            <div id="info-tile">
-                <strong> {{ photos }} photos</strong>
-                <span> of fossil diatoms </span>
-            </div>
+        <div id="info-tile" class="flex justify-center items-center">
+            <span>Featuring deep-sea and onshore sites</span>
+        </div>
 
-            <div id="info-tile">
-                <span><strong> {{ species }} species</strong>, </span>
-                <span> both extinct and living</span>
-            </div>
-            
-            <div id="info-tile">
-                <strong> {{ genera }} genera</strong>
-                <span>across all major clades</span>
-            </div>
+        <div></div>
 
-            <div id="info-tile" class="w-3/5">
-                <strong> >100 million years</strong>
-                <span> of diatom evolution </span>
-            </div>
+        <div id="info-tile" class="flex justify-center items-center">
+            <span><strong> {{ photos }} photos</strong> of fossil diatoms </span>
+        </div>
 
-            {# <div id="main-page-doodle">
-                <img src="{{ asset('images/plagiogramma-dark.png') }}" alt="dark-colored doodle of the diatom Plagiogramma"></img>
-            </div> #}
+        <div id="info-tile" class="flex justify-center items-center">
+            <span><strong> {{ species }} species</strong>, both extinct and living</span>
+        </div>
+        
+        <div id="info-tile" class="flex justify-center items-center">
+            <span><strong> {{ genera }} genera</strong> across all major clades</span>
+        </div>
+
+        <div id="info-tile" class="flex justify-center items-center">
+            <span>>100 million years of diatom evolution </span>
+        </div>
+
+        <div></div>
+        <div></div>
+
+        <div></div>
+        <div></div>
+
+        <div id="info-tile">
+            <span>High-quality photographs and comments</span>
+        </div>
+    
+        <div id="main-page-doodle">
+            <img src="{{ asset('images/medlinia-dark-thick.png') }}" alt="dark-colored doodle of the diatom Medlinia"></img>
+        </div>
+
+        <div id="info-tile">
+            <span>References to external edited databases</span>
+        </div>
+
+        <div id="info-tile">
+            <span>Pause to admire the beauty of diatoms &#10084;</span>
         </div>
     </div>
 
-    <div class="py-4">    
-        <p>...of fossil diatoms, ranging in age from the Early Cretaceous to the Holocene, from both deep-sea and onshore sites.
-        The Atlas aims to provide high-quality photographs, concise comments, and references to external edited databases. But... it works
-        equally well for taking a minute to admire the beauty of diatoms &#10084;</p>     
-    </div>
-
-    <div class="w-4/5 py-[1em] mx-auto">
+     <div class="w-3/5 py-[1em] mx-auto">
         <p>Recent updates:</p>
 
         {% for update in updates %}
