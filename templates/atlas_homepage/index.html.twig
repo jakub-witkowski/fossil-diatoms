@@ -2,121 +2,57 @@
 
 {% block body %}
 
-
-
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-         <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src=" {{ asset('images/001.jpg') }} " class="absolute block w-full" alt="...">
-        </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src=" {{ asset('images/002.jpg') }} " class="absolute block w-full" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src=" {{ asset('images/003.jpg') }} " class="absolute block w-full" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src=" {{ asset('images/004.jpg') }} " class="absolute block w-full" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src=" {{ asset('images/005.jpg') }} " class="absolute block w-full" alt="...">
-        </div>
+    <div class="bg-cover bg-center h-screen bg-[url('../images/004.jpg')] bg-no-repeat opacity-15">
+    {# <div class="text-slate-900 text-center text-5xl]"> #}
+        {# <img src="{{ asset('images/001.jpg') }}" class="w-full"></img> #}
+ 
     </div>
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-    </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
 
-
-    <div class="w-4/5 mx-auto p-8 grid grid-cols-6 gap-4 rounded-md">
-        <div></div>
-
-        <div id="info-tile" class="flex justify-center items-center">
-            <span>Welcome to the Fossil Diatom Atlas!</span>
-        </div>
-    
-        <div id="main-page-doodle" class="flex justify-center items-center">
-            <img src="{{ asset('images/pleuro-dark.png') }}" alt="dark-colored doodle of the diatom Plagiogramma"></img>
+    <div class="absolute top-[10rem] w-full h-screen font-medium text-center text-6xl text-slate-700">
+        <div class="pb-6">
+            <span>100+ million years of diatom evolution told through</span>
         </div>
 
-        <div id="info-tile" class="flex justify-center items-center">
-            <span>An online reference for quick diatom identification</span>
+        <div class="flex w-3/5 mx-auto py-6 justify-evenly">
+            <div class="">
+                <span><strong> {{ photos }} photos</strong> of fossil diatoms </span>
+            </div>
+            
+            <div class="">
+                <span><strong> {{ species }} species</strong>, both extinct and living</span>
+            </div>
+            
+            <div class="">
+                <span><strong> {{ genera }} genera</strong> across all major clades</span>
+            </div>
         </div>
 
-        <div id="info-tile" class="flex justify-center items-center">
-            <span>Featuring deep-sea and onshore sites</span>
-        </div>
-
-        <div></div>
-
-        <div id="info-tile" class="flex justify-center items-center">
-            <span><strong> {{ photos }} photos</strong> of fossil diatoms </span>
-        </div>
-
-        <div id="info-tile" class="flex justify-center items-center">
-            <span><strong> {{ species }} species</strong>, both extinct and living</span>
-        </div>
-        
-        <div id="info-tile" class="flex justify-center items-center">
-            <span><strong> {{ genera }} genera</strong> across all major clades</span>
-        </div>
-
-        <div id="info-tile" class="flex justify-center items-center">
-            <span>>100 million years of diatom evolution </span>
-        </div>
-
-        <div></div>
-        <div></div>
-
-        <div></div>
-        <div></div>
-
-        <div id="info-tile">
-            <span>High-quality photographs and comments</span>
-        </div>
-    
-        <div id="main-page-doodle">
-            <img src="{{ asset('images/medlinia-dark-thick.png') }}" alt="dark-colored doodle of the diatom Medlinia"></img>
-        </div>
-
-        <div id="info-tile">
-            <span>References to external edited databases</span>
-        </div>
-
-        <div id="info-tile">
+        <div class="py-6">
             <span>Pause to admire the beauty of diatoms &#10084;</span>
         </div>
+
+        <div class="flex w-3/5 mx-auto pt-6 justify-evenly text-6xl text-white">
+            <div class="border-2 rounded-xl border-slate-600 p-6 bg-gradient-to-t from-slate-900 to-indigo-700 hover:text-teal-200">
+                <a href=" {{ path('app_by_genus') }} "><span>Browse</span></a>
+            </div>
+            
+            <div class="border-2 rounded-xl border-slate-600 p-6 bg-gradient-to-t from-slate-900 to-indigo-700 hover:text-teal-200">
+                <a href=" {{ path('app_taxa_list') }} "><span>See index</span></a>
+            </div>
+            
+            <div class="border-2 rounded-xl border-slate-600 p-6 bg-gradient-to-t from-slate-900 to-indigo-700 hover:text-teal-200">
+                <a href=" {{ path('app_search_taxon') }} "><span>Search</span></a>
+            </div>
+        </div>
+
     </div>
 
-     <div class="w-3/5 py-[1em] mx-auto">
+
+
+
+
+
+     <div class="w-3/5 py-[1em] mx-auto text-slate-700">
         <p>Recent updates:</p>
 
         {% for update in updates %}
