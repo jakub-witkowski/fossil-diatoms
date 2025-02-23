@@ -23,34 +23,33 @@ p {
   padding-left: 0.75em;
 }
 
-#icons {
+/* #icons {
   height: 32px;
-}
+} */
 
-#right-side-menu a {
+/* #right-side-menu a {
   padding: 0px 0.75em;
-}
+} */
 
-#logo-link a:hover {
+/* #logo-link a:hover {
   color: aquamarine;
-}
+} */
 
-#right-side-menu a:hover {
+/* #right-side-menu a:hover {
   color: aquamarine;
-}
+} */
 
-#info-tile {
+/* #info-tile {
   text-align: center;
-  /* vertical-align: middle; */
   font-size: 32px;
   line-height: 1.25;
   padding: 0.15em;
-}
+} */
 
-#main-page-doodle img {
+/* #main-page-doodle img {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-}
+} */
 
 /* #update {
   text-indent: 1.5em;
