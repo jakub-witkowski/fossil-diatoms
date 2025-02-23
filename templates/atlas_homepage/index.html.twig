@@ -2,8 +2,7 @@
 
 {% block body %}
 
-{# <div class="flex justify-evenly p-6 h-screen"> #}
-<div class="grid grid-cols-2 grid-rows-4 gap-4 justify-items-center p-4 w-3/5 mx-auto">
+<div class="grid grid-cols-2 grid-rows-4 gap-4 justify-items-center py-4">
     <div class="flex font-medium text-3xl text-gray-700 text-center items-center p-6">
         <span><i>The story of 100+ million years of diatom evolution told through:</i></span>
     </div>
@@ -12,67 +11,36 @@
         <img id="main-page-feature" class="shadow-xl" src="{{ asset('images/001gr.jpg') }}"/>
     </div>
 
-    {# <div class="grid grid-rows-2 gap-5 font-medium text-4xl text-gray-700 text-center items-center p-6">
-        <div>
-            <span><i>Browse by genus, by publication date, or by popularity:</i></span>
-        </div>
-        <div class="border-2 rounded-xl border-gray-700 p-6 hover:bg-gray-100 hover:text-gray-500">
-            <a href=" {{ path('app_by_genus') }} ">Browse</a>
-        </div>
-    </div> #}
-
     <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
         <span><i><strong> {{ photos }} photos</strong> of fossil diatoms </i></span>
     </div>
-
-    {# <div class="grid grid-rows-2 gap-5 font-medium text-4xl text-gray-700 text-center items-center p-6">
-        <div>
-            <span><i>List of taxa, list of sites, list of geological ages covered:</i></span>
-        </div>
-        <div class="border-2 rounded-xl border-gray-700 p-6 hover:bg-gray-100 hover:text-gray-500">
-            <a href=" {{ path('app_taxa_list') }} ">See index</a>
-        </div>
-    </div> #}
 
     <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
         <span><i><strong> {{ species }} species</strong>, both extinct and living</i></span>
     </div>
 
-    {# <div class="grid grid-rows-2 gap-5 font-medium text-4xl text-gray-700 text-center items-center p-6">
-        <div>
-            <span><i>Search the Atlas:</i></span>
-        </div>
-        <div class="border-2 rounded-xl border-gray-700 p-6 hover:bg-gray-100 hover:text-gray-500">
-            <a href=" {{ path('app_search_taxon') }} ">Search</a>
-        </div>
-    </div> #}
-
     <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
         <span><i><strong> {{ genera }} genera</strong> across all major clades</i></span>
     </div>
-
-    {# <div class="grid grid-rows-2 gap-5 font-medium text-4xl text-gray-700 text-center items-center p-6">
-        <div>
-            <span><i>Follow the Atlas on Instagram and Facebook:</i></span>
-        </div>
-        <div>
-        </div>
-    </div> #}
 </div>
 
-     <div class="w-3/5 py-[1em] mx-auto text-gray-700">
-        <p>Recent updates:</p>
+     <div class="w-3/5 py-10 mx-auto text-lg text-gray-700">
+        <div class="pb-4">
+            <span><strong>Recent updates:</strong></span>
+        </div>
 
         {% for update in updates %}
         
-        <div>    
-            <p><strong> {{ update.getDatePublished|date("d M Y") }}: </strong></p>
+        <div class="py-2">    
+            <span><strong> {{ update.getDatePublished|date("d M Y") }}: </strong></span>
             <p class="ml-[1.5em]"> {{ update.getContent|raw }} </p>
         </div>
         
         {% endfor %}
-
-        <p class="text-right"><a href={{ url('app_updates') }}><i><strong>See all updates</strong></i></a></p>
+        
+        <div class="pb-6">
+            <a class="text-lg float-right" href={{ url('app_updates') }}><i><strong>See all updates</strong></i></a>
+        </div>
     </div>
 
 {% endblock %}
