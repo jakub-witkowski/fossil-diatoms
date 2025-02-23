@@ -3,14 +3,16 @@
 @tailwind utilities;
 
 * {
-  font-family: "Baloo Thambi 2", serif;
-  font-optical-sizing: auto;
-  /* color: #334155; */
+  font-family: "Lato", serif;
 }
 
 p {
   font-size: 20px;
   line-height: 1.8;
+}
+
+#main-page-feature {
+  height: 90vh;
 }
 
 #header-image {
