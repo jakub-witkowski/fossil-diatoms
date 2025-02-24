@@ -17,12 +17,14 @@ class SearchResultFormType extends AbstractType
     {
         $builder
             ->add('genus', TextType::class, [
-                'help' => 'Enter a genus name',
-                'label' => 'Genus:'
+                // 'help' => 'Enter a genus name',
+                'label' => 'Genus:',
+                // 'required' => false
             ])
             ->add('species', TextType::class, [
-                'help' => 'Enter a specific epithet',
-                'label' => 'Species:'
+                // 'help' => 'Enter a specific epithet',
+                'label' => 'Species:',
+                // 'required' => false
             ]);
     }
 

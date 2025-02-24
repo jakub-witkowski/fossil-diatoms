@@ -9,7 +9,7 @@
 </div>
 
 <div class="w-2/5 mx-auto">
-    {{ form_start(taxonForm) }}
+    {{ form_start(taxonForm, {'attr': {'novalidate': false}}) }}
         {{ form_widget(taxonForm) }}
         <button type="submit" class="btn btn-primary">Search</button>
     {{ form_end(taxonForm) }}
