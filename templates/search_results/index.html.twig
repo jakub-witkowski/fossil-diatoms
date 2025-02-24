@@ -2,28 +2,31 @@
 
 {% block body %}
 
-<div>
+<div class="text-xl text-gray-700 font-semibold text-center mx-auto py-6">
 
     {% if numberOfResults == 0 %}
-    <h3 class="text-center px-2.5"><i>No results found for {{ genus }} {{ species}}.</i></h3>
+    <span><i>No results found for {{ genus }} {{ species}}.</i></span>
     {% endif %}
 
     {% if numberOfResults == 1 %}
-    <h3 class="text-center px-2.5"><i>Found 1 result for {{ genus }} {{ species}}.</i></h3>
+    <span><i>Found 1 result for {{ genus }} {{ species}}.</i></span>
     {% endif %}
 
     {% if numberOfResults > 1 %}
-    <h3 class="text-center px-2.5"><i>Found {{ numberOfResults }} results for {{ genus }} {{ species}}.</i></h3>
+    <span><i>Found {{ numberOfResults }} results for {{ genus }} {{ species}}.</i></span>
     {% endif %}
 
 </div>
 
-<div class="mx-2.5 grid grid-cols-3 gap-0.5 p-5">
+<div class="grid grid-cols-3 gap-4">
 
     {% for photo in pager %}
-        <div class="size-4/5 text-center">
-            <a href= {{ path('app_entry', {'id': photo.id}) }}><img src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
-            <p class="py-4 space-y-4"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</p>
+        <div class="text-center text-gray-700 hover:text-gray-500">
+            <a href= {{ path('app_entry', {'id': photo.id}) }}><img class="rounded-lg shadow-xl" src={{ asset('images/atlas/'~photo.getFilename~'') }} />
+            
+            <div class="text-xl py-4 ">
+                <span><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span></a>
+            </div>
         </div>
     {% endfor %}
 

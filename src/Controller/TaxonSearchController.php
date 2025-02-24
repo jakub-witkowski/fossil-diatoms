@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
-use App\Form\TaxonFormType;
+
+use App\Entity\SearchResult;
+use App\Form\SearchResultFormType;
 use App\Repository\PhotoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
@@ -14,16 +16,15 @@ class TaxonSearchController extends AbstractController
     #[Route('/atlas/search-taxon', name: 'app_search_taxon')]
     public function new(PhotoRepository $photoRepository, Request $request): Response
     {
-        $form = $this->createForm(TaxonFormType::class);
+        $form = $this->createForm(SearchResultFormType::class);
         $year = date('Y');
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
-            // dd($data);
 
-            $queryBuilder = $photoRepository->findPhotosByGenusAndSpecies($data['genus'], $data['species']);
+            $queryBuilder = $photoRepository->findPhotosByGenusAndSpecies($data->getGenus(), $data->getSpecies());
             $numberOfResults = count($queryBuilder->getQuery()->getResult());
             $adapter = new QueryAdapter($queryBuilder);
             $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
@@ -35,8 +36,8 @@ class TaxonSearchController extends AbstractController
             return $this->render('search_results/index.html.twig', [
                 'controller_name' => 'SearchResultController',
                 'year' => $year,
-                'genus' => $data['genus'],
-                'species' => $data['species'],
+                'genus' => $data->getGenus(),
+                'species' => $data->getSpecies(),
                 'numberOfResults' => $numberOfResults,
                 'pager' => $pagerfanta,
             ]);

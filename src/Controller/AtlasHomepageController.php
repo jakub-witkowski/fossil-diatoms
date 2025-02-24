@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AtlasHomepageController extends AbstractController
 {
-   
     #[Route('/atlas', name: 'app_atlas_homepage', methods: 'GET')]
     public function index(EntityManagerInterface $em): Response
     {
