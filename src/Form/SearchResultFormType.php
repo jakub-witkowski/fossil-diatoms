@@ -4,7 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-// use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\SearchResult;
 
@@ -16,8 +16,14 @@ class SearchResultFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('genus')
-            ->add('species');
+            ->add('genus', TextType::class, [
+                'help' => 'Enter a genus name',
+                'label' => 'Genus:'
+            ])
+            ->add('species', TextType::class, [
+                'help' => 'Enter a specific epithet',
+                'label' => 'Species:'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
