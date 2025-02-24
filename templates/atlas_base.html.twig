@@ -22,8 +22,9 @@
     <body class=""> 
     
         <nav>
-            <div class="flex flex-wrap items-center justify-between w-3/5 mx-auto px-4 py-2">
-                <a href="{{ path('app_atlas_homepage') }}" class="flex items-center ">
+            {# <div class="rounded-xl shadow-lg bg-gradient-to-t from-gray-100 to-gray-50 flex flex-wrap items-center justify-between w-3/5 mx-auto px-4 py-2">  #}
+            <div class="rounded-xl shadow-lg bg-gradient-to-t from-gray-100 to-gray-50 flex flex-wrap items-center justify-between w-3/5 mx-auto px-4 py-2"> {# border-b-2 border-gray-700 #}
+                <a href="{{ path('app_atlas_homepage') }}" class="flex items-center">
                     <img src= {{ asset('images/plagiogramma-dark.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma" />
                     <span class="self-center text-4xl font-black text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-500">Fossil Diatom Atlas</span>
                 </a>
@@ -50,8 +51,8 @@
                                     </svg>
                             </button>
                             
-                            <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-3 text-lg bg-white border border-gray-100 rounded-lg shadow-md md:grid-cols-3">
-                                 <div class="p-4 pb-0 md:pb-4">
+                            <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-2 text-lg bg-white border border-gray-100 rounded-lg shadow-md md:grid-cols-2">
+                                 {# <div class="p-4 pb-0 md:pb-4">
                                     <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
                                         <li>
                                             <a href="{{ path('app_atlas_homepage') }}" class="text-gray-700 hover:text-gray-500">
@@ -74,7 +75,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> #}
                                 <div class="p-4 pb-0 md:pb-4">
                                     <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
                                         <li>
@@ -163,9 +164,9 @@
         </main>
 
         <footer class="w-full">
-            <div class="relative w-3/5 mx-auto">
-                <div class="absolute bottom-2 right-0">
-                    <div class="text-xl text-gray-700 pr-10">
+            <div class="w-3/5 mx-auto">
+                <div class="float-right">
+                    <div class="text-xl text-gray-700 pr-2 pb-2">
                         <span class="">&copy; Jakub Witkowski, {{ year }}</span>
 
                         <a href="mailto: j.witkowski@poczta.onet.pl">
