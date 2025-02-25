@@ -15,7 +15,7 @@ export default class extends Controller {
                     async: true,
 
                     success: function(data) {
-                        $('#rightColumn').html(data);
+                        $('#lower-panel').html(data);
                     },
 
                     error: function(xhr, textStatus, errorThrown) {  

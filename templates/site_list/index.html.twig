@@ -2,8 +2,8 @@
 
 {% block body %}
 
-<div>
-    <h3 class="text-center px-2.5"><i>Select a site from the list to view the species</i></h3>
+<div class="text-xl text-gray-700 font-semibold text-center mx-auto py-6">
+    <span><i>Select a site from the list to view the species</i></span>
 </div>
 
 <div class="flex items-center justify-center">
@@ -11,20 +11,40 @@
         
         {% for site in listOfSites %}
             {% if site.getSiteType.getName == 'deep-sea' %}
-                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getCampaign.getAbbreviation }} Hole {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }} </a></div>
+                <div class="text-xl text-gray-700 font-medium">
+                    <a class="js-site-list" id="site{{ site.getId }}" href="#">
+                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getCampaign.getAbbreviation }} Hole {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}</span>
+                    </a>
+                </div>
+            
             {% elseif site.getSiteType.getName == 'onshore' or site.getSiteType.getName == 'onshore-NHM' %}
-                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeatureSecondary }} </a></div>
+                <div class="text-xl text-gray-700 font-medium">
+                    <a class="js-site-list" id="site{{ site.getId }}" href="#">
+                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeatureSecondary }}</span>
+                    </a>
+                </div>
+            
             {% elseif site.getSiteType.getName == 'unknown' %}
-                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> Unknown locality </a></div>
+                <div class="text-xl text-gray-700 font-medium">
+                    <a class="js-site-list" id="site{{ site.getId }}" href="#">
+                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">Unknown locality</span>
+                    </a>
+                </div>
+            
             {% elseif site.getSiteType.getName == 'dredge' %}
-                <div><a class="js-site-list" id="site{{ site.getId }}" href="#"> {{ site.getCampaign.getAbbreviation }} dredging {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }} </a></div>
+                <div class="text-xl text-gray-700 font-medium">
+                    <a class="js-site-list" id="site{{ site.getId }}" href="#">
+                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getCampaign.getAbbreviation }} dredging {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}</span>
+                    </a>
+                </div>
+            
             {% endif %}
         {% endfor %}
     
     </div>
 </div>
 
-<div id="rightColumn" class="mx-2.5 grid grid-cols-3 gap-0.5 p-5">
+<div id="lower-panel" class="grid grid-cols-3 gap-4 py-6">
 </div>
 
 {% endblock %}

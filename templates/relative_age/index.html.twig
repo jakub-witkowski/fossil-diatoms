@@ -1,6 +1,8 @@
 {% for photo in photos %}
-    <div class="size-4/5 text-center">
-        <a href= {{ path('app_entry', {'id': photo.id}) }}><img src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
-        <p class="py-4 space-y-4"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</p>
+    <div class="text-center text-gray-700 hover:text-gray-500">
+        <a href= {{ path('app_entry', {'id': photo.id}) }}>
+            <img class="rounded-lg shadow-xl" src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
+
+                <span class="py-4 text-xl"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span>
     </div>
 {% endfor %}

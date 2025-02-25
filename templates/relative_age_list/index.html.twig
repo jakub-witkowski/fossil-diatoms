@@ -2,21 +2,25 @@
 
 {% block body %}
 
-<div>
-    <h3 class="text-center px-2.5"><i>Select a geological age from the list to explore the taxa</i></h3>
+<div class="text-xl text-gray-700 font-semibold text-center mx-auto py-6">
+    <span><i>Select a geological age from the list to explore the taxa</i></span>
 </div>
 
 <div class="flex items-center justify-center">
-    <div id="upper-panel" data-controller="age-list" class="mx-auto grid grid-cols-5 gap-y-2.5 gap-x-5 p-5">
+    <div id="upper-panel" data-controller="age-list" class="mx-auto grid grid-cols-4 gap-y-2.5 gap-x-5 py-5">
         
         {% for age in listOfAges %}
-            <div><a class="js-age-list" id="age{{ age.getId }}" href="#"><i> {{ age.getName }} </i></a></div>
+            <div class="text-xl text-gray-700 font-medium">
+                <a class="js-age-list" id="age{{ age.getId }}" href="#">
+                    <span class="p-2 hover:bg-gray-300 hover:rounded-lg"><i> {{ age.getName }} </i></span>
+                </a>
+            </div>
         {% endfor %}
     
     </div>
 </div>
 
-<div id="rightColumn" class="mx-2.5 grid grid-cols-3 gap-0.5 p-5">
+<div id="lower-panel" class="grid grid-cols-3 gap-4 py-6">
 </div>
 
 {% endblock %}
