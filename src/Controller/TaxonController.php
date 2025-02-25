@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class TaxonController extends AbstractController
 {
     #[Route('/atlas/taxon/{genus}', name: 'app_taxon', methods: 'GET')]
-    public function index(PhotoRepository $photoRepository, $genus): Response
+    public function index(PhotoRepository $photoRepository, string $genus): Response
     {
         $photos = $photoRepository->findPhotosByGenus($genus);
 
@@ -21,6 +21,7 @@ class TaxonController extends AbstractController
         return $this->render('taxon/index.html.twig', [
             'controller_name' => 'TaxonController',
             'photos' => $photos,
+            'genus' => $genus,
         ]);
     }
 }
