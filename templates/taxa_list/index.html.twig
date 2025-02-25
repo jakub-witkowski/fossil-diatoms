@@ -2,21 +2,25 @@
 
 {% block body %}
 
-<div>
-    <h3 class="text-center px-2.5"><i>Select a genus from the list to view the species</i></h3>
+<div class="text-xl text-gray-700 font-semibold text-center mx-auto py-6">
+    <span><i>Select a genus from the list to view the species</i></span>
 </div>
 
 <div class="flex items-center justify-center">
     <div id="upper-panel" data-controller="genus-list" class="mx-auto grid grid-cols-5 gap-y-2.5 gap-x-5 p-5">
         
         {% for genus in listOfGenera %}
-            <div><a class="js-genus-list" href="#"><i> {{ genus.getName }} </i></a></div>
+            <div class="text-xl text-gray-700 font-medium">
+                <a class="js-genus-list" href="#">
+                    <span class="p-2 hover:bg-gray-300 hover:rounded-lg"><i> {{ genus.getName }} </i></span>
+                </a>
+            </div>
         {% endfor %}
     
     </div>
 </div>
 
-<div id="rightColumn" class="mx-2.5 grid grid-cols-3 gap-0.5 p-5">
+<div id="rightColumn" class="grid grid-cols-3 gap-4 py-6">
 </div>
 
 {% endblock %}
