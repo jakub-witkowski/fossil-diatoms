@@ -7,7 +7,7 @@ export default class extends Controller {
 
             $('a.js-genus-list').on('click', function(e) {
                 var $selectedGenus = $(this).text();
-                var $url = '/atlas/taxon/' + $selectedGenus.trim();
+                var $url = '/taxon/' + $selectedGenus.trim();
 
                 $.ajax({
                     url:    $url,
