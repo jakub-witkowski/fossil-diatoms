@@ -11,8 +11,6 @@ class RedirectController extends AbstractController
     #[Route('/atlas', name: 'app_redirect', methods: 'GET')]
     public function index(): Response
     {
-        // $year = date('Y');
-
         return $this->redirectToRoute('app_atlas_homepage');
     }
 }

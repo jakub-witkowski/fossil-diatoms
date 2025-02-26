@@ -28,7 +28,7 @@ class EntryController extends AbstractController
         }
 
         $year = date('Y');
-        $url = 'https://fossil-diatoms.com/atlas/entry/' . $id;
+        $url = 'https://fossil-diatoms.com/entry/' . $id;
 
         $this->updateTimesViewed($photo, $em);
 
