@@ -1,0 +1,46 @@
+{% extends 'atlas_base.html.twig' %}
+
+{% block body %}
+
+<div class="grid grid-cols-2 grid-rows-4 gap-4 justify-items-center py-4">
+    <div class="flex font-medium text-3xl text-gray-700 text-center items-center p-6">
+        <span><i>The story of 100+ million years of diatom evolution told through:</i></span>
+    </div>
+
+    <div class="flex row-span-4 items-center">
+        <img id="main-page-feature" class="shadow-xl" src="{{ asset('images/001gr.jpg') }}"/>
+    </div>
+
+    <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
+        <span><i><strong> {{ photos }} photos</strong> of fossil diatoms </i></span>
+    </div>
+
+    <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
+        <span><i><strong> {{ species }} species</strong>, both extinct and living</i></span>
+    </div>
+
+    <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
+        <span><i><strong> {{ genera }} genera</strong> across all major clades</i></span>
+    </div>
+</div>
+
+     <div class="w-3/5 py-10 mx-auto text-lg text-gray-700">
+        <div class="pb-4">
+            <span><strong>Recent updates:</strong></span>
+        </div>
+
+        {% for update in updates %}
+        
+        <div class="py-2">    
+            <span><strong> {{ update.getDatePublished|date("d M Y") }}: </strong></span>
+            <p class="ml-[1.5em]"> {{ update.getContent|raw }} </p>
+        </div>
+        
+        {% endfor %}
+        
+        <div class="pb-2">
+            <a class="text-lg float-right" href={{ url('app_updates') }}><i><strong>See all updates</strong></i></a>
+        </div>
+    </div>
+
+{% endblock %}

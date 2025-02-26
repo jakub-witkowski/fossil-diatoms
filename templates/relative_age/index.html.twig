@@ -1,0 +1,15 @@
+<div class="text-xl text-gray-700 font-semibold text-center mx-auto py-6">
+    <span>Displaying {{ age.getName }} diatoms</span>
+</div>
+
+<div class="grid grid-cols-3 gap-4 py-6">
+
+    {% for photo in photos %}
+        <div class="text-center text-gray-700 hover:text-gray-500">
+            <a href= {{ path('app_entry', {'id': photo.id}) }}>
+                <img class="rounded-lg shadow-xl" src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
+
+                    <span class="py-4 text-xl"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span>
+        </div>
+    {% endfor %}
+</div>
