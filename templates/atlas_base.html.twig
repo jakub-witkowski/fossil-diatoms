@@ -21,15 +21,27 @@
 
     <body class=""> 
     
-            <div class="w-full">
-                <a href="{{ path('app_atlas_homepage') }}" class="flex items-center w-fit mx-auto py-4">
-                    <img src= {{ asset('images/plagiogramma-dark.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma" />
-                    <span class="self-center text-4xl font-black text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-500 tracking-wider">Fossil Diatom Atlas</span>
-                </a>
-            </div>
+        <div class="w-full">
+            <a href="{{ path('app_atlas_homepage') }}" class="flex items-center w-fit mx-auto py-2 lg:py-4">
+                <img src= {{ asset('images/plagiogramma-dark.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma" />
+                <span class="self-center text-4xl font-black text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-500 md:tracking-wider">Fossil Diatom Atlas</span>
+            </a>
+        </div>
+
         <nav class="">
             <div class="flex w-full bg-gray-700 h-20 items-center">
                 <div class="flex w-full mx-2 items-center place-content-between lg:w-3/5 lg:mx-auto">
+
+                    <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
+                    <button data-collapse-toggle="mega-menu" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu" aria-expanded="false">
+                        
+                        <span class="sr-only">Open main menu</span>
+
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                        </svg>
+                    </button>
+                </div>
 
                     <div id="mega-menu" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
                         <ul class="flex flex-col mt-4 text-2xl md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
@@ -105,12 +117,12 @@
                     </div>
 
                     <div class="flex justify-evenly md:order-2">
-                        <div class="px-5">
+                        <div class="px-3 md:px-5">
                             <a href="mailto: paleo.szczecin@gmail.com">
                                 <svg height="32" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#ffffff" stroke="#ffffff" stroke-width="2.56"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#ffffff" d="M60,8H4c-2.211,0-4,1.789-4,4v40c0,2.211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V12C64,9.789,62.211,8,60,8z M4,10h56c1.104,0,2,0.896,2,2v2.469L32,36.754L2,14.469V12C2,10.896,2.896,10,4,10z M60,54H4c-1.104,0-2-0.896-2-2v-2.808 l18.584-13.381c0.448-0.322,0.55-0.947,0.228-1.396c-0.322-0.447-0.946-0.549-1.396-0.228L2,46.729V16.961l29.403,21.842 C31.581,38.935,31.79,39,32,39s0.419-0.065,0.597-0.197L62,16.961v29.768l-17.416-12.54c-0.448-0.322-1.074-0.221-1.396,0.228 c-0.322,0.448-0.221,1.073,0.228,1.396L62,49.192V52C62,53.104,61.104,54,60,54z"></path> </g></svg>
                             </a>
                         </div>
-                        <div class="px-2">
+                        <div class="md:px-2">
                             <a href="https://instagram.com/fossil.diatoms" class="block md:hover:bg-transparent md:hover:fill-teal-200" target="_blank">
                                 <svg height="32" class="inline align-baseline" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="2"></g>
@@ -124,7 +136,7 @@
                             </a>
                         </div>
 
-                        <div class="px-2">
+                        <div class="md:px-2">
                             <a href="https://facebook.com/fossil.diatoms" class="block md:hover:bg-transparent md:hover:fill-teal-200" target="_blank">
                                 <svg height="32" class="inline align-baseline" viewBox="38.657999999999994 12.828 207.085 207.085" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -148,13 +160,17 @@
 
         <footer class="w-full">
             <div class="w-full lg:w-3/5 lg:mx-auto">
-                <div class="text-right">
-                    <div class="text-xl text-gray-700 pb-2">
-                        <span class="pr-2">&copy; Jakub Witkowski, {{ year }}</span>
+                <div class="flex place-content-end">
+                    <div class="flex items-center justify-between w-fit text-md md:text-xl text-gray-700 pb-2 pr-2">
+                        <div class="order-1">
+                            <span class="pr-2">&copy; Jakub Witkowski, {{ year }}</span>
+                        </div>
 
-                        <a href="mailto: paleo.szczecin@gmail.com">
-                            <svg class="inline-block align-[1px]" height="18" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#374151" stroke="#374151" stroke-width="2.56"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#374151" d="M60,8H4c-2.211,0-4,1.789-4,4v40c0,2.211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V12C64,9.789,62.211,8,60,8z M4,10h56c1.104,0,2,0.896,2,2v2.469L32,36.754L2,14.469V12C2,10.896,2.896,10,4,10z M60,54H4c-1.104,0-2-0.896-2-2v-2.808 l18.584-13.381c0.448-0.322,0.55-0.947,0.228-1.396c-0.322-0.447-0.946-0.549-1.396-0.228L2,46.729V16.961l29.403,21.842 C31.581,38.935,31.79,39,32,39s0.419-0.065,0.597-0.197L62,16.961v29.768l-17.416-12.54c-0.448-0.322-1.074-0.221-1.396,0.228 c-0.322,0.448-0.221,1.073,0.228,1.396L62,49.192V52C62,53.104,61.104,54,60,54z"></path> </g></svg>
-                        </a>
+                        <div class="order-2">
+                            <a href="mailto: paleo.szczecin@gmail.com">
+                                <svg class="inline-block" height="18" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#374151" stroke="#374151" stroke-width="2.56"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#374151" d="M60,8H4c-2.211,0-4,1.789-4,4v40c0,2.211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V12C64,9.789,62.211,8,60,8z M4,10h56c1.104,0,2,0.896,2,2v2.469L32,36.754L2,14.469V12C2,10.896,2.896,10,4,10z M60,54H4c-1.104,0-2-0.896-2-2v-2.808 l18.584-13.381c0.448-0.322,0.55-0.947,0.228-1.396c-0.322-0.447-0.946-0.549-1.396-0.228L2,46.729V16.961l29.403,21.842 C31.581,38.935,31.79,39,32,39s0.419-0.065,0.597-0.197L62,16.961v29.768l-17.416-12.54c-0.448-0.322-1.074-0.221-1.396,0.228 c-0.322,0.448-0.221,1.073,0.228,1.396L62,49.192V52C62,53.104,61.104,54,60,54z"></path> </g></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,29 +2,23 @@
 
 {% block body %}
 
-<div class="text-gray-700 flex flex-col place-items-center gap-8 w-fit min-h-96 p-2 bg-center bg-[url(../images/001gr.jpg)] bg-no-repeat bg-cover lg:hidden"> {# content-evenly #}
+<div class="text-gray-700 flex flex-col place-items-center gap-8 w-fit min-h-96 p-2 bg-center bg-[url(../images/001gr.jpg)] bg-no-repeat bg-cover lg:hidden">
+    <div class="bg-white bg-opacity-75 p-4 w-fit rounded-md font-medium text-3xl text-center mx-6 border border-gray-700">
+        <span><i>The story of 100+ million years of diatom evolution told through:</i></span>
+    </div>
     
-        <div class="bg-white bg-opacity-75 p-4 w-fit rounded-md font-medium text-3xl text-center mx-6 border border-gray-700">
-            <span><i>The story of 100+ million years of diatom evolution told through:</i></span>
-        </div>
-        
-        <div class="bg-white bg-opacity-75 p-4 w-fit rounded-md font-medium text-3xl text-center mx-6 border border-gray-700">
-            <span><i><strong> {{ photos }} photos</strong> of fossil diatoms </i></span>
-        </div>
-        
-        <div class="bg-white bg-opacity-75 p-4 w-fit rounded-md font-medium text-3xl text-center mx-6 border border-gray-700">
-            <span><i><strong> {{ species }} species</strong>, both extinct and living</i></span>
-        </div>
-
-        <div class="bg-white bg-opacity-75 p-4 w-fit rounded-md font-medium text-3xl text-center mx-6 border border-gray-700">
-            <span><i><strong> {{ genera }} genera</strong> across all major clades</i></span>
-        </div>
+    <div class="bg-white bg-opacity-75 p-4 w-fit rounded-md font-medium text-3xl text-center mx-6 border border-gray-700">
+        <span><i><strong> {{ photos }} photos</strong> of fossil diatoms </i></span>
+    </div>
+    
+    <div class="bg-white bg-opacity-75 p-4 w-fit rounded-md font-medium text-3xl text-center mx-6 border border-gray-700">
+        <span><i><strong> {{ species }} species</strong>, both extinct and living</i></span>
     </div>
 
-
-
-
-{# </div> #}
+    <div class="bg-white bg-opacity-75 p-4 w-fit rounded-md font-medium text-3xl text-center mx-6 border border-gray-700">
+        <span><i><strong> {{ genera }} genera</strong> across all major clades</i></span>
+    </div>
+</div>
 
 <div class="hidden text-gray-700 object-scale-down lg:grid lg:grid-cols-2 lg:grid-rows-4 lg:gap-4 lg:justify-items-center lg:py-4">
     <div class="font-medium text-3xl text-center lg:flex lg:items-center lg:p-6">
@@ -48,22 +42,22 @@
     </div>
 </div>
 
-     <div class="text-lg text-gray-700 w-full mx-2 lg:w-3/5 lg:py-10 lg:mx-auto">
-        <div class="pb-4">
+     <div class="text-md text-gray-700 w-full px-2 pt-4 md:text-lg lg:w-3/5 lg:py-10 lg:mx-auto">
+        <div class="pb-2">
             <span><strong>Recent updates:</strong></span>
         </div>
 
         {% for update in updates %}
         
         <div class="py-2">    
-            <span><strong> {{ update.getDatePublished|date("d M Y") }}: </strong></span>
-            <p class="ml-[1.5rem]"> {{ update.getContent|raw }} </p>
+            <span><strong> {{ update.getDatePublished|date("d M Y") }}:<br/> </strong></span>
+            <span class="ml-[1.5rem]"> {{ update.getContent|raw }} </span>
         </div>
         
         {% endfor %}
         
-        <div class="pb-2 text-right">
-            <a class="text-lg" href={{ url('app_updates') }}><i><strong>See all updates</strong></i></a>
+        <div class="pr-2 pb-2 text-right">
+            <a class="text-md md:text-lg" href={{ url('app_updates') }}><i><strong>See all updates</strong></i></a>
         </div>
     </div>
 
