@@ -2,29 +2,51 @@
 
 {% block body %}
 
-<div class="lg:grid lg:grid-cols-2 lg:grid-rows-4 lg:gap-4 lg:h-screen lg:justify-items-center lg:py-4">
-    <div class="flex font-medium text-3xl text-gray-700 text-center items-center p-6">
+<div class="w-full p-2 text-gray-700 lg:hidden">
+    <div class="">
+        <img class="shadow-xl object-scale-down mx-auto" src="{{ asset('images/001gr.jpg') }}"/>
+    </div>
+
+    <div class="font-medium text-3xl text-center">
         <span><i>The story of 100+ million years of diatom evolution told through:</i></span>
     </div>
 
-    <div class="flex row-span-4 items-center">
-        <img id="main-page-feature" class="shadow-xl object-scale-down" src="{{ asset('images/001gr.jpg') }}"/>
-    </div>
-
-    <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
+    <div class="font-medium text-3xl text-center">
         <span><i><strong> {{ photos }} photos</strong> of fossil diatoms </i></span>
     </div>
 
-    <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
+    <div class="font-medium text-3xl text-center">
         <span><i><strong> {{ species }} species</strong>, both extinct and living</i></span>
     </div>
 
-    <div class="flex font-medium text-3xl text-gray-700 items-center p-6">
+    <div class="font-medium text-3xl text-center">
         <span><i><strong> {{ genera }} genera</strong> across all major clades</i></span>
     </div>
 </div>
 
-     <div class="w-full mx-2 lg:w-3/5 lg:py-10 lg:mx-auto lg:text-lg text-gray-700">
+<div class="hidden text-gray-700 object-scale-down lg:grid lg:grid-cols-2 lg:grid-rows-4 lg:gap-4 lg:justify-items-center lg:py-4">
+    <div class="font-medium text-3xl text-center lg:flex lg:items-center lg:p-6">
+        <span><i>The story of 100+ million years of diatom evolution told through:</i></span>
+    </div>
+
+    <div class="lg:flex lg:row-span-4 lg:items-center">
+        <img class="shadow-xl object-scale-down" src="{{ asset('images/001gr.jpg') }}"/>
+    </div>
+
+    <div class="font-medium text-3xl text-center lg:flex lg:items-center lg:p-6">
+        <span><i><strong> {{ photos }} photos</strong> of fossil diatoms </i></span>
+    </div>
+
+    <div class="font-medium text-3xl text-center lg:flex lg:items-center lg:p-6">
+        <span><i><strong> {{ species }} species</strong>, both extinct and living</i></span>
+    </div>
+
+    <div class="font-medium text-3xl text-center lg:flex lg:items-center lg:p-6">
+        <span><i><strong> {{ genera }} genera</strong> across all major clades</i></span>
+    </div>
+</div>
+
+     <div class="text-lg text-gray-700 w-full mx-2 lg:w-3/5 lg:py-10 lg:mx-auto">
         <div class="pb-4">
             <span><strong>Recent updates:</strong></span>
         </div>
@@ -33,13 +55,13 @@
         
         <div class="py-2">    
             <span><strong> {{ update.getDatePublished|date("d M Y") }}: </strong></span>
-            <p class="ml-[1.5em]"> {{ update.getContent|raw }} </p>
+            <p class="ml-[1.5rem]"> {{ update.getContent|raw }} </p>
         </div>
         
         {% endfor %}
         
-        <div class="pb-2">
-            <a class="text-lg float-right" href={{ url('app_updates') }}><i><strong>See all updates</strong></i></a>
+        <div class="pb-2 text-right">
+            <a class="text-lg" href={{ url('app_updates') }}><i><strong>See all updates</strong></i></a>
         </div>
     </div>
 

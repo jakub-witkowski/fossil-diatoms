@@ -29,132 +29,116 @@
             </div>
         <nav class="">
             <div class="flex w-full bg-gray-700 h-20 items-center">
-                <div class="flex w-3/5 mx-auto items-center place-content-between">
-            {# <div class="rounded-xl shadow-lg bg-gradient-to-t from-gray-100 to-gray-50 flex flex-wrap items-center justify-between w-3/5 mx-auto px-4 py-2">  #}
+                <div class="flex w-full mx-2 items-center place-content-between lg:w-3/5 lg:mx-auto">
 
+                    <div id="mega-menu" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
+                        <ul class="flex flex-col mt-4 text-2xl md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
 
-                    {# <img src= {{ asset('images/plagiogramma-dark.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma" /> #}
-                {# <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
-                    <button data-collapse-toggle="mega-menu" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu" aria-expanded="false">
-                        
-                        <span class="sr-only">Open main menu</span>
-
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                        </svg>
-                    </button>
-                </div> #}
-                
-                        <div id="mega-menu" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
-                            <ul class="flex flex-col mt-4 text-2xl md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
-
-                        <li>
-                            <a href="{{ path('app_atlas_homepage') }}" class="block py-2 px-3 font-black text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0" aria-current="page">Home</a>
-                        </li>
-                                <li>
-                                    <button id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown" class="flex items-center justify-between w-full py-2 px-3 font-black text-white border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0">
-                                        Menu<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                            </svg>
-                                    </button>
-                                    
-                                    <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-2 text-lg bg-white border border-gray-100 rounded-lg shadow-md md:grid-cols-2">
-                                        <div class="p-4 pb-0 md:pb-4">
-                                            <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
-                                                <li>
-                                                    <span class="text-gray-700 font-bold">Index</span>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ path('app_taxa_list') }}" class="text-gray-700 hover:text-gray-500">
-                                                        List of taxa
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ path('app_site_list') }}" class="text-gray-700 hover:text-gray-500">
-                                                        List of sites
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ path('app_relative_age_list') }}" class="text-gray-700 hover:text-gray-500">
-                                                        Explore by geological age
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="p-4 pb-0 md:pb-4">
-                                            <ul class="space-y-4">
-                                                <li>
-                                                    <span class="text-gray-700 font-bold">Browse</span>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ path('app_by_genus') }}" class="text-gray-700 hover:text-gray-500">
-                                                        By genus and species
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ path('app_by_date') }}" class="text-gray-700 hover:text-gray-500">
-                                                        By publication date
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ path('app_by_popularity') }}" class="text-gray-700 hover:text-gray-500">
-                                                        By popularity
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                            <li>
+                                <a href="{{ path('app_atlas_homepage') }}" class="block py-2 px-3 font-black text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0" aria-current="page">Home</a>
+                            </li>
+                            
+                            <li>
+                                <button id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown" class="flex items-center justify-between w-full py-2 px-3 font-black text-white border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0">
+                                    Menu<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                        </svg>
+                                </button>
+                                
+                                <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-2 text-lg bg-white border border-gray-100 rounded-lg shadow-md md:grid-cols-2">
+                                    <div class="p-4 pb-0 md:pb-4">
+                                        <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
+                                            <li>
+                                                <span class="text-gray-700 font-bold">Index</span>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('app_taxa_list') }}" class="text-gray-700 hover:text-gray-500">
+                                                    List of taxa
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('app_site_list') }}" class="text-gray-700 hover:text-gray-500">
+                                                    List of sites
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('app_relative_age_list') }}" class="text-gray-700 hover:text-gray-500">
+                                                    Explore by geological age
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </li>
-                                {# <li>
-                                    <a href="#" class="block py-2 px-3 font-black text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0">About</a>
-                                </li> #}
-                                <li>
-                                    <a href="{{ path('app_search_taxon') }}" class="block py-2 px-3 font-black text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0">Search</a>
-                                </li>
-                                {# <li>
-                                    <a href="#" class="block py-2 px-3 font-black text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0">Contact</a>
-                                </li> #}
-                            </ul>
+                                    <div class="p-4 pb-0 md:pb-4">
+                                        <ul class="space-y-4">
+                                            <li>
+                                                <span class="text-gray-700 font-bold">Browse</span>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('app_by_genus') }}" class="text-gray-700 hover:text-gray-500">
+                                                    By genus and species
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('app_by_date') }}" class="text-gray-700 hover:text-gray-500">
+                                                    By publication date
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('app_by_popularity') }}" class="text-gray-700 hover:text-gray-500">
+                                                    By popularity
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            {# <li>
+                                <a href="#" class="block py-2 px-3 font-black text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0">About</a>
+                            </li> #}
+                            <li>
+                                <a href="{{ path('app_search_taxon') }}" class="block py-2 px-3 font-black text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0">Search</a>
+                            </li>
+                            {# <li>
+                                <a href="#" class="block py-2 px-3 font-black text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0">Contact</a>
+                            </li> #}
+                        </ul>
+                    </div>
+
+                    <div class="flex justify-evenly md:order-2">
+                        <div class="px-5">
+                            <a href="mailto: paleo.szczecin@gmail.com">
+                                <svg height="32" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#ffffff" stroke="#ffffff" stroke-width="2.56"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#ffffff" d="M60,8H4c-2.211,0-4,1.789-4,4v40c0,2.211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V12C64,9.789,62.211,8,60,8z M4,10h56c1.104,0,2,0.896,2,2v2.469L32,36.754L2,14.469V12C2,10.896,2.896,10,4,10z M60,54H4c-1.104,0-2-0.896-2-2v-2.808 l18.584-13.381c0.448-0.322,0.55-0.947,0.228-1.396c-0.322-0.447-0.946-0.549-1.396-0.228L2,46.729V16.961l29.403,21.842 C31.581,38.935,31.79,39,32,39s0.419-0.065,0.597-0.197L62,16.961v29.768l-17.416-12.54c-0.448-0.322-1.074-0.221-1.396,0.228 c-0.322,0.448-0.221,1.073,0.228,1.396L62,49.192V52C62,53.104,61.104,54,60,54z"></path> </g></svg>
+                            </a>
+                        </div>
+                        <div class="px-2">
+                            <a href="https://instagram.com/fossil.diatoms" class="block md:hover:bg-transparent md:hover:fill-teal-200" target="_blank">
+                                <svg height="32" class="inline align-baseline" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="2"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#ffffff"></path>
+                                        <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="#ffffff"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" fill="#ffffff"></path>
+                                    </g>
+                                </svg>
+                            </a>
                         </div>
 
-                        <div class="flex justify-evenly md:order-2">
-                            <div class="px-5">
-                                <a href="mailto: paleo.szczecin@gmail.com">
-                                    <svg height="32" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#ffffff" stroke="#ffffff" stroke-width="2.56"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#ffffff" d="M60,8H4c-2.211,0-4,1.789-4,4v40c0,2.211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V12C64,9.789,62.211,8,60,8z M4,10h56c1.104,0,2,0.896,2,2v2.469L32,36.754L2,14.469V12C2,10.896,2.896,10,4,10z M60,54H4c-1.104,0-2-0.896-2-2v-2.808 l18.584-13.381c0.448-0.322,0.55-0.947,0.228-1.396c-0.322-0.447-0.946-0.549-1.396-0.228L2,46.729V16.961l29.403,21.842 C31.581,38.935,31.79,39,32,39s0.419-0.065,0.597-0.197L62,16.961v29.768l-17.416-12.54c-0.448-0.322-1.074-0.221-1.396,0.228 c-0.322,0.448-0.221,1.073,0.228,1.396L62,49.192V52C62,53.104,61.104,54,60,54z"></path> </g></svg>
-                                </a>
-                            </div>
-                            <div class="px-2">
-                                <a href="https://instagram.com/fossil.diatoms" class="block md:hover:bg-transparent md:hover:fill-teal-200" target="_blank">
-                                    <svg height="32" class="inline align-baseline" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g id="SVGRepo_bgCarrier" stroke-width="2"></g>
-                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#ffffff"></path>
-                                            <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="#ffffff"></path>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" fill="#ffffff"></path>
-                                        </g>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="px-2">
-                                <a href="https://facebook.com/fossil.diatoms" class="block md:hover:bg-transparent md:hover:fill-teal-200" target="_blank">
-                                    <svg height="32" class="inline align-baseline" viewBox="38.657999999999994 12.828 207.085 207.085" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
-                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path d="M158.232 219.912v-94.461h31.707l4.747-36.813h-36.454V65.134c0-10.658 2.96-17.922 18.245-17.922l19.494-.009V14.278c-3.373-.447-14.944-1.449-28.406-1.449-28.106 0-47.348 17.155-47.348 48.661v27.149H88.428v36.813h31.788v94.461l38.016-.001z" fill="#ffffff"></path>
-                                        </g>
-                                    </svg>
-                                </a>
-                            </div>
+                        <div class="px-2">
+                            <a href="https://facebook.com/fossil.diatoms" class="block md:hover:bg-transparent md:hover:fill-teal-200" target="_blank">
+                                <svg height="32" class="inline align-baseline" viewBox="38.657999999999994 12.828 207.085 207.085" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M158.232 219.912v-94.461h31.707l4.747-36.813h-36.454V65.134c0-10.658 2.96-17.922 18.245-17.922l19.494-.009V14.278c-3.373-.447-14.944-1.449-28.406-1.449-28.106 0-47.348 17.155-47.348 48.661v27.149H88.428v36.813h31.788v94.461l38.016-.001z" fill="#ffffff"></path>
+                                    </g>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-
-      
 
         <main>
             <div class="w-full lg:w-3/5 md:mx-auto">
@@ -163,8 +147,8 @@
         </main>
 
         <footer class="w-full">
-            <div class="w-3/5 mx-auto">
-                <div class="float-right">
+            <div class="w-full lg:w-3/5 lg:mx-auto">
+                <div class="text-right">
                     <div class="text-xl text-gray-700 pb-2">
                         <span class="pr-2">&copy; Jakub Witkowski, {{ year }}</span>
 
