@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block title %}Fossil Diatom Atlas{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
         {% block stylesheets %}
@@ -157,7 +157,7 @@
       
 
         <main>
-            <div class="w-3/5 mx-auto">
+            <div class="w-full lg:w-3/5 md:mx-auto">
                 {% block body %}{% endblock %}
             </div>
         </main>
