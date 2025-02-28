@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-// use App\Entity\Photo;
 use App\Repository\PhotoRepository;
-// use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,10 +17,11 @@ class ByDateController extends AbstractController
     {
         $queryBuilder = $photoRepository->sortPublishedPhotosByDate();
         $adapter = new QueryAdapter($queryBuilder);
+
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
             $adapter,
             $request->query->get('page', 1),
-            9
+            12
         );
 
         $year = date('Y');
