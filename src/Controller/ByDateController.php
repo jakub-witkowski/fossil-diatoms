@@ -21,7 +21,7 @@ class ByDateController extends AbstractController
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
             $adapter,
             $request->query->get('page', 1),
-            12
+            6
         );
 
         $year = date('Y');
