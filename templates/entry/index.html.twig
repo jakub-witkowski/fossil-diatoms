@@ -1,12 +1,12 @@
 {% extends 'atlas_base.html.twig' %}
 
 {% block body %}
-<div class="flex items-center w-full">
-    <div class="p-4 w-3/5">
+<div class="lg:flex lg:items-center w-full">
+    <div class="p-2 lg:p-4 lg:w-3/5">
         <img class="rounded-lg shadow-xl" src= {{ asset('images/atlas/'~photo.getFilename~'') }} alt="Photo of the diatom {{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}">       
     </div>
     
-    <div class="p-4 w-2/5 text-xl/10 font-medium">
+    <div class="p-2 text-lg/8 lg:p-4 lg:w-2/5 lg:text-xl/10 font-medium">
         <div>
             <span><strong><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }}) </strong></span>
         </div>
@@ -20,7 +20,7 @@
         
             {# format for displaying unknown sites #}
             {% if photo.getSample.getSite.getSiteType.getName == 'unknown' %}
-                {{ photo.getSample.getSite.getNameOrNumberPrimary}}. The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge }}).           
+                {{ photo.getSample.getSite.getNameOrNumberPrimary}}. The Natural History Museum slide {{ photo.getSample.getLabel }} ({{ photo.getRelativeAge.getName }}).           
             {% endif %}
 
             {# format for displaying sites from NHM collections with duplicated names #}

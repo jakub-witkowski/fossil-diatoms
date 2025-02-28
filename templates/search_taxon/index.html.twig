@@ -4,15 +4,13 @@
 
 {% block body %}
 
-<div class="text-xl text-gray-700 font-semibold text-left mx-auto pt-6">
+<div class=" text-gray-700 font-semibold text-center text-lg pt-2 lg:text-xl lg:mx-auto lg:pt-6">
             <span><i>Search for taxon</i></span>
         </div>
 
-<div class="flex items-top">
+<div class="lg:flex lg:items-top">
     <div>
-
-
-        <div class="text-xl text-gray-700 font-semibold text-left w-3/5 mx-auto py-6">
+        <div class="text-gray-700 font-semibold text-left text-lg py-2 mx-2 lg:text-xl lg:w-3/5 lg:mx-auto lg:py-6">
             <span>Enter the name of the genus and species you are looking for:</span>
             <ul>
                 <li class="text-lg font-medium py-2">
@@ -28,7 +26,7 @@
         </div>
     </div>
 
-    <div class="w-2/5 mx-auto py-6">
+    <div class="mx-2 py-2 lg:w-2/5 lg:mx-auto lg:py-6">
         {{ form_start(taxonForm, {'attr': {'novalidate': false}}) }}
             {{ form_widget(taxonForm) }}
             <div class="flex w-full place-content-end">
