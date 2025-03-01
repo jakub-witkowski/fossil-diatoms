@@ -17,10 +17,11 @@ class SearchResultsController extends AbstractController
     {
         $queryBuilder = $photoRepository->sortPhotosByGenusAndSpecies();
         $adapter = new QueryAdapter($queryBuilder);
+        
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
             $adapter,
             $request->query->get('page', 1),
-            9
+            6
         );
 
         $year = date('Y');

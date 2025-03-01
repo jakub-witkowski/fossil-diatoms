@@ -50,7 +50,7 @@ class SearchResult
 
     public function setGenus(?string $genus): static
     {
-        $this->genus = $genus;
+        $this->genus = trim($genus);
 
         return $this;
     }
@@ -62,7 +62,7 @@ class SearchResult
 
     public function setSpecies(?string $species): static
     {
-        $this->species = $species;
+        $this->species = strtolower(trim($species));
 
         return $this;
     }

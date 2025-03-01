@@ -2,27 +2,22 @@
 
 namespace App\Controller;
 
-use App\Repository\GenusRepository;
+use App\Form\SelectGenusFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class TaxaListController extends AbstractController
 {
-    #[Route('/taxa-list', name: 'app_taxa_list', methods: 'GET')]
-    public function index(GenusRepository $genusRepository): Response
+    #[Route('/taxa-list', name: 'app_taxa_list')]
+    public function new(): Response
     {
-        $listOfGenera = $genusRepository->findBy([],[
-            'name' => 'ASC'
-        ]);
-
+        $form = $this->createForm(SelectGenusFormType::class);
         $year = date('Y');
-
+        
         return $this->render('taxa_list/index.html.twig', [
-            'controller_name' => 'TaxaListController',
-            // 'numberOfGenera' => $numberOfGenera,
-            'listOfGenera' => $listOfGenera,
-            'year' => $year,
+            'selectGenus' => $form->createView(),
+            'year'=>$year
         ]);
     }
 }

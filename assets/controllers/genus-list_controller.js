@@ -5,8 +5,8 @@ export default class extends Controller {
         
         $(document).ready(function() {   
 
-            $('a.js-genus-list').on('click', function(e) {
-                var $selectedGenus = $(this).text();
+            $("#select").on('click', function() {
+                var $selectedGenus = $("#select-genus-dropdown option:selected").text();
                 var $url = '/taxon/' + $selectedGenus.trim();
 
                 $.ajax({
