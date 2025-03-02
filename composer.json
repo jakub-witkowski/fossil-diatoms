@@ -12,6 +12,7 @@
         "doctrine/doctrine-bundle": "^2.13",
         "doctrine/doctrine-migrations-bundle": "^3.4",
         "doctrine/orm": "^3.3",
+        "easycorp/easyadmin-bundle": "^4.24",
         "pagerfanta/doctrine-orm-adapter": "^4.7",
         "pagerfanta/twig": "^4.7",
         "symfony/asset": "7.2.*",
@@ -23,6 +24,7 @@
         "symfony/framework-bundle": "7.2.*",
         "symfony/monolog-bundle": "^3.0",
         "symfony/runtime": "7.2.*",
+        "symfony/security-bundle": "7.2.*",
         "symfony/stimulus-bundle": "^2.23",
         "symfony/twig-bridge": "7.2.*",
         "symfony/twig-bundle": "7.2.*",
@@ -30,6 +32,7 @@
         "symfony/validator": "7.2.*",
         "symfony/yaml": "7.2.*",
         "symfonycasts/tailwind-bundle": "^0.7.1",
+        "symfonycasts/verify-email-bundle": "^1.17",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
@@ -86,9 +89,11 @@
         }
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^4.0",
         "symfony/debug-bundle": "7.2.*",
         "symfony/maker-bundle": "^1.62",
         "symfony/stopwatch": "7.2.*",
-        "symfony/web-profiler-bundle": "7.2.*"
+        "symfony/web-profiler-bundle": "7.2.*",
+        "zenstruck/foundry": "^2.3"
     }
 }
