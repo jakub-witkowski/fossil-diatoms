@@ -2,26 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Genus;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use App\Entity\Technique;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class GenusCrudController extends AbstractCrudController
+class TechniqueCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Genus::class;
-    }
-
-    public function configureActions(Actions $actions): Actions
-    {
-        return parent::configureActions($actions)
-            ->disable(Action::DETAIL);
+        return Technique::class;
     }
 
     /*

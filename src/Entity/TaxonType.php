@@ -39,6 +39,11 @@ class TaxonType
         return $this->type;
     }
 
+    public function getName(): ?string
+    {
+        return $this->type;
+    }
+
     public function setType(string $type): static
     {
         $this->type = $type;
@@ -74,5 +79,10 @@ class TaxonType
         }
 
         return $this;
+    }
+
+    public function __toString():string
+    {
+        return $this->getName();
     }
 }

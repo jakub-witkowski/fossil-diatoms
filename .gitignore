@@ -1,4 +1,3 @@
-
 ###> symfony/framework-bundle ###
 /.env
 /.env.dev
@@ -38,3 +37,7 @@
 .env.test
 /bin/phpunit
 /phpunit.xml.dist
+###< test environment ###
+
+###> phpstorm files ###
+/.idea
