@@ -90,4 +90,9 @@ class Geography
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->featurePrimary . ", " . $this->featureSecondary;
+    }
 }

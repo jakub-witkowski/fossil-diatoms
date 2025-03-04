@@ -43,6 +43,11 @@ class Microscope
         return $this->id;
     }
 
+    public function getName(): string
+    {
+        return $this->producer . " " . $this->model . " " . $this->objective . " " . $this->camera;
+    }
+
     public function getProducer(): ?Producer
     {
         return $this->producer;
@@ -119,5 +124,10 @@ class Microscope
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->producer . " " . $this->model . " " . $this->objective . " " . $this->camera;
     }
 }

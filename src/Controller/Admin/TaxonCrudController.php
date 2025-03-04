@@ -18,7 +18,8 @@ class TaxonCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield IdField::new('id');
+        yield IdField::new('id')
+            ->onlyOnIndex();
         yield AssociationField::new('genus');
         yield AssociationField::new('species');
         yield AssociationField::new('variety');

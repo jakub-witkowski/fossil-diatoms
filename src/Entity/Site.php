@@ -70,6 +70,11 @@ class Site
         return $this;
     }
 
+    public function getNameOrNumber(): string
+    {
+        return $this->nameOrNumberPrimary . $this->nameOrNumberSecondary;
+    }
+
     /**
      * @return Collection<int, Sample>
      */
@@ -134,5 +139,10 @@ class Site
         $this->geography = $geography;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->nameOrNumberPrimary . " ". $this->nameOrNumberSecondary;
     }
 }

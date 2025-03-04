@@ -196,4 +196,9 @@ class Taxon
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->genus . " " . $this->species . " " . $this->variety;
+    }
 }

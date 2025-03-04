@@ -42,6 +42,11 @@ class Sample
         return $this->label;
     }
 
+    public function getName(): ?string
+    {
+        return $this->label;
+    }
+
     public function setLabel(string $label): static
     {
         $this->label = $label;
@@ -89,5 +94,10 @@ class Sample
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->label;
     }
 }

@@ -55,8 +55,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToUrl('Homepage', 'fa fa-home', $this->generateUrl('app_atlas_homepage'));
 
+        yield MenuItem::section('Samples');
+        yield MenuItem::linkToCrud('Sample', 'fa fa-file-text', Sample::class);
+
         yield MenuItem::section('Sites');
-        yield MenuItem::linkToCrud('Sample', 'fa fa-home', Sample::class);
         yield MenuItem::linkToCrud('Site type', 'fa fa-home', SiteType::class);
         yield MenuItem::linkToCrud('Campaign', 'fa fa-home', Campaign::class);
         yield MenuItem::linkToCrud('Geography', 'fa fa-home', Geography::class);
@@ -67,11 +69,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Model', 'fa fa-tags', Model::class);
         yield MenuItem::linkToCrud('Objective', 'fa fa-tags', Objective::class);
         yield MenuItem::linkToCrud('Camera', 'fa fa-tags', Camera::class);
-        yield MenuItem::linkToCrud('Technique', 'fa fa-tags', Technique::class);
         yield MenuItem::linkToCrud('Microscope', 'fa fa-tags', Microscope::class);
-
-        yield MenuItem::section('Ages');
-        yield MenuItem::linkToCrud('Relative ages', 'fa fa-tags', RelativeAge::class);
 
         yield MenuItem::section('Taxa');
         yield MenuItem::linkToCrud('Genus', 'fa fa-tags', Genus::class);
@@ -82,6 +80,12 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Photos');
         yield MenuItem::linkToCrud('Photo', 'fa fa-file-text', Photo::class);
+
+        yield MenuItem::section('Ages');
+        yield MenuItem::linkToCrud('Relative ages', 'fa fa-tags', RelativeAge::class);
+
+        yield MenuItem::section('Techniques');
+        yield MenuItem::linkToCrud('Technique', 'fa fa-tags', Technique::class);
 
         yield MenuItem::section('Updates');
         yield MenuItem::linkToCrud('Update', 'fa fa-tags', Update::class);

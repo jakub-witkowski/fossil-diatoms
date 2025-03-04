@@ -75,4 +75,9 @@ class Producer
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
 }
