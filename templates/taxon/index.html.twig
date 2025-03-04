@@ -3,6 +3,7 @@
 </div>
 
 <div class="max-sm:pb-2 grid grid-cols-2 gap-2 max-lg:px-2 lg:grid-cols-3 lg:gap-4">
+{#    {% for photo in pager %}#}
     {% for photo in photos %}
         <div class="text-center text-gray-700 hover:text-gray-500">
             <a href= {{ path('app_entry', {'id': photo.id}) }}>
@@ -14,3 +15,7 @@
         </div>
     {% endfor %}
 </div>
+
+{#<div class="max-sm:pb-2 md:py-2">#}
+{#    {{ pagerfanta(pager) }}#}
+{#</div>#}

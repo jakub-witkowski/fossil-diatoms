@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -22,6 +23,14 @@ class PhotoCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        yield ImageField::new('filename', 'Image')
+//            ->onlyOnIndex()
+            ->hideWhenCreating()
+            ->hideWhenUpdating()
+            ->setBasePath('/images/atlas');
+//            ->setUploadDir('/images/atlas');
+        yield TextField::new('filename', 'Image filename')
+            ->hideOnIndex();
         yield IdField::new('id')
             ->onlyOnIndex();
         yield AssociationField::new('taxon');
@@ -30,8 +39,6 @@ class PhotoCrudController extends AbstractCrudController
         yield AssociationField::new('technique')
             ->hideOnIndex();
         yield BooleanField::new('isPublished');
-        yield TextField::new('filename')
-            ->hideOnIndex();
         yield TextEditorField::new('description')
             ->hideOnIndex();
         yield IntegerField::new('timesViewed');
