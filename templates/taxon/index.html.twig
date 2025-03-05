@@ -2,20 +2,23 @@
     <span>Displaying species for the genus <i> {{ genus }} </i></span>
 </div>
 
-<div class="max-sm:pb-2 grid grid-cols-2 gap-2 max-lg:px-2 lg:grid-cols-3 lg:gap-4">
-{#    {% for photo in pager %}#}
-    {% for photo in photos %}
-        <div class="text-center text-gray-700 hover:text-gray-500">
-            <a href= {{ path('app_entry', {'id': photo.id}) }}>
-                <img class="rounded-lg shadow-xl" src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
+<turbo-frame id="selected-genus-photos-{{ pager.currentPage }}" target="_top">
+    <div class="max-sm:pb-2 grid grid-cols-2 gap-2 max-lg:px-2 lg:grid-cols-3 lg:gap-4">
+        {% for photo in pager %}
+            <div class="text-center text-gray-700 hover:text-gray-500">
+                <a href= {{ path('app_entry', {'id': photo.id}) }}>
+                    <img class="rounded-lg shadow-xl" src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
 
-                <div class="text-lg lg:text-xl py-2 lg:py-4">
-                    <span class="py-4 text-xl"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span>
-                </div>
-        </div>
-    {% endfor %}
-</div>
+                    <div class="text-lg lg:text-xl py-2 lg:py-4">
+                        <span class="py-4 text-xl"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span>
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
 
-{#<div class="max-sm:pb-2 md:py-2">#}
-{#    {{ pagerfanta(pager) }}#}
-{#</div>#}
+    <div class="max-sm:pb-2 md:py-2">
+        {% if pager.hasNextPage %}
+            <turbo-frame id="selected-genus-photos-{{ pager.nextPage }}" src="{{ pagerfanta_page_url(pager, pager.nextPage) }}" loading="lazy"></turbo-frame>
+        {% endif %}
+    </div>
+</turbo-frame>

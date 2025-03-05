@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use App\Repository\PhotoRepository;
-//use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-//use Pagerfanta\Pagerfanta;
+use Pagerfanta\Pagerfanta;
 
 class TaxonController extends AbstractController
 {
@@ -21,18 +21,17 @@ class TaxonController extends AbstractController
             throw $this->createNotFoundException('Genus not found');
         }
 
-//        $adapter = new QueryAdapter($photos);
-//        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
-//            $adapter,
-//            $request->query->get('page', 1),
-//            6
-//        );
+        $adapter = new QueryAdapter($photos);
+        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
+            $adapter,
+            $request->query->get('page', 1),
+            6
+        );
 
         return $this->render('taxon/index.html.twig', [
             'controller_name' => 'TaxonController',
-            'photos' => $photos,
             'genus' => $genus,
-//            'pager' => $pagerfanta,
+            'pager' => $pagerfanta,
         ]);
     }
 }

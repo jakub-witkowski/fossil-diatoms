@@ -57,9 +57,9 @@ class PhotoRepository extends ServiceEntityRepository
                 ->join('taxon.species', 'species')
                 ->andWhere('genus.name = :searchTerm')
                 ->setParameter('searchTerm', $genus)
-                ->addOrderBy('species.name', 'ASC')
-                ->getQuery()
-                ->getResult();
+                ->addOrderBy('species.name', 'ASC');
+//                ->getQuery()
+//                ->getResult();
     }
 
     public function findPhotosByGenusAndSpecies($genus, $species)
