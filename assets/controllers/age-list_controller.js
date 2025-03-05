@@ -3,11 +3,11 @@ import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
     connect() {
         
-        $(document).ready(function() {   
+        $(document).ready(function() {
 
-            $('a.js-age-list').on('click', function(e) {
-                var $selectedAge = $(this).attr('id');
-                var $url = '/relative-age/' + $selectedAge.substring(3);
+            $("#select").on('click', function() {
+                var $selectedAge = $("#select-age-dropdown option:selected").val();
+                var $url = '/relative-age/' + $selectedAge;
 
                 $.ajax({
                     url:    $url,

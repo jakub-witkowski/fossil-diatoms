@@ -102,9 +102,9 @@ class PhotoRepository extends ServiceEntityRepository
                 ->andWhere('relativeAge.id = :searchTerm')
                 ->setParameter('searchTerm', $relativeAgeId)
                 ->addOrderBy('genus.name')
-                ->addOrderBy('species.name', 'ASC')
-                ->getQuery()
-                ->getResult();
+                ->addOrderBy('species.name', 'ASC');
+//                ->getQuery()
+//                ->getResult();
     }
 
 
