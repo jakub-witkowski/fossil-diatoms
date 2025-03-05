@@ -4,26 +4,37 @@ namespace App\Controller;
 
 use App\Repository\PhotoRepository;
 use App\Repository\SiteRepository;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class SiteController extends AbstractController
 {
     #[Route('/site/{siteId}', name: 'app_site', methods: 'GET')]
-    public function index(PhotoRepository $photoRepository, SiteRepository $siteRepository, int $siteId): Response
+    public function index(PhotoRepository $photoRepository, SiteRepository $siteRepository, Request $request, int $siteId): Response
     {
         $photos = $photoRepository->findPhotosBySite($siteId);
         $site = $siteRepository->findOneBy(['id' => $siteId]);
 
         if (!$photos) {
-            throw $this->createNotFoundException('Site not found');
+            throw $this->createNotFoundException('Genus not found');
         }
+
+        $adapter = new QueryAdapter($photos);
+        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
+            $adapter,
+            $request->query->get('page', 1),
+            6
+        );
 
         return $this->render('site/index.html.twig', [
             'controller_name' => 'SiteController',
-            'photos' => $photos,
+//            'photos' => $photos,
             'site' => $site,
+            'pager' => $pagerfanta,
         ]);
     }
 }

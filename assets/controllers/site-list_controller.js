@@ -3,11 +3,11 @@ import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
     connect() {
         
-        $(document).ready(function() {   
+        $(document).ready(function() {
 
-            $('a.js-site-list').on('click', function(e) {
-                var $selectedSite = $(this).attr('id');
-                var $url = '/site/' + $selectedSite.substring(4);
+            $("#select").on('click', function() {
+                var $selectedSite = $("#select-site-dropdown option:selected").val();
+                var $url = '/site/' + $selectedSite;
 
                 $.ajax({
                     url:    $url,

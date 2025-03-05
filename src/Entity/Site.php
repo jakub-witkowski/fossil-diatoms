@@ -75,6 +75,22 @@ class Site
         return $this->nameOrNumberPrimary . $this->nameOrNumberSecondary;
     }
 
+    public function getFullNameOrNumber(): string
+    {
+        $phrase = "";
+
+        if ($this->getSiteType() == 'deep-sea')
+        {
+            $phrase = $this->getCampaign() . " Hole ";
+        }
+        else if ($this->getSiteType() == 'dredge')
+        {
+            $phrase = $this->getCampaign() . " dredging ";
+        }
+
+        return $phrase . $this->nameOrNumberPrimary . $this->nameOrNumberSecondary;
+    }
+
     /**
      * @return Collection<int, Sample>
      */

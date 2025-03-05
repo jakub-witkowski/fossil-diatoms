@@ -23,8 +23,7 @@ class SelectGenusFormType extends AbstractType
                 'label' => 'Genus name:',
                 'placeholder' => 'Select genus...',
                 'autocomplete' => true,
-            ])
-        ;
+            ]);
     }
     public function configureOptions(OptionsResolver $resolver)
     {

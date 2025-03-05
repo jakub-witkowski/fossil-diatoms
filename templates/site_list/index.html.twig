@@ -6,43 +6,52 @@
     <span><i>Select a site from the list to view the species</i></span>
 </div>
 
-<div class="flex items-center justify-center">
-    <div id="upper-panel" data-controller="site-list" class="p-2 grid grid-cols-2 gap-2 lg:grid-cols-3 lg:gap-4 lg:p-5 lg:mx-auto">
-        
-        {% for site in listOfSites %}
-            {% if site.getSiteType.getName == 'deep-sea' %}
-                <div class="text-xl text-gray-700 font-medium">
-                    <a class="js-site-list" id="site{{ site.getId }}" href="#">
-                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getCampaign.getAbbreviation }} Hole {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}</span>
-                    </a>
-                </div>
-            
-            {% elseif site.getSiteType.getName == 'onshore' or site.getSiteType.getName == 'onshore-NHM' %}
-                <div class="text-xl text-gray-700 font-medium">
-                    <a class="js-site-list" id="site{{ site.getId }}" href="#">
-                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeatureSecondary }}</span>
-                    </a>
-                </div>
-            
-            {% elseif site.getSiteType.getName == 'unknown' %}
-                <div class="text-xl text-gray-700 font-medium">
-                    <a class="js-site-list" id="site{{ site.getId }}" href="#">
-                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">Unknown locality</span>
-                    </a>
-                </div>
-            
-            {% elseif site.getSiteType.getName == 'dredge' %}
-                <div class="text-xl text-gray-700 font-medium">
-                    <a class="js-site-list" id="site{{ site.getId }}" href="#">
-                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getCampaign.getAbbreviation }} dredging {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}</span>
-                    </a>
-                </div>
-            
-            {% endif %}
-        {% endfor %}
-    
+    <div id="upper-panel" class="p-2 text-lg text-gray-700 font-medium lg:text-xl lg:font-semibold lg:mx-auto lg:pb-6" data-controller="site-list">
+        {{ form_start(selectSite, {'attr': {'id': 'select-site-dropdown'}}) }}
+        {{ form_widget(selectSite) }}
+        <div class="flex w-full place-content-end">
+            <button id="select" type="submit" class="border-2 border-gray-700 bg-gray-700 font-black text-xl text-white hover:text-gray-300 py-2 px-4 rounded-xl">Select</button>
+        </div>
+        {{ form_end(selectSite) }}
     </div>
-</div>
+
+{#<div class="flex items-center justify-center">#}
+{#    <div id="upper-panel" data-controller="site-list" class="p-2 grid grid-cols-2 gap-2 lg:grid-cols-3 lg:gap-4 lg:p-5 lg:mx-auto">#}
+{#        #}
+{#        {% for site in listOfSites %}#}
+{#            {% if site.getSiteType.getName == 'deep-sea' %}#}
+{#                <div class="text-xl text-gray-700 font-medium">#}
+{#                    <a class="js-site-list" id="site{{ site.getId }}" href="#">#}
+{#                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getCampaign.getAbbreviation }} Hole {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}</span>#}
+{#                    </a>#}
+{#                </div>#}
+{#            #}
+{#            {% elseif site.getSiteType.getName == 'onshore' or site.getSiteType.getName == 'onshore-NHM' %}#}
+{#                <div class="text-xl text-gray-700 font-medium">#}
+{#                    <a class="js-site-list" id="site{{ site.getId }}" href="#">#}
+{#                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}, {{ site.getGeography.getFeatureSecondary }}</span>#}
+{#                    </a>#}
+{#                </div>#}
+{#            #}
+{#            {% elseif site.getSiteType.getName == 'unknown' %}#}
+{#                <div class="text-xl text-gray-700 font-medium">#}
+{#                    <a class="js-site-list" id="site{{ site.getId }}" href="#">#}
+{#                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">Unknown locality</span>#}
+{#                    </a>#}
+{#                </div>#}
+{#            #}
+{#            {% elseif site.getSiteType.getName == 'dredge' %}#}
+{#                <div class="text-xl text-gray-700 font-medium">#}
+{#                    <a class="js-site-list" id="site{{ site.getId }}" href="#">#}
+{#                        <span class="p-2 hover:bg-gray-300 hover:rounded-lg">{{ site.getCampaign.getAbbreviation }} dredging {{ site.getNameOrNumberPrimary }}{{ site.getNameOrNumberSecondary }}</span>#}
+{#                    </a>#}
+{#                </div>#}
+{#            #}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    #}
+{#    </div>#}
+{#</div>#}
 
 <div id="lower-panel">
 </div>
