@@ -20,9 +20,10 @@
 
 {% endif %}
 
-<turbo-frame id="selected-site-photos-{{ pager.currentPage }}" target="_top">
+{#<turbo-frame id="selected-site-photos-{{ pager.currentPage }}" target="_top">#}
     <div class="max-sm:pb-2 grid grid-cols-2 gap-2 max-lg:px-2 lg:grid-cols-3 lg:gap-4">
-        {% for photo in pager %}
+        {% for photo in photos %}
+{#        {% for photo in pager %}#}
             <div class="text-center text-gray-700 hover:text-gray-500">
                 <a href= {{ path('app_entry', {'id': photo.id}) }}>
                     <img class="rounded-lg shadow-xl" src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
@@ -34,9 +35,9 @@
         {% endfor %}
     </div>
 
-    <div class="max-sm:pb-2 md:py-2">
-        {% if pager.hasNextPage %}
-            <turbo-frame id="selected-site-photos-{{ pager.nextPage }}" src="{{ pagerfanta_page_url(pager, pager.nextPage) }}" loading="lazy"></turbo-frame>
-        {% endif %}
-    </div>
-</turbo-frame>
+{#    <div class="max-sm:pb-2 md:py-2">#}
+{#        {% if pager.hasNextPage %}#}
+{#            <turbo-frame id="selected-site-photos-{{ pager.nextPage }}" src="{{ pagerfanta_page_url(pager, pager.nextPage) }}" loading="lazy"></turbo-frame>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</turbo-frame>#}
