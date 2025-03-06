@@ -21,17 +21,18 @@ class TaxonController extends AbstractController
             throw $this->createNotFoundException('Genus not found');
         }
 
-        $adapter = new QueryAdapter($photos);
-        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
-            $adapter,
-            $request->query->get('page', 1),
-            6
-        );
+//        $adapter = new QueryAdapter($photos);
+//        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
+//            $adapter,
+//            $request->query->get('page', 1),
+//            6
+//        );
 
         return $this->render('taxon/index.html.twig', [
             'controller_name' => 'TaxonController',
             'genus' => $genus,
-            'pager' => $pagerfanta,
+            'photos' => $photos,
+//            'pager' => $pagerfanta,
         ]);
     }
 }
