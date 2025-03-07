@@ -31,7 +31,8 @@ class SearchResultFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => SearchResult::class
+            'data_class' => SearchResult::class,
+            'csrf_protection' => false,
         ]);
     }
 }
