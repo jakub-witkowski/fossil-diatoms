@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\PhotoRepository;
+use App\Service\UploaderHelper;
 use Doctrine\DBAL\Types\Types;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PhotoRepository::class)]
@@ -27,19 +29,21 @@ class Photo
     private ?Technique $technique = null;
 
     #[ORM\Column]
-    private ?bool $isPublished = null;
+    private bool $isPublished = false;
 
     #[ORM\Column(length: 255)]
     private ?string $filename = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
+    private string $description = '';
 
     #[ORM\Column]
-    private ?int $timesViewed = null;
+    private int $timesViewed = 0;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dateAdded = null;
+    #[Gedmo\Timestampable(on: 'create')]
+    #[ORM\Column(type: 'datetime')]
+//    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private \DateTimeInterface $dateAdded;
 
     #[ORM\Column(nullable: true)]
     private ?int $specimenNumericalAge = null;
@@ -114,7 +118,7 @@ class Photo
 
     public function getFilename(): ?string
     {
-        return $this->filename;
+        return UploaderHelper::PATH_SUFFIX . '/' . $this->filename;
     }
 
     public function setFilename(string $filename): static

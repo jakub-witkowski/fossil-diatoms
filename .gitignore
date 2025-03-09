@@ -41,3 +41,5 @@
 
 ###> phpstorm files ###
 /.idea
+
+/public/uploads
