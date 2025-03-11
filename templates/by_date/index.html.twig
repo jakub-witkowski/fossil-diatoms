@@ -7,17 +7,15 @@
 </div>
 
 <div class="grid grid-cols-2 gap-2 max-lg:px-2 lg:grid-cols-3 lg:gap-4">
-
     {% for photo in pager %}
         <div class="text-center text-gray-700 hover:text-gray-500">
-            <a href= {{ path('app_entry', {'id': photo.id}) }}><img class="rounded-lg shadow-xl" src={{ asset('images/atlas/'~photo.getFilename~'') }} />
+            <a href= {{ path('app_entry', {'id': photo.id}) }}><img class="rounded-lg shadow-xl" src="{{ asset(photo.getFilename) }}" alt="" />
             
             <div class="text-lg lg:text-xl py-2 lg:py-4">
                 <span><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span></a>
             </div>
         </div>
     {% endfor %}
-
 </div>
 
 <div class="max-sm:pb-2 md:py-2">

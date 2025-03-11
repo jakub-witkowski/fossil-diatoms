@@ -4,34 +4,83 @@ namespace App\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Sluggable\Util\Urlizer;
+use League\Flysystem\Filesystem;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\Asset\Context\RequestStackContext;
+use League\Flysystem\FileNotFoundException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploaderHelper
 {
-    const PATH_SUFFIX = 'images/atlas';
-    private $uploadDir;
+//    const PATH_SUFFIX = 'images/atlas';
+    const PATH_SUFFIX = '';
+    const PHOTO = 'photo';
+    private $filesystem;
+    private RequestStackContext $requestStackContext;
+    private LoggerInterface $logger;
 
-    public function __construct(string $uploadDir)
+    private $publicAssetBaseUrl;
+
+    public function __construct(Filesystem $publicUploadFilesystem, RequestStackContext $requestStackContext, LoggerInterface $logger, string $uploadedAssetsBaseUrl)
     {
-
-        $this->uploadDir = $uploadDir;
+        $this->filesystem = $publicUploadFilesystem;
+        $this->requestStackContext = $requestStackContext;
+        $this->logger = $logger;
+        $this->publicAssetBaseUrl = $uploadedAssetsBaseUrl;
     }
-    public function uploadImage(UploadedFile $uploadedFile): string
+    public function uploadImage(File $file, ?string $existingFilename): string
     {
-        $destination = $this->uploadDir . '/' . self::PATH_SUFFIX;
+        if ($file instanceof UploadedFile)
+        {
+            $originalFilename = $file->getClientOriginalName();
+        }
+        else
+        {
+            $originalFilename = $file->getFilename();
+        }
 
-        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+        $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)) . '-' . uniqid() . '.' . $file->guessExtension();
 
-        $uploadedFile->move(
-            $destination,
-            $newFilename);
+        $stream = fopen($file->getPathname(), 'r');
+        $result = $this->filesystem->writeStream(
+            self::PHOTO . '/' . $newFilename,
+            $stream
+        );
+
+        if ($result === false)
+        {
+            throw new \Exception(sprintf('Could not write uploaded file: %s', $newFilename));
+        }
+
+        if (is_resource($stream))
+        {
+            fclose($stream);
+        }
+
+        if ($existingFilename)
+        {
+            try
+            {
+                $result = $this->filesystem->delete(self::PHOTO . '/' . $existingFilename);
+
+                if ($result === false)
+                {
+                    throw new \Exception(sprintf('Could not remove old uploaded file: "%s"', $existingFilename));
+                }
+            }
+            catch (FileNotFoundException $e)
+            {
+                $this->logger->alert(sprintf('Old uploaded file: "%s" was missing when trying to remove.', $existingFilename));
+            }
+        }
 
         return $newFilename;
     }
 
     public function getPublicPath(string $path): string
     {
-        return 'assets/' . $path;
+        return $this->requestStackContext
+            ->getBasePath() . $this->publicAssetBaseUrl . '/' . $path;
     }
 }

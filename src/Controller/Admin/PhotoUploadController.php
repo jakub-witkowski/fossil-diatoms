@@ -32,7 +32,7 @@ final class PhotoUploadController extends AbstractController
 
             if ($uploadedFile)
             {
-                $newFilename = $uploaderHelper->uploadImage($uploadedFile);
+                $newFilename = $uploaderHelper->uploadImage($uploadedFile, $photo->getFilename());
                 $photo->setFilename($newFilename);
             }
 
@@ -41,7 +41,8 @@ final class PhotoUploadController extends AbstractController
 
             $this->addFlash('success', 'Photo was successfully uploaded.');
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('app_photo_upload');
+//            return $this->redirectToRoute('admin');
         }
 
         return $this->render('admin_photo_upload/upload.html.twig', [

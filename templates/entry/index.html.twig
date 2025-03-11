@@ -3,7 +3,7 @@
 {% block body %}
 <div class="lg:flex lg:items-center w-full">
     <div class="p-2 lg:p-4 lg:w-3/5">
-        <img class="rounded-lg shadow-xl" src= {{ asset('images/atlas/'~photo.getFilename~'') }} alt="Photo of the diatom {{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}">       
+        <img class="rounded-lg shadow-xl" src="{{ asset(photo.getFilename) }}" alt="Photo of the diatom {{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}">
     </div>
     
     <div class="p-2 text-lg/8 lg:p-4 lg:w-2/5 lg:text-xl/10 font-medium">

@@ -28,7 +28,7 @@ class PhotoUploadFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new Image([
-                        'maxSize' => '5k',
+                        'maxSize' => '2M',
                     ])
                 ]
             ])

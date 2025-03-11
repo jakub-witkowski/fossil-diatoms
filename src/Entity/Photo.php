@@ -118,7 +118,7 @@ class Photo
 
     public function getFilename(): ?string
     {
-        return UploaderHelper::PATH_SUFFIX . '/' . $this->filename;
+        return UploaderHelper::PHOTO . '/' . $this->filename;
     }
 
     public function setFilename(string $filename): static

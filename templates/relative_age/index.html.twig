@@ -14,7 +14,7 @@
         {% for photo in pager %}
             <div class="text-center text-gray-700 hover:text-gray-500">
                 <a href= {{ path('app_entry', {'id': photo.id}) }}>
-                    <img class="rounded-lg shadow-xl" src={{ asset('images/atlas/'~photo.getFilename~'') }} /></a>
+                    <img class="rounded-lg shadow-xl" src="{{ asset(photo.getFilename) }}" alt="" /></a>
 
                     <div class="text-lg lg:text-xl py-2 lg:py-4">
                         <span class="py-4 text-xl"><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span>
