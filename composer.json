@@ -15,7 +15,6 @@
         "doctrine/orm": "^3.3",
         "easycorp/easyadmin-bundle": "^4.24",
         "league/flysystem-aws-s3-v3": "^3.29",
-        "liip/imagine-bundle": "^2.13",
         "oneup/flysystem-bundle": "^4.12",
         "pagerfanta/doctrine-orm-adapter": "^4.7",
         "pagerfanta/twig": "^4.7",
@@ -93,6 +92,7 @@
         }
     },
     "require-dev": {
+        "league/flysystem-adapter-test-utilities": "^3.29",
         "symfony/debug-bundle": "7.2.*",
         "symfony/maker-bundle": "^1.62",
         "symfony/stopwatch": "7.2.*",

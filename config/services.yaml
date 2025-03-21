@@ -5,8 +5,9 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     locale: 'en'
-    uploads_dir_name: 'uploads'
-    uploads_base_url: '/%uploads_dir_name%'
+#    uploads_dir_name: 'assets/images'
+#    uploads_dir_name: 'uploads'
+    uploads_base_url: 'https://fossil-diatoms.s3.eu-central-1.amazonaws.com'
 #    uploads_base_url: '%env(SITE_BASE_URL)%/%env(UPLOADS_DIR_NAME)%'
 
 services:
@@ -32,3 +33,12 @@ services:
     # please note that last definitions always *replace* previous ones
 
     Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'
+
+    Aws\S3\S3Client:
+        arguments:
+            -
+                version: 'latest'
+                region: 'eu-central-1'
+                credentials:
+                    key: '%env(AWS_S3_ACCESS_ID)%'
+                    secret: '%env(AWS_S3_ACCESS_SECRET)%'

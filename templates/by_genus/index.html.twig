@@ -10,16 +10,10 @@
 
     {% for photo in pager %}
         <div class="text-center text-gray-700 hover:text-gray-500">
-{#            <span>{{ uploaded_asset(photo.Filename) | imagine_filter('small') }}</span>#}
-{#            <span>{{ uploaded_asset(photo.Filename) }}</span>#}
-{#            <span>{{ asset(photo.Filename) | imagine_filter('small') }}</span>#}
-{#            <span>{{ photo.Filename | imagine_filter('small') }}</span>#}
-            <span>{{ asset(photo.Filename) }}</span>
-{#            <a href= {{ path('app_entry', {'id': photo.id}) }}><img class="rounded-lg shadow-xl" src="{{ asset(photo.Filename) | imagine_filter('small') }}" alt="" />#}
-{#            <a href= {{ path('app_entry', {'id': photo.id}) }}><img class="rounded-lg shadow-xl" src="{{ asset(photo.Filename) }}" alt="" />#}
+            <a href= {{ path('app_entry', {'id': photo.id}) }}><img class="rounded-lg shadow-xl" src="{{ uploaded_asset(photo.Filename) }}" alt="" />
             <div class="text-lg lg:text-xl py-2 lg:py-4">
-                <span><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span></a>
-            </div>
+                <span><i>{{ photo.getTaxon.getGenus.getName }} {{ photo.getTaxon.getSpecies.getName }}</i> {{ photo.getTaxon.getSpecies.getAuthority }} ({{ photo.getTaxon.getSpecies.getDateProposed }})</span>
+            </div></a>
         </div>
     {% endfor %}
 

@@ -15,7 +15,7 @@ class UploaderHelper
 {
 //    const PATH_SUFFIX = 'images/atlas';
     const PATH_SUFFIX = '';
-    const PHOTO = 'photo';
+    const PHOTO = 'fossil-diatom-website-assets/atlas';
     private $filesystem;
     private RequestStackContext $requestStackContext;
     private LoggerInterface $logger;
@@ -80,7 +80,14 @@ class UploaderHelper
 
     public function getPublicPath(string $path): string
     {
+        $fullPath = $this->publicAssetBaseUrl . '/' . $path;
+
+        if (strpos($fullPath, '://') !== false)
+        {
+            return $fullPath;
+        }
+
         return $this->requestStackContext
-            ->getBasePath() . $this->publicAssetBaseUrl . '/' . $path;
+            ->getBasePath() . $fullPath;
     }
 }
