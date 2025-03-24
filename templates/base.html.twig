@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block title %}Fossil Diatom Atlas{% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="{{ asset('images/icon.png') }}">
+        <link rel="icon" type="image/x-icon" href="{{ uploaded_asset('fossil-diatom-website-assets/icon.png') }}">
         {% block stylesheets %}
         {% endblock %}
 
@@ -23,7 +23,7 @@
     
         <div class="w-full">
             <a href="{{ path('app_atlas_homepage') }}" class="flex items-center w-fit mx-auto py-2 lg:py-4">
-                <img src= {{ asset('images/plagiogramma-dark.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma" />
+                <img src= {{ uploaded_asset('fossil-diatom-website-assets/plagiogramma-dark.png')}} id="header-image" alt="Doodle showing the diatom Plagiogramma" />
                 <span class="self-center text-4xl font-black text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-gray-500 md:tracking-wider">Fossil Diatom Atlas</span>
             </a>
         </div>
