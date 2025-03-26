@@ -8,3 +8,14 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+###> IDE files ###
+/.idea
+###< IDE files ###
+
+###> irrelevant classes ###
+/src/Entity/Update.php
+/src/Repository/UpdateRepository.php
+/src/Entity/SearchResult.php
+/src/Repository/SearchResultRepository.php
+###< irrelevant classes ###
