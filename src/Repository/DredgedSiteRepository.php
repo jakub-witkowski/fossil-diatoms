@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\DregdedSite;
+use App\Entity\DredgedSite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<DregdedSite>
+ * @extends ServiceEntityRepository<DredgedSite>
  */
-class DregdedSiteRepository extends ServiceEntityRepository
+class DredgedSiteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, DregdedSite::class);
+        parent::__construct($registry, DredgedSite::class);
     }
 
     //    /**
-    //     * @return DregdedSite[] Returns an array of DregdedSite objects
+    //     * @return DredgedSite[] Returns an array of DredgedSite objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class DregdedSiteRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?DregdedSite
+    //    public function findOneBySomeField($value): ?DredgedSite
     //    {
     //        return $this->createQueryBuilder('d')
     //            ->andWhere('d.exampleField = :val')

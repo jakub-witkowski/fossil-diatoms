@@ -18,4 +18,5 @@
 /src/Repository/UpdateRepository.php
 /src/Entity/SearchResult.php
 /src/Repository/SearchResultRepository.php
+/src/Controller/InheritanceTestingController.php
 ###< irrelevant classes ###

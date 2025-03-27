@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping\InheritanceType;
 #[DiscriminatorColumn('discriminator')]
 #[ORM\DiscriminatorMap([
     'deep-sea-site' => DeepSeaSite::class,
-    'dredged-site' => DregdedSite::class,
+    'dredged-site' => DredgedSite::class,
     'onshore-site' => OnshoreSite::class,
     'unknown-site' => UnknownSite::class
 ])]
@@ -50,6 +50,11 @@ class Site
     }
 
     public function printLocality()
+    {
+        return $this;
+    }
+
+    public function printSiteInfo()
     {
         return $this;
     }
