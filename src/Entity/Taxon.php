@@ -9,6 +9,13 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TaxonRepository::class)]
+#[InheritanceType('SINGLE_TABLE')]
+#[DiscriminatorColumn('discriminator')]
+#[ORM\DiscriminatorMap([
+    'genus' => Genus::class,
+    'species' => Species::class,
+    'variety' => Variety::class,
+])]
 class Taxon
 {
     #[ORM\Id]
@@ -200,5 +207,10 @@ class Taxon
     public function __toString(): string
     {
         return $this->genus . " " . $this->species . " " . $this->variety;
+    }
+
+    public function displayName(): string
+    {
+        return $this;
     }
 }

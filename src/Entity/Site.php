@@ -54,8 +54,13 @@ class Site
         return $this;
     }
 
-    public function printSiteInfo()
+    public function printSiteInfo(): string
     {
         return $this;
+    }
+
+    public function __toString() : string
+    {
+        return $this->printSiteInfo();
     }
 }

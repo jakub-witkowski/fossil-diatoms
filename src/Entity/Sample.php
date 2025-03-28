@@ -15,7 +15,7 @@ class Sample
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $label = null;
 
     #[ORM\ManyToOne(inversedBy: 'sample')]
@@ -42,9 +42,15 @@ class Sample
         return $this->label;
     }
 
-    public function getName(): ?string
+    public function printInfo(): ?string
     {
-        return $this->label;
+        $label = ($this->label !== null) ? $this->label . ', ' : '';
+
+        $info =
+            $label .  ', ' .
+            $this->getSite()->printSiteInfo();
+            ;
+        return $info;
     }
 
     public function setLabel(string $label): static
