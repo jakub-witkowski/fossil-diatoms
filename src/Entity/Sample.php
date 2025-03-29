@@ -44,7 +44,7 @@ class Sample
 
     public function printInfo(): ?string
     {
-        $label = ($this->label !== null) ? $this->label . ', ' : '';
+        $label = ($this->label !== null) ? $this->label . ', ' : null;
 
         $info =
             $label .  ', ' .

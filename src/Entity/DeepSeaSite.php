@@ -100,7 +100,7 @@ class DeepSeaSite extends Site
         return $locality;
     }
 
-    public function printSiteInfo()
+    public function printSiteInfo() : string
     {
         $info =
             $this->printName() . ', ' .

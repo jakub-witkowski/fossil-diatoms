@@ -29,4 +29,9 @@ class UnknownSite extends Site
         return $locality;
     }
 
+    public function printSiteInfo(): string
+    {
+        return 'unknown';
+    }
+
 }

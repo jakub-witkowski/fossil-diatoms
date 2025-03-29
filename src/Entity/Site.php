@@ -27,6 +27,8 @@ class Site
     #[ORM\JoinColumn(nullable: false)]
     private ?SiteType $siteType = null;
 
+
+
     public function getId(): ?int
     {
         return $this->id;
