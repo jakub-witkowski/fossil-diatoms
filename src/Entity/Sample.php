@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\SampleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SampleRepository::class)]
@@ -18,19 +16,9 @@ class Sample
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $label = null;
 
-    #[ORM\ManyToOne(inversedBy: 'sample')]
+    #[ORM\ManyToOne(inversedBy: 'samples')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Site $site = null;
-
-    /**
-     * @var Collection<int, Photo>
-     */
-    #[ORM\OneToMany(targetEntity: Photo::class, mappedBy: 'sample')]
-    private Collection $photo;
-
-    public function __construct()
-    {
-        $this->photo = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -42,18 +30,7 @@ class Sample
         return $this->label;
     }
 
-    public function printInfo(): ?string
-    {
-        $label = ($this->label !== null) ? $this->label . ', ' : null;
-
-        $info =
-            $label .  ', ' .
-            $this->getSite()->printSiteInfo();
-            ;
-        return $info;
-    }
-
-    public function setLabel(string $label): static
+    public function setLabel(?string $label): static
     {
         $this->label = $label;
 
@@ -72,38 +49,14 @@ class Sample
         return $this;
     }
 
-    /**
-     * @return Collection<int, Photo>
-     */
-    public function getPhoto(): Collection
+    public function printInfo(): ?string
     {
-        return $this->photo;
-    }
+        $label = ($this->label !== null) ? $this->label . ', ' : null;
 
-    public function addPhoto(Photo $photo): static
-    {
-        if (!$this->photo->contains($photo)) {
-            $this->photo->add($photo);
-            $photo->setSample($this);
-        }
-
-        return $this;
-    }
-
-    public function removePhoto(Photo $photo): static
-    {
-        if ($this->photo->removeElement($photo)) {
-            // set the owning side to null (unless already changed)
-            if ($photo->getSample() === $this) {
-                $photo->setSample(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function __toString(): string
-    {
-        return $this->label;
+        $info =
+            $label .  ', ' .
+            $this->getSite()->printSiteInfo();
+        ;
+        return $info;
     }
 }

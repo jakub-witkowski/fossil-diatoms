@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SiteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Doctrine\ORM\Mapping\InheritanceType;
@@ -23,25 +25,48 @@ class Site
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?SiteType $siteType = null;
+    /**
+     * @var Collection<int, Sample>
+     */
+    #[ORM\OneToMany(targetEntity: Sample::class, mappedBy: 'site')]
+    private Collection $samples;
 
-
+    public function __construct()
+    {
+        $this->samples = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getSiteType(): ?SiteType
+    /**
+     * @return Collection<int, Sample>
+     */
+    public function getSamples(): Collection
     {
-        return $this->siteType;
+        return $this->samples;
     }
 
-    public function setSiteType(?SiteType $siteType): static
+    public function addSample(Sample $sample): static
     {
-        $this->siteType = $siteType;
+        if (!$this->samples->contains($sample)) {
+            $this->samples->add($sample);
+            $sample->setSite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSample(Sample $sample): static
+    {
+        if ($this->samples->removeElement($sample)) {
+            // set the owning side to null (unless already changed)
+            if ($sample->getSite() === $this) {
+                $sample->setSite(null);
+            }
+        }
 
         return $this;
     }

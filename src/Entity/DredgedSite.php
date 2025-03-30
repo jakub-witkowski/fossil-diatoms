@@ -13,48 +13,24 @@ class DredgedSite extends Site
 //    #[ORM\Column]
 //    private ?int $id = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Geography $geography = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Campaign $campaign = null;
-
     #[ORM\Column(length: 255)]
     private ?string $nameOrNumberPrimary = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $nameOrNumberSecondary = null;
 
+    #[ORM\ManyToOne(inversedBy: 'dredgedSites')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Geography $geography = null;
+
+    #[ORM\ManyToOne(inversedBy: 'dredgedSites')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Campaign $campaign = null;
+
 //    public function getId(): ?int
 //    {
 //        return $this->id;
 //    }
-
-    public function getGeography(): ?Geography
-    {
-        return $this->geography;
-    }
-
-    public function setGeography(?Geography $geography): static
-    {
-        $this->geography = $geography;
-
-        return $this;
-    }
-
-    public function getCampaign(): ?Campaign
-    {
-        return $this->campaign;
-    }
-
-    public function setCampaign(?Campaign $campaign): static
-    {
-        $this->campaign = $campaign;
-
-        return $this;
-    }
 
     public function getNameOrNumberPrimary(): ?string
     {
@@ -76,6 +52,30 @@ class DredgedSite extends Site
     public function setNameOrNumberSecondary(?string $nameOrNumberSecondary): static
     {
         $this->nameOrNumberSecondary = $nameOrNumberSecondary;
+
+        return $this;
+    }
+
+    public function getGeography(): ?Geography
+    {
+        return $this->geography;
+    }
+
+    public function setGeography(?Geography $geography): static
+    {
+        $this->geography = $geography;
+
+        return $this;
+    }
+
+    public function getCampaign(): ?Campaign
+    {
+        return $this->campaign;
+    }
+
+    public function setCampaign(?Campaign $campaign): static
+    {
+        $this->campaign = $campaign;
 
         return $this;
     }
