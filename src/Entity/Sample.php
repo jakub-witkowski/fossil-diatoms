@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SampleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SampleRepository::class)]
@@ -19,6 +21,17 @@ class Sample
     #[ORM\ManyToOne(inversedBy: 'samples')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Site $site = null;
+
+    /**
+     * @var Collection<int, Slide>
+     */
+    #[ORM\OneToMany(targetEntity: Slide::class, mappedBy: 'sample')]
+    private Collection $slides;
+
+    public function __construct()
+    {
+        $this->slides = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,12 +64,42 @@ class Sample
 
     public function printInfo(): ?string
     {
-        $label = ($this->label !== null) ? $this->label . ', ' : null;
+        $label = ($this->label !== null) ? $this->label : null;
 
         $info =
             $label .  ', ' .
             $this->getSite()->printSiteInfo();
         ;
         return $info;
+    }
+
+    /**
+     * @return Collection<int, Slide>
+     */
+    public function getSlides(): Collection
+    {
+        return $this->slides;
+    }
+
+    public function addSlide(Slide $slide): static
+    {
+        if (!$this->slides->contains($slide)) {
+            $this->slides->add($slide);
+            $slide->setSample($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSlide(Slide $slide): static
+    {
+        if ($this->slides->removeElement($slide)) {
+            // set the owning side to null (unless already changed)
+            if ($slide->getSample() === $this) {
+                $slide->setSample(null);
+            }
+        }
+
+        return $this;
     }
 }
