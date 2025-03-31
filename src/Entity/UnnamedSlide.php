@@ -20,6 +20,14 @@ class UnnamedSlide extends Slide
 
     public function printSlideInfo(): string
     {
-        return $this->getSample()->printInfo();
+        if ($this->getSample()->getSite() instanceof DeepSeaSite) {
+            $sampleLocality = 'sample ' . $this->getSample()->printInfo();
+        }
+        else
+        {
+            $sampleLocality = $this->getSample()->printInfo();
+        }
+
+        return $sampleLocality;
     }
 }
