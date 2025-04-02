@@ -66,7 +66,10 @@ class Sample
     {
         $label = ($this->label !== null) ? $this->label : null;
 
+        $prefix = ($this->getSite() instanceof DeepSeaSite) ? 'sample ' : null;
+
         $info =
+            $prefix .
             $label .  ', ' .
             $this->getSite()->printSiteInfo();
         ;
