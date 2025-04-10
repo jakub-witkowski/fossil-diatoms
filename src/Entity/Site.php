@@ -31,6 +31,12 @@ class Site
     #[ORM\OneToMany(targetEntity: Sample::class, mappedBy: 'site')]
     private Collection $samples;
 
+    #[ORM\Column]
+    private ?float $latitude = null;
+
+    #[ORM\Column]
+    private ?float $longitude = null;
+
     public function __construct()
     {
         $this->samples = new ArrayCollection();
@@ -89,5 +95,29 @@ class Site
     public function __toString() : string
     {
         return $this->printSiteInfo();
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(float $latitude): static
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(float $longitude): static
+    {
+        $this->longitude = $longitude;
+
+        return $this;
     }
 }
