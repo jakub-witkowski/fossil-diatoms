@@ -6,8 +6,18 @@ use App\Repository\SiteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
+use Doctrine\ORM\Mapping\InheritanceType;
 
 #[ORM\Entity(repositoryClass: SiteRepository::class)]
+#[InheritanceType('SINGLE_TABLE')]
+#[DiscriminatorColumn('discriminator')]
+#[ORM\DiscriminatorMap([
+    'deep-sea-site' => DeepSeaSite::class,
+    'dredged-site' => DredgedSite::class,
+    'onshore-site' => OnshoreSite::class,
+    'unknown-site' => UnknownSite::class
+])]
 class Site
 {
     #[ORM\Id]
@@ -15,30 +25,21 @@ class Site
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nameOrNumberPrimary = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $nameOrNumberSecondary = null;
-
     /**
      * @var Collection<int, Sample>
      */
     #[ORM\OneToMany(targetEntity: Sample::class, mappedBy: 'site')]
-    private Collection $sample;
+    private Collection $samples;
 
-    #[ORM\ManyToOne(inversedBy: 'site')]
-    private ?SiteType $siteType = null;
+    #[ORM\Column]
+    private ?float $latitude = null;
 
-    #[ORM\ManyToOne(inversedBy: 'site')]
-    private ?Campaign $campaign = null;
-
-    #[ORM\ManyToOne(inversedBy: 'site')]
-    private ?Geography $geography = null;
+    #[ORM\Column]
+    private ?float $longitude = null;
 
     public function __construct()
     {
-        $this->sample = new ArrayCollection();
+        $this->samples = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,63 +47,18 @@ class Site
         return $this->id;
     }
 
-    public function getNameOrNumberPrimary(): ?string
-    {
-        return $this->nameOrNumberPrimary;
-    }
-
-    public function setNameOrNumberPrimary(string $nameOrNumberPrimary): static
-    {
-        $this->nameOrNumberPrimary = $nameOrNumberPrimary;
-
-        return $this;
-    }
-
-    public function getNameOrNumberSecondary(): ?string
-    {
-        return $this->nameOrNumberSecondary;
-    }
-
-    public function setNameOrNumberSecondary(string $nameOrNumberSecondary): static
-    {
-        $this->nameOrNumberSecondary = $nameOrNumberSecondary;
-
-        return $this;
-    }
-
-    public function getNameOrNumber(): string
-    {
-        return $this->nameOrNumberPrimary . $this->nameOrNumberSecondary;
-    }
-
-    public function getFullNameOrNumber(): string
-    {
-        $phrase = "";
-
-        if ($this->getSiteType() == 'deep-sea')
-        {
-            $phrase = $this->getCampaign() . " Hole ";
-        }
-        else if ($this->getSiteType() == 'dredge')
-        {
-            $phrase = $this->getCampaign() . " dredging ";
-        }
-
-        return $phrase . $this->nameOrNumberPrimary . $this->nameOrNumberSecondary;
-    }
-
     /**
      * @return Collection<int, Sample>
      */
-    public function getSample(): Collection
+    public function getSamples(): Collection
     {
-        return $this->sample;
+        return $this->samples;
     }
 
     public function addSample(Sample $sample): static
     {
-        if (!$this->sample->contains($sample)) {
-            $this->sample->add($sample);
+        if (!$this->samples->contains($sample)) {
+            $this->samples->add($sample);
             $sample->setSite($this);
         }
 
@@ -111,7 +67,7 @@ class Site
 
     public function removeSample(Sample $sample): static
     {
-        if ($this->sample->removeElement($sample)) {
+        if ($this->samples->removeElement($sample)) {
             // set the owning side to null (unless already changed)
             if ($sample->getSite() === $this) {
                 $sample->setSite(null);
@@ -121,44 +77,47 @@ class Site
         return $this;
     }
 
-    public function getSiteType(): ?SiteType
+    public function printName()
     {
-        return $this->siteType;
+        return $this;
     }
 
-    public function setSiteType(?SiteType $siteType): static
+    public function printLocality()
     {
-        $this->siteType = $siteType;
+        return $this;
+    }
+
+    public function printSiteInfo(): string
+    {
+        return $this;
+    }
+
+    public function __toString() : string
+    {
+        return $this->printSiteInfo();
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(float $latitude): static
+    {
+        $this->latitude = $latitude;
 
         return $this;
     }
 
-    public function getCampaign(): ?Campaign
+    public function getLongitude(): ?float
     {
-        return $this->campaign;
+        return $this->longitude;
     }
 
-    public function setCampaign(?Campaign $campaign): static
+    public function setLongitude(float $longitude): static
     {
-        $this->campaign = $campaign;
+        $this->longitude = $longitude;
 
         return $this;
-    }
-
-    public function getGeography(): ?Geography
-    {
-        return $this->geography;
-    }
-
-    public function setGeography(?Geography $geography): static
-    {
-        $this->geography = $geography;
-
-        return $this;
-    }
-
-    public function __toString(): string
-    {
-        return $this->nameOrNumberPrimary . " ". $this->nameOrNumberSecondary;
     }
 }

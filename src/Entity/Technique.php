@@ -22,11 +22,11 @@ class Technique
      * @var Collection<int, Photo>
      */
     #[ORM\OneToMany(targetEntity: Photo::class, mappedBy: 'technique')]
-    private Collection $photo;
+    private Collection $photos;
 
     public function __construct()
     {
-        $this->photo = new ArrayCollection();
+        $this->photos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -49,15 +49,15 @@ class Technique
     /**
      * @return Collection<int, Photo>
      */
-    public function getPhoto(): Collection
+    public function getPhotos(): Collection
     {
-        return $this->photo;
+        return $this->photos;
     }
 
     public function addPhoto(Photo $photo): static
     {
-        if (!$this->photo->contains($photo)) {
-            $this->photo->add($photo);
+        if (!$this->photos->contains($photo)) {
+            $this->photos->add($photo);
             $photo->setTechnique($this);
         }
 
@@ -66,7 +66,7 @@ class Technique
 
     public function removePhoto(Photo $photo): static
     {
-        if ($this->photo->removeElement($photo)) {
+        if ($this->photos->removeElement($photo)) {
             // set the owning side to null (unless already changed)
             if ($photo->getTechnique() === $this) {
                 $photo->setTechnique(null);
@@ -74,10 +74,5 @@ class Technique
         }
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
     }
 }

@@ -22,11 +22,11 @@ class Producer
      * @var Collection<int, Microscope>
      */
     #[ORM\OneToMany(targetEntity: Microscope::class, mappedBy: 'producer')]
-    private Collection $microscope;
+    private Collection $microscopes;
 
     public function __construct()
     {
-        $this->microscope = new ArrayCollection();
+        $this->microscopes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -49,15 +49,15 @@ class Producer
     /**
      * @return Collection<int, Microscope>
      */
-    public function getMicroscope(): Collection
+    public function getMicroscopes(): Collection
     {
-        return $this->microscope;
+        return $this->microscopes;
     }
 
     public function addMicroscope(Microscope $microscope): static
     {
-        if (!$this->microscope->contains($microscope)) {
-            $this->microscope->add($microscope);
+        if (!$this->microscopes->contains($microscope)) {
+            $this->microscopes->add($microscope);
             $microscope->setProducer($this);
         }
 
@@ -66,7 +66,7 @@ class Producer
 
     public function removeMicroscope(Microscope $microscope): static
     {
-        if ($this->microscope->removeElement($microscope)) {
+        if ($this->microscopes->removeElement($microscope)) {
             // set the owning side to null (unless already changed)
             if ($microscope->getProducer() === $this) {
                 $microscope->setProducer(null);

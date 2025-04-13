@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\SearchResult;
+use App\Entity\DeepSeaSite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<SearchResult>
+ * @extends ServiceEntityRepository<DeepSeaSite>
  */
-class SearchResultRepository extends ServiceEntityRepository
+class DeepSeaSiteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SearchResult::class);
+        parent::__construct($registry, DeepSeaSite::class);
     }
 
     //    /**
-    //     * @return SearchResult[] Returns an array of SearchResult objects
+    //     * @return DeepSeaSite[] Returns an array of DeepSeaSite objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
+    //        return $this->createQueryBuilder('d')
+    //            ->andWhere('d.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('s.id', 'ASC')
+    //            ->orderBy('d.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?SearchResult
+    //    public function findOneBySomeField($value): ?DeepSeaSite
     //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
+    //        return $this->createQueryBuilder('d')
+    //            ->andWhere('d.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

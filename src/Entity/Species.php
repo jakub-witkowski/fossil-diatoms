@@ -3,111 +3,90 @@
 namespace App\Entity;
 
 use App\Repository\SpeciesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SpeciesRepository::class)]
-class Species
+class Species extends Taxon
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+//    #[ORM\Id]
+//    #[ORM\GeneratedValue]
+//    #[ORM\Column]
+//    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $genusNameForSpecies = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $authority = null;
+    private ?string $speciesName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $speciesAuthority = null;
 
     #[ORM\Column]
-    private ?int $dateProposed = null;
+    private ?int $speciesPublicationDate = null;
 
-    /**
-     * @var Collection<int, Taxon>
-     */
-    #[ORM\OneToMany(targetEntity: Taxon::class, mappedBy: 'species')]
-    private Collection $taxon;
+//    public function getId(): ?int
+//    {
+//        return $this->id;
+//    }
 
-    public function __construct()
+    public function getGenusNameForSpecies(): ?string
     {
-        $this->taxon = new ArrayCollection();
+        return $this->genusNameForSpecies;
     }
 
-    public function getId(): ?int
+    public function setGenusNameForSpecies(string $genusNameForSpecies): static
     {
-        return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
+        $this->genusNameForSpecies = $genusNameForSpecies;
 
         return $this;
     }
 
-    public function getAuthority(): ?string
+    public function getSpeciesName(): ?string
     {
-        return $this->authority;
+        return $this->speciesName;
     }
 
-    public function setAuthority(string $authority): static
+    public function setSpeciesName(string $speciesName): static
     {
-        $this->authority = $authority;
+        $this->speciesName = $speciesName;
 
         return $this;
     }
 
-    public function getDateProposed(): ?int
+    public function getSpeciesAuthority(): ?string
     {
-        return $this->dateProposed;
+        return $this->speciesAuthority;
     }
 
-    public function setDateProposed(int $dateProposed): static
+    public function setSpeciesAuthority(string $speciesAuthority): static
     {
-        $this->dateProposed = $dateProposed;
+        $this->speciesAuthority = $speciesAuthority;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Taxon>
-     */
-    public function getTaxon(): Collection
+    public function printTaxonInfo(): string
     {
-        return $this->taxon;
+        $taxonInfo =
+            $this->getGenusNameForSpecies() . ' ' .
+            $this->getSpeciesName() . ' ' .
+            $this->getSpeciesAuthority() . ' (' .
+            $this->getSpeciesPublicationDate() . ')'
+        ;
+
+        return $taxonInfo;
     }
 
-    public function addTaxon(Taxon $taxon): static
+    public function getSpeciesPublicationDate(): ?int
     {
-        if (!$this->taxon->contains($taxon)) {
-            $this->taxon->add($taxon);
-            $taxon->setSpecies($this);
-        }
+        return $this->speciesPublicationDate;
+    }
+
+    public function setSpeciesPublicationDate(int $speciesPublicationDate): static
+    {
+        $this->speciesPublicationDate = $speciesPublicationDate;
 
         return $this;
-    }
-
-    public function removeTaxon(Taxon $taxon): static
-    {
-        if ($this->taxon->removeElement($taxon)) {
-            // set the owning side to null (unless already changed)
-            if ($taxon->getSpecies() === $this) {
-                $taxon->setSpecies(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function __toString():string
-    {
-        return $this->getName();
     }
 }

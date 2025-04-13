@@ -21,16 +21,20 @@ class MicroscopeCrudController extends AbstractCrudController
     {
         yield IdField::new('id')
             ->onlyOnIndex();
-        yield TextField::new('name')
+        yield TextField::new('full name')
             ->onlyOnIndex();
         yield AssociationField::new('producer')
-            ->onlyOnForms();
+            ->onlyOnForms()
+              ;
         yield AssociationField::new('model')
-            ->onlyOnForms();
+            ->onlyOnForms()
+              ;
         yield AssociationField::new('objective')
-            ->onlyOnForms();
+            ->onlyOnForms()
+              ;
         yield AssociationField::new('camera')
-            ->onlyOnForms();
+            ->onlyOnForms()
+              ;
     }
 
 }

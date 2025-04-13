@@ -22,14 +22,21 @@ class Campaign
     private ?string $fullName = null;
 
     /**
-     * @var Collection<int, Site>
+     * @var Collection<int, DeepSeaSite>
      */
-    #[ORM\OneToMany(targetEntity: Site::class, mappedBy: 'campaign')]
-    private Collection $site;
+    #[ORM\OneToMany(targetEntity: DeepSeaSite::class, mappedBy: 'campaign')]
+    private Collection $deepSeaSites;
+
+    /**
+     * @var Collection<int, DredgedSite>
+     */
+    #[ORM\OneToMany(targetEntity: DredgedSite::class, mappedBy: 'campaign')]
+    private Collection $dredgedSites;
 
     public function __construct()
     {
-        $this->site = new ArrayCollection();
+        $this->deepSeaSites = new ArrayCollection();
+        $this->dredgedSites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,37 +69,62 @@ class Campaign
     }
 
     /**
-     * @return Collection<int, Site>
+     * @return Collection<int, DeepSeaSite>
      */
-    public function getSite(): Collection
+    public function getDeepSeaSites(): Collection
     {
-        return $this->site;
+        return $this->deepSeaSites;
     }
 
-    public function addSite(Site $site): static
+    public function addDeepSeaSite(DeepSeaSite $deepSeaSite): static
     {
-        if (!$this->site->contains($site)) {
-            $this->site->add($site);
-            $site->setCampaign($this);
+        if (!$this->deepSeaSites->contains($deepSeaSite)) {
+            $this->deepSeaSites->add($deepSeaSite);
+            $deepSeaSite->setCampaign($this);
         }
 
         return $this;
     }
 
-    public function removeSite(Site $site): static
+    public function removeDeepSeaSite(DeepSeaSite $deepSeaSite): static
     {
-        if ($this->site->removeElement($site)) {
+        if ($this->deepSeaSites->removeElement($deepSeaSite)) {
             // set the owning side to null (unless already changed)
-            if ($site->getCampaign() === $this) {
-                $site->setCampaign(null);
+            if ($deepSeaSite->getCampaign() === $this) {
+                $deepSeaSite->setCampaign(null);
             }
         }
 
         return $this;
     }
 
-    public function __toString(): string
+    /**
+     * @return Collection<int, DredgedSite>
+     */
+    public function getDredgedSites(): Collection
     {
-        return $this->abbreviation;
+        return $this->dredgedSites;
+    }
+
+    public function addDredgedSite(DredgedSite $dredgedSite): static
+    {
+        if (!$this->dredgedSites->contains($dredgedSite)) {
+            $this->dredgedSites->add($dredgedSite);
+            $dredgedSite->setCampaign($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDredgedSite(DredgedSite $dredgedSite): static
+    {
+        if ($this->dredgedSites->removeElement($dredgedSite)) {
+            // set the owning side to null (unless already changed)
+            if ($dredgedSite->getCampaign() === $this) {
+                $dredgedSite->setCampaign(null);
+            }
+        }
+
+        return $this;
     }
 }

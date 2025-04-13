@@ -15,21 +15,22 @@ class Sample
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $label = null;
 
-    #[ORM\ManyToOne(inversedBy: 'sample')]
+    #[ORM\ManyToOne(inversedBy: 'samples')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Site $site = null;
 
     /**
-     * @var Collection<int, Photo>
+     * @var Collection<int, Slide>
      */
-    #[ORM\OneToMany(targetEntity: Photo::class, mappedBy: 'sample')]
-    private Collection $photo;
+    #[ORM\OneToMany(targetEntity: Slide::class, mappedBy: 'sample')]
+    private Collection $slides;
 
     public function __construct()
     {
-        $this->photo = new ArrayCollection();
+        $this->slides = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -42,12 +43,7 @@ class Sample
         return $this->label;
     }
 
-    public function getName(): ?string
-    {
-        return $this->label;
-    }
-
-    public function setLabel(string $label): static
+    public function setLabel(?string $label): static
     {
         $this->label = $label;
 
@@ -66,38 +62,47 @@ class Sample
         return $this;
     }
 
-    /**
-     * @return Collection<int, Photo>
-     */
-    public function getPhoto(): Collection
+    public function printInfo(): ?string
     {
-        return $this->photo;
+        $label = ($this->label !== null) ? $this->label : null;
+
+        $prefix = ($this->getSite() instanceof DeepSeaSite) ? 'sample ' : null;
+
+        $info =
+            $prefix .
+            $label .  ', ' .
+            $this->getSite()->printSiteInfo();
+        ;
+        return $info;
     }
 
-    public function addPhoto(Photo $photo): static
+    /**
+     * @return Collection<int, Slide>
+     */
+    public function getSlides(): Collection
     {
-        if (!$this->photo->contains($photo)) {
-            $this->photo->add($photo);
-            $photo->setSample($this);
+        return $this->slides;
+    }
+
+    public function addSlide(Slide $slide): static
+    {
+        if (!$this->slides->contains($slide)) {
+            $this->slides->add($slide);
+            $slide->setSample($this);
         }
 
         return $this;
     }
 
-    public function removePhoto(Photo $photo): static
+    public function removeSlide(Slide $slide): static
     {
-        if ($this->photo->removeElement($photo)) {
+        if ($this->slides->removeElement($slide)) {
             // set the owning side to null (unless already changed)
-            if ($photo->getSample() === $this) {
-                $photo->setSample(null);
+            if ($slide->getSample() === $this) {
+                $slide->setSample(null);
             }
         }
 
         return $this;
-    }
-
-    public function __toString(): string
-    {
-        return $this->label;
     }
 }

@@ -17,21 +17,21 @@ class RelativeAgeRepository extends ServiceEntityRepository
         parent::__construct($registry, RelativeAge::class);
     }
 
-    public function findByRelativeAge($relativeAge)
-    {
-        return $this->createQueryBuilder('photo')
-        ->andWhere('photo.isPublished = 1')
-        ->join('photo.taxon', 'taxon')
-        ->join('taxon.genus', 'genus')
-        ->join('taxon.species', 'species')
-        ->join('photo.relativeAge', 'relativeAge')
-        ->andWhere('relativeAge.id = :searchTerm')
-        ->setParameter('searchTerm', $relativeAge)
-        ->addOrderBy('genus.name')
-        ->addOrderBy('species.name', 'ASC')
-        ->getQuery()
-        ->getResult();
-    }
+//    public function findByRelativeAge($relativeAge)
+//    {
+//        return $this->createQueryBuilder('photo')
+//        ->andWhere('photo.isPublished = 1')
+//        ->join('photo.taxon', 'taxon')
+//        ->join('taxon.genus', 'genus')
+//        ->join('taxon.species', 'species')
+//        ->join('photo.relativeAge', 'relativeAge')
+//        ->andWhere('relativeAge.id = :searchTerm')
+//        ->setParameter('searchTerm', $relativeAge)
+//        ->addOrderBy('genus.name')
+//        ->addOrderBy('species.name', 'ASC')
+//        ->getQuery()
+//        ->getResult();
+//    }
 
     //    /**
     //     * @return RelativeAge[] Returns an array of RelativeAge objects

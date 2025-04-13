@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RelativeAgeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RelativeAgeRepository::class)]
@@ -18,6 +20,17 @@ class RelativeAge
 
     #[ORM\Column]
     private ?int $midpointDate = null;
+
+    /**
+     * @var Collection<int, Photo>
+     */
+    #[ORM\OneToMany(targetEntity: Photo::class, mappedBy: 'relativeAge')]
+    private Collection $photos;
+
+    public function __construct()
+    {
+        $this->photos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,5 +64,35 @@ class RelativeAge
     public function __toString(): string
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * @return Collection<int, Photo>
+     */
+    public function getPhotos(): Collection
+    {
+        return $this->photos;
+    }
+
+    public function addPhoto(Photo $photo): static
+    {
+        if (!$this->photos->contains($photo)) {
+            $this->photos->add($photo);
+            $photo->setRelativeAge($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhoto(Photo $photo): static
+    {
+        if ($this->photos->removeElement($photo)) {
+            // set the owning side to null (unless already changed)
+            if ($photo->getRelativeAge() === $this) {
+                $photo->setRelativeAge(null);
+            }
+        }
+
+        return $this;
     }
 }

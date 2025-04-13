@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\TaxonType;
+use App\Entity\UniSzczecinSlide;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<TaxonType>
+ * @extends ServiceEntityRepository<UniSzczecinSlide>
  */
-class TaxonTypeRepository extends ServiceEntityRepository
+class UniSzczecinSlideRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TaxonType::class);
+        parent::__construct($registry, UniSzczecinSlide::class);
     }
 
     //    /**
-    //     * @return TaxonType[] Returns an array of TaxonType objects
+    //     * @return UniSzczecinSlide[] Returns an array of UniSzczecinSlide objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('t')
-    //            ->andWhere('t.exampleField = :val')
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('t.id', 'ASC')
+    //            ->orderBy('u.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?TaxonType
+    //    public function findOneBySomeField($value): ?UniSzczecinSlide
     //    {
-    //        return $this->createQueryBuilder('t')
-    //            ->andWhere('t.exampleField = :val')
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

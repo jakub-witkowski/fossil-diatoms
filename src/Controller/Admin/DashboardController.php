@@ -59,7 +59,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Sample', 'fa fa-file-text', Sample::class);
 
         yield MenuItem::section('Sites');
-        yield MenuItem::linkToCrud('Site type', 'fa fa-home', SiteType::class);
+//        yield MenuItem::linkToCrud('Site type', 'fa fa-home', SiteType::class);
         yield MenuItem::linkToCrud('Campaign', 'fa fa-home', Campaign::class);
         yield MenuItem::linkToCrud('Geography', 'fa fa-home', Geography::class);
         yield MenuItem::linkToCrud('Site', 'fa fa-home', Site::class);
@@ -75,7 +75,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Genus', 'fa fa-tags', Genus::class);
         yield MenuItem::linkToCrud('Species', 'fa fa-file-text', Species::class);
         yield MenuItem::linkToCrud('Variety', 'fa fa-file-text', Variety::class);
-        yield MenuItem::linkToCrud('Taxon type', 'fa fa-file-text', TaxonType::class);
+//        yield MenuItem::linkToCrud('Taxon type', 'fa fa-file-text', TaxonType::class);
         yield MenuItem::linkToCrud('Taxon', 'fa fa-file-text', Taxon::class);
 
         yield MenuItem::section('Photos');

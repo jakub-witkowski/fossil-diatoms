@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\SiteType;
+use App\Entity\UnnamedSlide;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<SiteType>
+ * @extends ServiceEntityRepository<UnnamedSlide>
  */
-class SiteTypeRepository extends ServiceEntityRepository
+class UnnamedSlideRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SiteType::class);
+        parent::__construct($registry, UnnamedSlide::class);
     }
 
     //    /**
-    //     * @return SiteType[] Returns an array of SiteType objects
+    //     * @return UnnamedSlide[] Returns an array of UnnamedSlide objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('s.id', 'ASC')
+    //            ->orderBy('u.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?SiteType
+    //    public function findOneBySomeField($value): ?UnnamedSlide
     //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

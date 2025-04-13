@@ -3,9 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\PhotoRepository;
-use App\Service\UploaderHelper;
+//use App\Service\UploaderHelper;
 use Doctrine\DBAL\Types\Types;
-use Gedmo\Mapping\Annotation as Gedmo;
+//use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PhotoRepository::class)]
@@ -16,39 +16,41 @@ class Photo
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'photo')]
-    private ?Taxon $taxon = null;
-
-    #[ORM\ManyToOne(inversedBy: 'photo')]
-    private ?Sample $sample = null;
-
-    #[ORM\ManyToOne(inversedBy: 'photo')]
-    private ?Microscope $microscope = null;
-
-    #[ORM\ManyToOne(inversedBy: 'photo')]
-    private ?Technique $technique = null;
-
     #[ORM\Column]
-    private bool $isPublished = false;
+    private ?bool $isPublished = null;
 
     #[ORM\Column(length: 255)]
     private ?string $filename = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private string $description = '';
+    private ?string $description = null;
 
     #[ORM\Column]
-    private int $timesViewed = 0;
+    private ?int $timesViewed = null;
 
-    #[Gedmo\Timestampable(on: 'create')]
-    #[ORM\Column(type: 'datetime')]
-//    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private \DateTimeInterface $dateAdded;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+//    #[Gedmo\Timestampable(on: 'create')]
+//    #[ORM\Column(type: 'datetime')]
+    private ?\DateTimeInterface $dateAdded = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $specimenNumericalAge = null;
+    #[ORM\ManyToOne(inversedBy: 'photos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Taxon $taxon = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'photos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Slide $slide = null;
+
+    #[ORM\ManyToOne(inversedBy: 'photos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Microscope $microscope = null;
+
+    #[ORM\ManyToOne(inversedBy: 'photos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Technique $technique = null;
+
+    #[ORM\ManyToOne(inversedBy: 'photos')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?RelativeAge $relativeAge = null;
 
     public function getId(): ?int
@@ -56,55 +58,7 @@ class Photo
         return $this->id;
     }
 
-    public function getTaxon(): ?Taxon
-    {
-        return $this->taxon;
-    }
-
-    public function setTaxon(?Taxon $taxon): static
-    {
-        $this->taxon = $taxon;
-
-        return $this;
-    }
-
-    public function getSample(): ?Sample
-    {
-        return $this->sample;
-    }
-
-    public function setSample(?Sample $sample): static
-    {
-        $this->sample = $sample;
-
-        return $this;
-    }
-
-    public function getMicroscope(): ?Microscope
-    {
-        return $this->microscope;
-    }
-
-    public function setMicroscope(?Microscope $microscope): static
-    {
-        $this->microscope = $microscope;
-
-        return $this;
-    }
-
-    public function getTechnique(): ?Technique
-    {
-        return $this->technique;
-    }
-
-    public function setTechnique(?Technique $technique): static
-    {
-        $this->technique = $technique;
-
-        return $this;
-    }
-
-    public function getIsPublished(): ?bool
+    public function isPublished(): ?bool
     {
         return $this->isPublished;
     }
@@ -118,8 +72,13 @@ class Photo
 
     public function getFilename(): ?string
     {
-        return UploaderHelper::PHOTO . '/' . $this->filename;
+        return $this->filename;
     }
+
+//    public function getFilename(): ?string
+//    {
+//        return UploaderHelper::PHOTO . '/' . $this->filename;
+//    }
 
     public function setFilename(string $filename): static
     {
@@ -164,14 +123,50 @@ class Photo
         return $this;
     }
 
-    public function getSpecimenNumericalAge(): ?int
+    public function getTaxon(): ?Taxon
     {
-        return $this->specimenNumericalAge;
+        return $this->taxon;
     }
 
-    public function setSpecimenNumericalAge(?int $specimenNumericalAge): static
+    public function setTaxon(?Taxon $taxon): static
     {
-        $this->specimenNumericalAge = $specimenNumericalAge;
+        $this->taxon = $taxon;
+
+        return $this;
+    }
+
+    public function getSlide(): ?Slide
+    {
+        return $this->slide;
+    }
+
+    public function setSlide(?Slide $slide): static
+    {
+        $this->slide = $slide;
+
+        return $this;
+    }
+
+    public function getMicroscope(): ?Microscope
+    {
+        return $this->microscope;
+    }
+
+    public function setMicroscope(?Microscope $microscope): static
+    {
+        $this->microscope = $microscope;
+
+        return $this;
+    }
+
+    public function getTechnique(): ?Technique
+    {
+        return $this->technique;
+    }
+
+    public function setTechnique(?Technique $technique): static
+    {
+        $this->technique = $technique;
 
         return $this;
     }
@@ -190,7 +185,6 @@ class Photo
 
     public function incrementTimesViewed(): self
     {
-        // $this->setTimesViewed($this->getTimesViewed() + 1);
         $this->timesViewed = $this->timesViewed + 1;
 
         return $this;

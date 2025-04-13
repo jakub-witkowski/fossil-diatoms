@@ -15,37 +15,36 @@ class Microscope
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'microscope')]
+    #[ORM\ManyToOne(inversedBy: 'microscopes')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Producer $producer = null;
 
-    #[ORM\ManyToOne(inversedBy: 'microscope')]
+    #[ORM\ManyToOne(inversedBy: 'microscopes')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Model $model = null;
 
-    #[ORM\ManyToOne(inversedBy: 'microscope')]
+    #[ORM\ManyToOne(inversedBy: 'microscopes')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Objective $objective = null;
 
-    #[ORM\ManyToOne(inversedBy: 'microscope')]
+    #[ORM\ManyToOne(inversedBy: 'microscopes')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Camera $camera = null;
 
     /**
      * @var Collection<int, Photo>
      */
     #[ORM\OneToMany(targetEntity: Photo::class, mappedBy: 'microscope')]
-    private Collection $photo;
+    private Collection $photos;
 
     public function __construct()
     {
-        $this->photo = new ArrayCollection();
+        $this->photos = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): string
-    {
-        return $this->producer . " " . $this->model . " " . $this->objective . " " . $this->camera;
     }
 
     public function getProducer(): ?Producer
@@ -99,15 +98,15 @@ class Microscope
     /**
      * @return Collection<int, Photo>
      */
-    public function getPhoto(): Collection
+    public function getPhotos(): Collection
     {
-        return $this->photo;
+        return $this->photos;
     }
 
     public function addPhoto(Photo $photo): static
     {
-        if (!$this->photo->contains($photo)) {
-            $this->photo->add($photo);
+        if (!$this->photos->contains($photo)) {
+            $this->photos->add($photo);
             $photo->setMicroscope($this);
         }
 
@@ -116,7 +115,7 @@ class Microscope
 
     public function removePhoto(Photo $photo): static
     {
-        if ($this->photo->removeElement($photo)) {
+        if ($this->photos->removeElement($photo)) {
             // set the owning side to null (unless already changed)
             if ($photo->getMicroscope() === $this) {
                 $photo->setMicroscope(null);
@@ -126,8 +125,15 @@ class Microscope
         return $this;
     }
 
-    public function __toString(): string
+    public function getFullName(): string
     {
-        return $this->producer . " " . $this->model . " " . $this->objective . " " . $this->camera;
+        $fullName =
+            $this->getProducer() . '' .
+            $this->getModel() . ', ' .
+            $this->getObjective() . ', ' .
+            $this->getCamera()
+        ;
+
+        return $fullName;
     }
 }

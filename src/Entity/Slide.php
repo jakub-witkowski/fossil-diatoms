@@ -2,36 +2,39 @@
 
 namespace App\Entity;
 
-use App\Repository\TaxonRepository;
+use App\Repository\SlideRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Doctrine\ORM\Mapping\InheritanceType;
 
-#[ORM\Entity(repositoryClass: TaxonRepository::class)]
+#[ORM\Entity(repositoryClass: SlideRepository::class)]
 #[InheritanceType('SINGLE_TABLE')]
 #[DiscriminatorColumn('discriminator')]
 #[ORM\DiscriminatorMap([
-    'genus' => Genus::class,
-    'species' => Species::class,
-    'variety' => Variety::class,
+    'bm-slide' => BMslide::class,
+    'uni-szczecin-slide' => UniSzczecinSlide::class,
+    'unnamed-slide' => UnnamedSlide::class,
 ])]
-class Taxon
+class Slide
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $diatomBase = null;
+    #[ORM\ManyToOne(inversedBy: 'slides')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Sample $sample = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $label = null;
 
     /**
      * @var Collection<int, Photo>
      */
-    #[ORM\OneToMany(targetEntity: Photo::class, mappedBy: 'taxon')]
+    #[ORM\OneToMany(targetEntity: Photo::class, mappedBy: 'slide')]
     private Collection $photos;
 
     public function __construct()
@@ -44,26 +47,38 @@ class Taxon
         return $this->id;
     }
 
-    public function getDiatomBase(): ?string
+    public function getSample(): ?Sample
     {
-        return $this->diatomBase;
+        return $this->sample;
     }
 
-    public function setDiatomBase(string $diatomBase): static
+    public function setSample(?Sample $sample): static
     {
-        $this->diatomBase = $diatomBase;
+        $this->sample = $sample;
 
         return $this;
     }
 
-    public function printTaxonInfo(): string
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function setLabel(string $label): static
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    public function printSlideInfo(): string
     {
         return $this;
     }
 
     public function __toString(): string
     {
-        return $this->printTaxonInfo();
+        return $this->label;
     }
 
     /**
@@ -78,7 +93,7 @@ class Taxon
     {
         if (!$this->photos->contains($photo)) {
             $this->photos->add($photo);
-            $photo->setTaxon($this);
+            $photo->setSlide($this);
         }
 
         return $this;
@@ -88,8 +103,8 @@ class Taxon
     {
         if ($this->photos->removeElement($photo)) {
             // set the owning side to null (unless already changed)
-            if ($photo->getTaxon() === $this) {
-                $photo->setTaxon(null);
+            if ($photo->getSlide() === $this) {
+                $photo->setSlide(null);
             }
         }
 
