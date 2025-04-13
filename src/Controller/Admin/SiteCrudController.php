@@ -21,16 +21,17 @@ class SiteCrudController extends AbstractCrudController
     {
         yield IdField::new('id')
             ->onlyOnIndex();
-        yield AssociationField::new('siteType');
-        yield AssociationField::new('campaign');
-        yield TextField::new('nameOrNumber')
-            ->onlyOnIndex();
-        yield TextField::new('nameOrNumberPrimary')
-            ->hideOnIndex();
-        yield TextField::new('nameOrNumberSecondary')
-            ->hideOnIndex();
+//        yield AssociationField::new('siteType');
+//        yield AssociationField::new('campaign');
+//        yield TextField::new('getSiteInfo');
+//        yield TextField::new('nameOrNumber')
+//            ->onlyOnIndex();
+//        yield TextField::new('nameOrNumberPrimary')
+//            ->hideOnIndex();
+//        yield TextField::new('nameOrNumberSecondary')
+//            ->hideOnIndex();
 //        yield AssociationField::new('sample');
-        yield AssociationField::new('geography');
+//        yield AssociationField::new('geography');
 
     }
 }

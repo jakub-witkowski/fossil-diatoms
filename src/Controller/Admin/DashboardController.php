@@ -62,7 +62,7 @@ class DashboardController extends AbstractDashboardController
 //        yield MenuItem::linkToCrud('Site type', 'fa fa-home', SiteType::class);
         yield MenuItem::linkToCrud('Campaign', 'fa fa-home', Campaign::class);
         yield MenuItem::linkToCrud('Geography', 'fa fa-home', Geography::class);
-        yield MenuItem::linkToCrud('Site', 'fa fa-home', Site::class);
+//        yield MenuItem::linkToCrud('Site', 'fa fa-home', Site::class);
 
         yield MenuItem::section('Microscopes');
         yield MenuItem::linkToCrud('Producer', 'fa fa-tags', Producer::class);
