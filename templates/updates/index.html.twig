@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="w-3/5 py-10 mx-auto text-lg text-gray-700">
+    
+    <div class="text-xl font-black text-center pb-4">
+        <span><strong>All updates:</strong></span>
+    </div>
+    
+    {% for update in updates %}
+        <div class="py-2">    
+            <span><strong> {{ update.getDatePublished|date("d M Y") }}: </strong></span>
+            <p class="ml-[1.5em]"> {{ update.getContent|raw }} </p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#main-page-feature {
+    height: 90vh;
+}
+
+#header-image {
+    height: 64px;
+    display: inline;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    padding-left: 0.75em;
+}
+

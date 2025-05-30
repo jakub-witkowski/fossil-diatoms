@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="p-2 text-lg lg:text-xl text-gray-700 font-semibold text-center mx-auto lg:py-6">
+    <span><i>Select a genus from the list to view the species</i></span>
+</div>
+
+<div id="upper-panel" class="p-2 text-lg text-gray-700 font-medium lg:text-xl lg:font-semibold lg:mx-auto lg:pb-6" data-controller="genus-list">
+    {{ form_start(selectGenus, {'attr': {'id': 'select-genus-dropdown'}}) }}
+            {{ form_widget(selectGenus) }}
+            <div class="flex w-full place-content-end">
+                <button id="select" type="submit" class="border-2 border-gray-700 bg-gray-700 font-black text-xl text-white hover:text-gray-300 py-2 px-4 rounded-xl">Select</button>
+            </div> 
+    {{ form_end(selectGenus) }}
+</div>
+
+{#<turbo-frame id="selected-genus-photo">#}
+    <div id="lower-panel">
+    </div>
+{#</turbo-frame>#}
+
+{% endblock %}
