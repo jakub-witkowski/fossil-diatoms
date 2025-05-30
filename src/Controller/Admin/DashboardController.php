@@ -4,20 +4,22 @@ namespace App\Controller\Admin;
 
 use App\Entity\Camera;
 use App\Entity\Campaign;
+use App\Entity\DeepSeaSite;
 use App\Entity\Genus;
 use App\Entity\Geography;
 use App\Entity\Microscope;
 use App\Entity\Model;
 use App\Entity\Objective;
+use App\Entity\OnshoreSite;
 use App\Entity\Photo;
 use App\Entity\Producer;
 use App\Entity\RelativeAge;
 use App\Entity\Sample;
 use App\Entity\Site;
-use App\Entity\SiteType;
+//use App\Entity\SiteType;
 use App\Entity\Species;
 use App\Entity\Taxon;
-use App\Entity\TaxonType;
+//use App\Entity\TaxonType;
 use App\Entity\Technique;
 use App\Entity\Update;
 use App\Entity\Variety;
@@ -58,11 +60,18 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Samples');
         yield MenuItem::linkToCrud('Sample', 'fa fa-file-text', Sample::class);
 
+//        yield MenuItem::section('Deep Sea Sites');
+//        yield MenuItem::linkToCrud('DeepSeaSite', 'fa fa-home', DeepSeaSite::class);
+//
+//        yield MenuItem::section('Onshore Sites');
+//        yield MenuItem::linkToCrud('Onshore Sites', 'fa fa-home', OnshoreSite::class);
+
         yield MenuItem::section('Sites');
 //        yield MenuItem::linkToCrud('Site type', 'fa fa-home', SiteType::class);
         yield MenuItem::linkToCrud('Campaign', 'fa fa-home', Campaign::class);
         yield MenuItem::linkToCrud('Geography', 'fa fa-home', Geography::class);
-//        yield MenuItem::linkToCrud('Site', 'fa fa-home', Site::class);
+        yield MenuItem::linkToCrud('Site', 'fa fa-home', Site::class);
+//        yield MenuItem::linkToCrud('DeepSeaSite', 'fa fa-home', DeepSeaSite::class);
 
         yield MenuItem::section('Microscopes');
         yield MenuItem::linkToCrud('Producer', 'fa fa-tags', Producer::class);

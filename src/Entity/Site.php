@@ -32,10 +32,10 @@ class Site
     private Collection $samples;
 
     #[ORM\Column]
-    private ?float $latitude = null;
+    private ?float $latitude = 0;
 
     #[ORM\Column]
-    private ?float $longitude = null;
+    private ?float $longitude = 0;
 
     public function __construct()
     {

@@ -21,6 +21,7 @@ class SiteCrudController extends AbstractCrudController
     {
         yield IdField::new('id')
             ->onlyOnIndex();
+        yield TextField::new('discriminator');
 //        yield AssociationField::new('siteType');
 //        yield AssociationField::new('campaign');
 //        yield TextField::new('getSiteInfo');
